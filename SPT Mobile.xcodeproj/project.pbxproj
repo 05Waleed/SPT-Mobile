@@ -13,6 +13,7 @@
 		2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653A2C7BC0F40088F7AB /* StarterInfoView.xib */; };
 		2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E653D2C7BC42E0088F7AB /* LocationView.swift */; };
 		2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653F2C7BC4380088F7AB /* LocationView.xib */; };
+		2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
 		2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */; };
 		2CBFD75E2C7BA30E0046A717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75D2C7BA30E0046A717 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 		2C4E653A2C7BC0F40088F7AB /* StarterInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarterInfoView.xib; sourceTree = "<group>"; };
 		2C4E653D2C7BC42E0088F7AB /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		2C4E653F2C7BC4380088F7AB /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
+		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				2CBFD7792C7BA48A0046A717 /* ExampleAnimation.swift */,
+				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
 			);
 			path = LottieAnimations;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
+				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
