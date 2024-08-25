@@ -11,6 +11,8 @@
 		2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65362C7BC0410088F7AB /* StarterView.swift */; };
 		2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */; };
 		2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653A2C7BC0F40088F7AB /* StarterInfoView.xib */; };
+		2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E653D2C7BC42E0088F7AB /* LocationView.swift */; };
+		2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653F2C7BC4380088F7AB /* LocationView.xib */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
 		2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */; };
 		2CBFD75E2C7BA30E0046A717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75D2C7BA30E0046A717 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		2C4E65362C7BC0410088F7AB /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoView.swift; sourceTree = "<group>"; };
 		2C4E653A2C7BC0F40088F7AB /* StarterInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarterInfoView.xib; sourceTree = "<group>"; };
+		2C4E653D2C7BC42E0088F7AB /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		2C4E653F2C7BC4380088F7AB /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +64,15 @@
 				2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */,
 			);
 			path = Starter;
+			sourceTree = "<group>";
+		};
+		2C4E653C2C7BC40E0088F7AB /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+				2C4E653D2C7BC42E0088F7AB /* LocationView.swift */,
+				2C4E653F2C7BC4380088F7AB /* LocationView.xib */,
+			);
+			path = LocationView;
 			sourceTree = "<group>";
 		};
 		2CBFD74D2C7BA30E0046A717 = {
@@ -131,6 +144,7 @@
 			children = (
 				2CBFD7742C7BA4440046A717 /* Main */,
 				2C4E65332C7BC0090088F7AB /* Starter */,
+				2C4E653C2C7BC40E0088F7AB /* LocationView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */,
+				2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */,
 				2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */,
 				2CBFD7632C7BA30F0046A717 /* Assets.xcassets in Resources */,
 				2CBFD7662C7BA30F0046A717 /* Base in Resources */,
@@ -232,6 +247,7 @@
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,
+				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
