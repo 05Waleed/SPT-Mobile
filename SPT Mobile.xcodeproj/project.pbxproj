@@ -116,6 +116,7 @@
 			children = (
 				2CBFD7772C7BA47D0046A717 /* ExampleManager.swift */,
 				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
+				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -134,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				2CBFD7792C7BA48A0046A717 /* ExampleAnimation.swift */,
-				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
 			);
 			path = LottieAnimations;
 			sourceTree = "<group>";
