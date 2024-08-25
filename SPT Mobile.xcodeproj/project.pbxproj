@@ -15,6 +15,8 @@
 		2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653F2C7BC4380088F7AB /* LocationView.xib */; };
 		2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */; };
 		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
+		2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */; };
+		2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C4E65512C7BE1E40088F7AB /* Lottie */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
 		2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */; };
 		2CBFD7612C7BA30E0046A717 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFD7602C7BA30E0046A717 /* Base */; };
@@ -34,6 +36,7 @@
 		2C4E653F2C7BC4380088F7AB /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
+		2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				2CBFD76F2C7BA4170046A717 /* Resources */,
-				2CBFD7702C7BA4220046A717 /* LottieAnimations */,
 				2CBFD76E2C7BA40D0046A717 /* Managers */,
+				2CBFD7702C7BA4220046A717 /* LottieAnimations */,
 				2CBFD7712C7BA42C0046A717 /* Model */,
 				2CBFD7722C7BA4340046A717 /* View */,
 				2CBFD7732C7BA43A0046A717 /* Controller */,
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				2CBFD7772C7BA47D0046A717 /* ExampleManager.swift */,
+				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -185,6 +190,9 @@
 			dependencies = (
 			);
 			name = "SPT Mobile";
+			packageProductDependencies = (
+				2C4E65512C7BE1E40088F7AB /* Lottie */,
+			);
 			productName = "SPT Mobile";
 			productReference = 2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 2CBFD74D2C7BA30E0046A717;
+			packageReferences = (
+				2C4E65502C7BE1E40088F7AB /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 2CBFD7572C7BA30E0046A717 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -248,6 +259,7 @@
 				2CBFD77A2C7BA48A0046A717 /* ExampleAnimation.swift in Sources */,
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
+				2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,
@@ -475,6 +487,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2C4E65502C7BE1E40088F7AB /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2C4E65512C7BE1E40088F7AB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C4E65502C7BE1E40088F7AB /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CBFD74E2C7BA30E0046A717 /* Project object */;
 }
