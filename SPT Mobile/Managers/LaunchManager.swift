@@ -17,7 +17,7 @@ class LaunchManager {
     
     /// Checks if the view controller associated with this key has been shown before.
     func isFirstLaunch() -> Bool {
-        return !UserDefaults.standard.bool(forKey: launchKey)
+        return UserDefaults.standard.bool(forKey: launchKey)
     }
     
     /// Sets the flag indicating that the view controller has been shown.
