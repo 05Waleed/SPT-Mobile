@@ -14,9 +14,9 @@
 		2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E653D2C7BC42E0088F7AB /* LocationView.swift */; };
 		2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E653F2C7BC4380088F7AB /* LocationView.xib */; };
 		2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */; };
+		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
 		2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */; };
-		2CBFD75E2C7BA30E0046A717 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75D2C7BA30E0046A717 /* ViewController.swift */; };
 		2CBFD7612C7BA30E0046A717 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFD7602C7BA30E0046A717 /* Base */; };
 		2CBFD7632C7BA30F0046A717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFD7622C7BA30F0046A717 /* Assets.xcassets */; };
 		2CBFD7662C7BA30F0046A717 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFD7652C7BA30F0046A717 /* Base */; };
@@ -33,10 +33,10 @@
 		2C4E653D2C7BC42E0088F7AB /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		2C4E653F2C7BC4380088F7AB /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
+		2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CBFD75D2C7BA30E0046A717 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2CBFD7602C7BA30E0046A717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CBFD7622C7BA30F0046A717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CBFD7652C7BA30F0046A717 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		2CBFD7732C7BA43A0046A717 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2CBFD75D2C7BA30E0046A717 /* ViewController.swift */,
+				2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */,
-				2CBFD75E2C7BA30E0046A717 /* ViewController.swift in Sources */,
+				2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */,
 				2CBFD77A2C7BA48A0046A717 /* ExampleAnimation.swift in Sources */,
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
