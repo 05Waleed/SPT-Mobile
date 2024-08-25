@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StarterInfoView" customModule="SPT_Mobile" customModuleProvider="target">
+            <connections>
+                <outlet property="blurView" destination="BpO-ET-pos" id="E2X-tu-g8y"/>
+                <outlet property="getStartBttn" destination="SCV-S5-ca1" id="Nj2-qv-LL1"/>
+                <outlet property="mainView" destination="iff-Fb-Z1N" id="o1v-hJ-4pW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iff-Fb-Z1N">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Starter" translatesAutoresizingMaskIntoConstraints="NO" id="6T7-JS-ndG">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCV-S5-ca1">
+                    <rect key="frame" x="40" y="770" width="313" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="yOh-jw-bLj"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Lets Get Started" cornerStyle="capsule">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="22"/>
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="baseBackgroundColor" name="AccentColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="getStartBttnTap:" destination="-1" eventType="touchUpInside" id="AXX-z8-aXs"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpO-ET-pos">
+                    <rect key="frame" x="20" y="79" width="353" height="148"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SPT Mobile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKi-x6-3x1">
+                            <rect key="frame" x="8" y="12" width="337" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="dOQ-Nc-uiu"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switzerland's most popular public transport app accompanies you from door to door and provides you with useful information." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-nU-se6">
+                            <rect key="frame" x="8" y="41" width="337" height="91"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="91" id="YHa-lm-TK8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="Content Color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="148" id="BX3-gX-MuM"/>
+                        <constraint firstItem="4YA-nU-se6" firstAttribute="top" secondItem="tKi-x6-3x1" secondAttribute="bottom" constant="8" symbolic="YES" id="KbC-B9-gf3"/>
+                        <constraint firstItem="tKi-x6-3x1" firstAttribute="leading" secondItem="BpO-ET-pos" secondAttribute="leading" constant="8" id="Lnb-gi-qMd"/>
+                        <constraint firstItem="4YA-nU-se6" firstAttribute="leading" secondItem="BpO-ET-pos" secondAttribute="leading" constant="8" id="UMB-7k-LMg"/>
+                        <constraint firstAttribute="trailing" secondItem="tKi-x6-3x1" secondAttribute="trailing" constant="8" id="bzj-1a-lmy"/>
+                        <constraint firstItem="tKi-x6-3x1" firstAttribute="top" secondItem="BpO-ET-pos" secondAttribute="top" constant="12" id="tha-10-rzA"/>
+                        <constraint firstAttribute="trailing" secondItem="4YA-nU-se6" secondAttribute="trailing" constant="8" id="wJu-hr-gC5"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TrainStation" translatesAutoresizingMaskIntoConstraints="NO" id="u55-E0-hFg">
+                    <rect key="frame" x="0.0" y="384" width="393" height="356"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="356" id="drf-xh-nCc"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="nRn-Cb-mNf"/>
+            <color key="backgroundColor" name="Main Theme"/>
+            <constraints>
+                <constraint firstItem="nRn-Cb-mNf" firstAttribute="trailing" secondItem="BpO-ET-pos" secondAttribute="trailing" constant="20" id="2gq-14-u5U"/>
+                <constraint firstItem="SCV-S5-ca1" firstAttribute="top" secondItem="u55-E0-hFg" secondAttribute="bottom" constant="30" id="8zv-de-07e"/>
+                <constraint firstAttribute="bottom" secondItem="6T7-JS-ndG" secondAttribute="bottom" id="Fib-mJ-FDd"/>
+                <constraint firstItem="u55-E0-hFg" firstAttribute="trailing" secondItem="nRn-Cb-mNf" secondAttribute="trailing" id="Lk8-Qc-AIq"/>
+                <constraint firstItem="6T7-JS-ndG" firstAttribute="top" secondItem="iff-Fb-Z1N" secondAttribute="top" id="TNW-uF-suQ"/>
+                <constraint firstItem="nRn-Cb-mNf" firstAttribute="trailing" secondItem="SCV-S5-ca1" secondAttribute="trailing" constant="40" id="Tiz-Zw-OpV"/>
+                <constraint firstItem="nRn-Cb-mNf" firstAttribute="bottom" secondItem="SCV-S5-ca1" secondAttribute="bottom" id="afx-io-gQI"/>
+                <constraint firstItem="BpO-ET-pos" firstAttribute="top" secondItem="nRn-Cb-mNf" secondAttribute="top" constant="20" id="bBk-et-71K"/>
+                <constraint firstItem="6T7-JS-ndG" firstAttribute="leading" secondItem="nRn-Cb-mNf" secondAttribute="leading" id="efw-Pm-bUH"/>
+                <constraint firstItem="SCV-S5-ca1" firstAttribute="leading" secondItem="nRn-Cb-mNf" secondAttribute="leading" constant="40" id="k7V-5m-FWc"/>
+                <constraint firstItem="6T7-JS-ndG" firstAttribute="trailing" secondItem="nRn-Cb-mNf" secondAttribute="trailing" id="mcL-EM-bcQ"/>
+                <constraint firstItem="BpO-ET-pos" firstAttribute="leading" secondItem="nRn-Cb-mNf" secondAttribute="leading" constant="20" id="ubs-wV-IWA"/>
+                <constraint firstItem="u55-E0-hFg" firstAttribute="leading" secondItem="nRn-Cb-mNf" secondAttribute="leading" id="zig-mR-OjI"/>
+            </constraints>
+            <point key="canvasLocation" x="37.674418604651166" y="19.313304721030043"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Starter" width="591.33331298828125" height="591.33331298828125"/>
+        <image name="TrainStation" width="547" height="456"/>
+        <namedColor name="AccentColor">
+            <color red="0.86299997568130493" green="0.18400000035762787" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Content Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Main Theme">
+            <color red="0.93199998140335083" green="0.91200000047683716" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
