@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -12,30 +12,45 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StarterView" customModule="SPT_Mobile" customModuleProvider="target">
             <connections>
                 <outlet property="mainView" destination="EgQ-kh-XBS" id="HFt-Qs-gkI"/>
+                <outlet property="nameLbl" destination="M9c-va-dUg" id="qGH-WW-ysX"/>
                 <outlet property="trainAnimationView" destination="k9y-45-Rei" id="PMT-SC-pmL"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="EgQ-kh-XBS">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S P T  M o b i l e" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9c-va-dUg">
+                    <rect key="frame" x="16" y="687" width="358" height="93"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="93" id="8f0-u9-qtJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="35"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9y-45-Rei">
-                    <rect key="frame" x="0.0" y="243" width="373" height="256"/>
+                    <rect key="frame" x="24" y="162" width="356" height="360"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="256" id="sat-Kv-gZo"/>
+                        <constraint firstAttribute="height" constant="360" id="dgN-2D-WHZ"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Rxb-4W-bbf"/>
             <color key="backgroundColor" name="AccentColor"/>
             <constraints>
-                <constraint firstItem="Rxb-4W-bbf" firstAttribute="trailing" secondItem="k9y-45-Rei" secondAttribute="trailing" constant="20" id="iD1-WV-3Dr"/>
-                <constraint firstItem="k9y-45-Rei" firstAttribute="top" secondItem="Rxb-4W-bbf" secondAttribute="top" constant="184" id="kSh-KQ-f3W"/>
-                <constraint firstItem="k9y-45-Rei" firstAttribute="leading" secondItem="Rxb-4W-bbf" secondAttribute="leading" id="n0E-ze-qv9"/>
+                <constraint firstItem="Rxb-4W-bbf" firstAttribute="trailing" secondItem="M9c-va-dUg" secondAttribute="trailing" constant="16" id="0fR-Yd-N84"/>
+                <constraint firstItem="M9c-va-dUg" firstAttribute="leading" secondItem="Rxb-4W-bbf" secondAttribute="leading" constant="16" id="7ex-b2-fvO"/>
+                <constraint firstItem="k9y-45-Rei" firstAttribute="leading" secondItem="Rxb-4W-bbf" secondAttribute="leading" constant="24" id="XOP-0I-bQS"/>
+                <constraint firstItem="Rxb-4W-bbf" firstAttribute="bottom" secondItem="M9c-va-dUg" secondAttribute="bottom" constant="30" id="jWY-oH-atU"/>
+                <constraint firstItem="k9y-45-Rei" firstAttribute="top" secondItem="Rxb-4W-bbf" secondAttribute="top" constant="115" id="xD8-g2-i2V"/>
+                <constraint firstItem="Rxb-4W-bbf" firstAttribute="trailing" secondItem="k9y-45-Rei" secondAttribute="trailing" constant="10" id="yXz-Lg-uNo"/>
             </constraints>
-            <point key="canvasLocation" x="138.13953488372093" y="18.66952789699571"/>
+            <point key="canvasLocation" x="136.64122137404578" y="18.30985915492958"/>
         </view>
     </objects>
     <resources>
