@@ -9,6 +9,8 @@ import UIKit
 
 class StarterInfoView: UIView {
     
+    weak var starterInfoViewController: StarterInfoViewController?
+    
     @IBOutlet weak var blurView: UIView!
     @IBOutlet weak var getStartBttn: UIButton!
     @IBOutlet weak var mainView: UIView!
@@ -30,7 +32,7 @@ class StarterInfoView: UIView {
     }
     
     @IBAction func getStartBttnTap(_ sender: Any) {
-        
+        starterInfoViewController?.navigateToLocationVc()
     }
     
     private func loadNib() {

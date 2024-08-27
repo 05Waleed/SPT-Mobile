@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */; };
 		2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E65342C7BC02E0088F7AB /* StarterView.xib */; };
 		2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65362C7BC0410088F7AB /* StarterView.swift */; };
 		2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoViewController.swift; sourceTree = "<group>"; };
 		2C4E65342C7BC02E0088F7AB /* StarterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarterView.xib; sourceTree = "<group>"; };
 		2C4E65362C7BC0410088F7AB /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */,
+				2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
 				2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */,
+				2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,

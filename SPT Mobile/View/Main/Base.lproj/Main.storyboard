@@ -27,6 +27,24 @@
             </objects>
             <point key="canvasLocation" x="1040.4580152671756" y="3.5211267605633805"/>
         </scene>
+        <!--Starter Info View Controller-->
+        <scene sceneID="3yV-hK-B77">
+            <objects>
+                <viewController storyboardIdentifier="StarterInfoViewController" id="iDf-Op-kTu" customClass="StarterInfoViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tjf-gn-ABh" customClass="StarterInfoView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BDx-KE-3cL"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="starterInfoView" destination="Tjf-gn-ABh" id="dR1-eY-Aat"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iAm-ng-Yka" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="4"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqe-ad-BpD">
             <objects>
