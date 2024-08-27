@@ -26,6 +26,7 @@ class StarterInfoViewController: UIViewController {
     }
     
     func navigateToLocationVc() {
-        
+        let vc = storyboard?.instantiateViewController(identifier: "LocationViewController") as! LocationViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

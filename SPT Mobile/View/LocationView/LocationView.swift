@@ -8,6 +8,8 @@
 import UIKit
 
 class LocationView: UIView {
+    
+    weak var locationViewController: LocationViewController?
         
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var allowBttn: UIButton!
@@ -61,13 +63,13 @@ class LocationView: UIView {
         notNowBttn.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
     }
     
-    func hideUI() {
+    private func hideUI() {
         notNowBttn.isHidden = true
         allowBttn.isHidden = true
         locationLbl.isHidden = true
     }
     
-    func showUI() {
+    private func showUI() {
         notNowBttn.alpha = 0
         allowBttn.alpha = 0
         locationLbl.alpha = 0
@@ -81,5 +83,17 @@ class LocationView: UIView {
             self.allowBttn.alpha = 1
         }
     }
+    
+     func startLottieAnimation() {
+        LottieManager.shared.startAnimation(on: locationView, animationName: "fF9rPfdtXh", animationSpeed: 1.0, loopMode: .loop) {
+            print("")
+        }
+        startshowingUI()
+    }
+    
+   private func startshowingUI() {
+       DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+           self.showUI()
+       }
+   }
 }
-

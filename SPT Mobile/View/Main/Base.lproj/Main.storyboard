@@ -45,6 +45,24 @@
             </objects>
             <point key="canvasLocation" x="1692" y="4"/>
         </scene>
+        <!--Location View Controller-->
+        <scene sceneID="0Iz-m2-8bj">
+            <objects>
+                <viewController storyboardIdentifier="LocationViewController" id="aFb-p4-e6j" customClass="LocationViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="liQ-7v-HCW" customClass="LocationView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="H4T-PF-xwR"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableLocationView" destination="liQ-7v-HCW" id="9Gm-HN-vy3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0l-zg-3Qk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2373" y="4"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqe-ad-BpD">
             <objects>
