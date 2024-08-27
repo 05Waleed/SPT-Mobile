@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="69Z-70-gBu">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -63,6 +63,61 @@
             </objects>
             <point key="canvasLocation" x="2373" y="4"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="rpO-MH-pqc">
+            <objects>
+                <viewController id="2Zg-G1-ykC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tpe-go-e0w">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="s9l-aO-fhV"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="Saved-Trips-Icon" id="ueN-kK-Oh4">
+                        <color key="badgeColor" name="Content Color"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46l-OB-iCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3982" y="310"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CCx-4O-3Gp">
+            <objects>
+                <viewController id="e5O-9a-Eiu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qae-S6-EIX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dEu-OQ-UV0"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="Plan-Icon" id="kcR-2a-2QU">
+                        <color key="badgeColor" name="Content Color"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ybx-lz-0yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3982" y="-297"/>
+        </scene>
+        <!--Base Tab Bar View Controller-->
+        <scene sceneID="Oaf-ML-GoU">
+            <objects>
+                <tabBarController storyboardIdentifier="BaseTabBarViewController" id="UQF-V3-Lb4" customClass="BaseTabBarViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8BF-3Q-xJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Content Color"/>
+                        <color key="selectedImageTintColor" name="Content Color"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="e5O-9a-Eiu" kind="relationship" relationship="viewControllers" id="KKt-cS-QZo"/>
+                        <segue destination="2Zg-G1-ykC" kind="relationship" relationship="viewControllers" id="ijc-p9-n1X"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kp6-WL-yaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3075" y="6"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yqe-ad-BpD">
             <objects>
@@ -83,6 +138,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Plan-Icon" width="26" height="26"/>
+        <image name="Saved-Trips-Icon" width="26" height="26"/>
+        <namedColor name="Content Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Main Theme">
             <color red="0.93199998140335083" green="0.91200000047683716" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
