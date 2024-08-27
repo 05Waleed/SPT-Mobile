@@ -16,27 +16,27 @@ class StarterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfShown()
+        setProperties()
+    }
+    
+    private func setProperties() {
+        starterView.starterViewController = self
     }
     
     private func checkIfShown() {
-        if !launchManager.isFirstLaunch() {
+        if launchManager.isFirstLaunch() {
             navigateToTabbar()
         } else {
-            showAnimation()
+            starterView.showAnimation()
         }
     }
     
-    private func showAnimation() {
-       print("show animation")
-        navigateToStarterInfoVc()
-    }
-    
-    private func navigateToStarterInfoVc() {
+     func navigateToStarterInfoVc() {
         launchManager.setFirstLaunchFlag()
         print("navigate to starter info vc")
     }
     
-    func navigateToTabbar() {
+   private func navigateToTabbar() {
         print("navigate to tab bar")
    }
 }

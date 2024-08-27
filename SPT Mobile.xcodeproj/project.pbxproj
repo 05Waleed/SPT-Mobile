@@ -17,6 +17,7 @@
 		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
 		2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */; };
 		2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C4E65512C7BE1E40088F7AB /* Lottie */; };
+		2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
 		2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */; };
 		2CBFD7612C7BA30E0046A717 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 2CBFD7602C7BA30E0046A717 /* Base */; };
@@ -37,6 +38,7 @@
 		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
+		2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fF9rPfdtXh.json; path = ../../../../Downloads/fF9rPfdtXh.json; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CBFD75B2C7BA30E0046A717 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		2CBFD7702C7BA4220046A717 /* LottieAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */,
 				2CBFD7792C7BA48A0046A717 /* ExampleAnimation.swift */,
 			);
 			path = LottieAnimations;
@@ -244,6 +247,7 @@
 				2CBFD7632C7BA30F0046A717 /* Assets.xcassets in Resources */,
 				2CBFD7662C7BA30F0046A717 /* Base in Resources */,
 				2CBFD7612C7BA30E0046A717 /* Base in Resources */,
+				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
