@@ -40,6 +40,9 @@
                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="baseBackgroundColor" name="AccentColor"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="allowBttnTap:" destination="-1" eventType="touchUpInside" id="BaF-k7-JA0"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytT-Ch-0BE">
                     <rect key="frame" x="20" y="702" width="353" height="48"/>
@@ -52,6 +55,9 @@
                         <color key="baseForegroundColor" name="AccentColor"/>
                         <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="notNowBttnTap:" destination="-1" eventType="touchUpInside" id="eYM-lu-VA9"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To ensure we provide you with the most accurate results, please allow us to access your location. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-7d-TgD">
                     <rect key="frame" x="20" y="461" width="353" height="129"/>

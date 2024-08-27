@@ -10,7 +10,7 @@ import UIKit
 class LocationView: UIView {
     
     weak var locationViewController: LocationViewController?
-        
+    
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var allowBttn: UIButton!
     @IBOutlet weak var notNowBttn: UIButton!
@@ -40,11 +40,15 @@ class LocationView: UIView {
     }
     
     @IBAction func notNowBttnTap(_ sender: Any) {
-       
+        locationViewController?.navigateToTabbar()
     }
     
     @IBAction func allowBttnTap(_ sender: Any) {
-       
+        locationViewController?.updateLocation { locationReceived in
+            if locationReceived {
+                self.locationViewController?.navigateToTabbar()
+            }
+        }
     }
     
     private func setupMainView() {
@@ -84,16 +88,16 @@ class LocationView: UIView {
         }
     }
     
-     func startLottieAnimation() {
+    func startLottieAnimation() {
         LottieManager.shared.startAnimation(on: locationView, animationName: "fF9rPfdtXh", animationSpeed: 1.0, loopMode: .loop) {
             print("")
         }
         startshowingUI()
     }
     
-   private func startshowingUI() {
-       DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-           self.showUI()
-       }
-   }
+    private func startshowingUI() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.showUI()
+        }
+    }
 }

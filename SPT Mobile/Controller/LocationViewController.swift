@@ -27,8 +27,19 @@ class LocationViewController: UIViewController {
     }
     
      func navigateToTabbar() {
-        
+        print("this is tab bar")
     }
     
-     
+    func updateLocation(completion: @escaping (Bool) -> Void) {
+        LocationManager.shared.requestLocation { location, streetName, cityName, error in
+            if let error = error {
+                print("Failed to get location: \(error.localizedDescription)")
+                return
+            }
+            
+            if location != nil {
+                completion(true)
+            }
+        }
+    }
 }
