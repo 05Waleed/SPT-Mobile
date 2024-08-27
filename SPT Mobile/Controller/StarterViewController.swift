@@ -33,7 +33,8 @@ class StarterViewController: UIViewController {
     
      func navigateToStarterInfoVc() {
         launchManager.setFirstLaunchFlag()
-        print("navigate to starter info vc")
+         let vc = storyboard?.instantiateViewController(withIdentifier: "StarterInfoViewController") as! StarterInfoViewController
+         navigationController?.pushViewController(vc, animated: true)
     }
     
    private func navigateToTabbar() {
