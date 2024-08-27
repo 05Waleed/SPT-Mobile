@@ -38,6 +38,19 @@ class StarterViewController: UIViewController {
     }
     
    private func navigateToTabbar() {
-        print("navigate to tab bar")
+       guard let tabBarVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BaseTabBarViewController") as? BaseTabBarViewController else {
+           print("Unable to instantiate UITabBarController from storyboard.")
+           return
+       }
+       
+       tabBarVC.selectedIndex = 0
+       
+       if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+          let window = windowScene.windows.first {
+           window.rootViewController = tabBarVC
+           window.makeKeyAndVisible()
+       } else {
+           print("Unable to find window scene or window.")
+       }
    }
 }
