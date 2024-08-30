@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="2373" y="4"/>
         </scene>
-        <!--View Controller-->
+        <!--Saved Trips View Controller-->
         <scene sceneID="rpO-MH-pqc">
             <objects>
-                <viewController id="2Zg-G1-ykC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedTripsViewController" id="2Zg-G1-ykC" customClass="SavedTripsViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tpe-go-e0w">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46l-OB-iCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3982" y="310"/>
+            <point key="canvasLocation" x="3981" y="386"/>
         </scene>
         <!--Plan View Controller-->
         <scene sceneID="CCx-4O-3Gp">

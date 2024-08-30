@@ -11,6 +11,7 @@
 		2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411312C7E429F00631F95 /* LocationViewController.swift */; };
 		2C2411342C7E569500631F95 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411332C7E569500631F95 /* LocationManager.swift */; };
 		2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */; };
+		2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */; };
 		2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E65342C7BC02E0088F7AB /* StarterView.xib */; };
 		2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65362C7BC0410088F7AB /* StarterView.swift */; };
 		2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */; };
@@ -39,6 +40,7 @@
 		2C2411312C7E429F00631F95 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2C2411332C7E569500631F95 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTripsViewController.swift; sourceTree = "<group>"; };
 		2C4E65342C7BC02E0088F7AB /* StarterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarterView.xib; sourceTree = "<group>"; };
 		2C4E65362C7BC0410088F7AB /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				2C2411312C7E429F00631F95 /* LocationViewController.swift */,
 				2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */,
 				2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */,
+				2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */,
+				2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */,
 				2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */,
 				2CBFD77A2C7BA48A0046A717 /* ExampleAnimation.swift in Sources */,
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
