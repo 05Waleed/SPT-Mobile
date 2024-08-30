@@ -65,7 +65,7 @@ class TimetableView: UIView {
         if fromField.isFirstResponder {
             fromField.text = ""
             fromField.placeholder = "From"
-        } else {
+        } else if fromField.text?.isEmpty == true {
             fromField.text = "Current location"
         }
     }
