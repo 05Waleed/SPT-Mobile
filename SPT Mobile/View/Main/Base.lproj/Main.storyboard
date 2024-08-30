@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="69Z-70-gBu">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -96,12 +96,20 @@
                                     <constraint firstAttribute="height" constant="50" id="n1X-6F-V35"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-W7-gn5" customClass="TimetableView" customModule="SPT_Mobile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                                <color key="backgroundColor" name="Main Theme"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dEu-OQ-UV0"/>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
+                            <constraint firstItem="aXM-W7-gn5" firstAttribute="leading" secondItem="dEu-OQ-UV0" secondAttribute="leading" id="0hJ-dp-Kpj"/>
+                            <constraint firstItem="aXM-W7-gn5" firstAttribute="trailing" secondItem="dEu-OQ-UV0" secondAttribute="trailing" id="BDd-Y2-w9b"/>
                             <constraint firstItem="2jw-1g-qZp" firstAttribute="leading" secondItem="dEu-OQ-UV0" secondAttribute="leading" constant="8" id="Ecj-iR-dLn"/>
+                            <constraint firstItem="aXM-W7-gn5" firstAttribute="top" secondItem="2jw-1g-qZp" secondAttribute="bottom" constant="16" id="Pno-e0-AD3"/>
                             <constraint firstItem="2jw-1g-qZp" firstAttribute="top" secondItem="dEu-OQ-UV0" secondAttribute="top" id="Uet-Mr-YUy"/>
+                            <constraint firstAttribute="bottom" secondItem="aXM-W7-gn5" secondAttribute="bottom" id="Vat-cc-hBN"/>
                             <constraint firstItem="dEu-OQ-UV0" firstAttribute="trailing" secondItem="2jw-1g-qZp" secondAttribute="trailing" constant="8" id="aeS-9A-cgC"/>
                         </constraints>
                     </view>
