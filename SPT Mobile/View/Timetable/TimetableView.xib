@@ -88,6 +88,9 @@
                                 <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="30"/>
                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="fromFieldRemoverTap:" destination="-1" eventType="touchUpInside" id="yVS-5Z-xMM"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-wj-XAq">
                             <rect key="frame" x="382" y="73" width="20" height="22"/>
@@ -102,6 +105,9 @@
                                 <fontDescription key="titleFontDescription" type="system" weight="light" pointSize="30"/>
                                 <color key="baseForegroundColor" systemColor="labelColor"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="toFieldRemoverTap:" destination="-1" eventType="touchUpInside" id="9u0-RB-eid"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="Content Color"/>

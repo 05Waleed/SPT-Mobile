@@ -30,14 +30,16 @@ class TimetableView: UIView {
         loadNib()
         setupMainView()
         setupSearchView()
+        hideFieldsRemover()
     }
     
     @IBAction func fromFieldRemoverTap(_ sender: Any) {
-        
+        fromField.text = ""
+        fromField.placeholder = "From"
     }
     
     @IBAction func toFieldRemoverTap(_ sender: Any) {
-        
+        toField.text = ""
     }
     
     private func loadNib() {
@@ -54,4 +56,13 @@ class TimetableView: UIView {
         searchView.layer.cornerRadius = 20
     }
     
+     func hideFieldsRemover() {
+        fromFieldRemover.isHidden = true
+        toFieldRemover.isHidden = true
+    }
+    
+     func showFieldsRemover() {
+        fromFieldRemover.isHidden = false
+        toFieldRemover.isHidden = false
+    }
 }
