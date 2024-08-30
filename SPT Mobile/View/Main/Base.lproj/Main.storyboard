@@ -81,23 +81,35 @@
             </objects>
             <point key="canvasLocation" x="3981" y="386"/>
         </scene>
-        <!--Plan View Controller-->
+        <!--Plan-->
         <scene sceneID="CCx-4O-3Gp">
             <objects>
                 <viewController storyboardIdentifier="PlanViewController" id="e5O-9a-Eiu" customClass="PlanViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qae-S6-EIX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jw-1g-qZp" customClass="SegmentView" customModule="SPT_Mobile" customModuleProvider="target">
+                                <rect key="frame" x="8" y="103" width="377" height="50"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="n1X-6F-V35"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dEu-OQ-UV0"/>
-                        <color key="backgroundColor" name="Main Theme"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="2jw-1g-qZp" firstAttribute="leading" secondItem="dEu-OQ-UV0" secondAttribute="leading" constant="8" id="Ecj-iR-dLn"/>
+                            <constraint firstItem="2jw-1g-qZp" firstAttribute="top" secondItem="dEu-OQ-UV0" secondAttribute="top" id="Uet-Mr-YUy"/>
+                            <constraint firstItem="dEu-OQ-UV0" firstAttribute="trailing" secondItem="2jw-1g-qZp" secondAttribute="trailing" constant="8" id="aeS-9A-cgC"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Plan-Icon" id="kcR-2a-2QU">
-                        <color key="badgeColor" name="Content Color"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Plan" id="eiG-5T-578"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybx-lz-0yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3982" y="-297"/>
+            <point key="canvasLocation" x="4907.6335877862593" y="-297.18309859154931"/>
         </scene>
         <!--Base Tab Bar View Controller-->
         <scene sceneID="Oaf-ML-GoU">
@@ -110,7 +122,7 @@
                         <color key="selectedImageTintColor" name="Content Color"/>
                     </tabBar>
                     <connections>
-                        <segue destination="e5O-9a-Eiu" kind="relationship" relationship="viewControllers" id="KKt-cS-QZo"/>
+                        <segue destination="J6Q-DR-IbN" kind="relationship" relationship="viewControllers" id="KKt-cS-QZo"/>
                         <segue destination="2Zg-G1-ykC" kind="relationship" relationship="viewControllers" id="ijc-p9-n1X"/>
                     </connections>
                 </tabBarController>
@@ -136,10 +148,38 @@
             </objects>
             <point key="canvasLocation" x="113.74045801526717" y="3.5211267605633805"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w9v-Dc-Hxi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="J6Q-DR-IbN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="Plan-Icon" id="kcR-2a-2QU">
+                        <color key="badgeColor" name="Content Color"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0UF-eC-3aT">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="e5O-9a-Eiu" kind="relationship" relationship="rootViewController" id="h1C-SQ-N1n"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBY-K5-pp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3980.9160305343512" y="-297.18309859154931"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Plan-Icon" width="26" height="26"/>
         <image name="Saved-Trips-Icon" width="26" height="26"/>
+        <namedColor name="AccentColor">
+            <color red="0.86299997568130493" green="0.18400000035762787" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Content Color">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
