@@ -81,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="3982" y="310"/>
         </scene>
-        <!--View Controller-->
+        <!--Plan View Controller-->
         <scene sceneID="CCx-4O-3Gp">
             <objects>
-                <viewController id="e5O-9a-Eiu" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanViewController" id="e5O-9a-Eiu" customClass="PlanViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qae-S6-EIX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
