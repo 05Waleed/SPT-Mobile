@@ -10,6 +10,7 @@
 		2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */; };
 		2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411312C7E429F00631F95 /* LocationViewController.swift */; };
 		2C2411342C7E569500631F95 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411332C7E569500631F95 /* LocationManager.swift */; };
+		2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */; };
 		2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E65342C7BC02E0088F7AB /* StarterView.xib */; };
 		2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65362C7BC0410088F7AB /* StarterView.swift */; };
 		2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */; };
@@ -37,6 +38,7 @@
 		2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoViewController.swift; sourceTree = "<group>"; };
 		2C2411312C7E429F00631F95 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2C2411332C7E569500631F95 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		2C4E65342C7BC02E0088F7AB /* StarterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarterView.xib; sourceTree = "<group>"; };
 		2C4E65362C7BC0410088F7AB /* StarterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		2C4E65382C7BC0EF0088F7AB /* StarterInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */,
 				2C2411312C7E429F00631F95 /* LocationViewController.swift */,
 				2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */,
+				2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
+				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
