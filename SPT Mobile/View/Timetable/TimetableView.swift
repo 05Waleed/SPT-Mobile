@@ -56,13 +56,27 @@ class TimetableView: UIView {
         searchView.layer.cornerRadius = 20
     }
     
-     func hideFieldsRemover() {
+    private func hideFieldsRemover() {
         fromFieldRemover.isHidden = true
         toFieldRemover.isHidden = true
     }
     
-     func showFieldsRemover() {
-        fromFieldRemover.isHidden = false
-        toFieldRemover.isHidden = false
+    func setFromFieldText() {
+        if fromField.isFirstResponder {
+            fromField.text = ""
+            fromField.placeholder = "From"
+        } else {
+            fromField.text = "Current location"
+        }
+    }
+    
+    func setFieldsRemover() {
+        if fromField.isFirstResponder {
+            fromFieldRemover.isHidden = false
+            toFieldRemover.isHidden = true
+        } else if toField.isFirstResponder {
+            toFieldRemover.isHidden = false
+            fromFieldRemover.isHidden = true
+        }
     }
 }

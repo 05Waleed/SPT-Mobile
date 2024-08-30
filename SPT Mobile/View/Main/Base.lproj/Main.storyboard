@@ -114,6 +114,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Plan" id="eiG-5T-578"/>
+                    <connections>
+                        <outlet property="timetableView" destination="aXM-W7-gn5" id="W0R-Qf-jld"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybx-lz-0yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
