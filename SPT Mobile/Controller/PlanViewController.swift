@@ -11,6 +11,7 @@ class PlanViewController: UIViewController {
     
     var locationModel: LocationModel?
     var selectedDate: Date?
+    var selectedTime: Date?
     
     @IBOutlet weak var timetableView: TimetableView!
     
@@ -86,9 +87,7 @@ extension PlanViewController {
 
 extension PlanViewController {
     private func serviceCallFromCurrentLocation() {
-        guard let url = NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")" ,to: locationModel?.cityName ?? "", selectedDate: selectedDate) else {
-            return
-        }
+        guard let url =  NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "", selectedDate: selectedDate, selectedTime: selectedTime) else {return}
         
         NetworkManager.shared.performRequest(with: url) { [weak self] result in
             DispatchQueue.main.async {
