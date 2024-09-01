@@ -10,6 +10,7 @@ import UIKit
 class PlanViewController: UIViewController {
     
     var locationModel: LocationModel?
+    var selectedDate: Date?
     
     @IBOutlet weak var timetableView: TimetableView!
     
@@ -28,6 +29,25 @@ class PlanViewController: UIViewController {
     private func conformProtocols() {
         timetableView.fromField.delegate = self
         timetableView.toField.delegate = self
+    }
+    
+    func performServiceCall() {
+        updateLocation { success in
+            if success {
+                self.serviceCallFromCurrentLocation()
+                print(self.locationModel as Any)
+            } else {
+                print("Unable to make service call from current location beacuse location not recieved")
+            }
+        }
+    }
+    
+    private func handleServiceResponse(_ response: ModelForCurrentLocation) {
+        print("data received")
+    }
+    
+    private func handleServiceError() {
+        print("Eror in response")
     }
 }
 
@@ -62,14 +82,23 @@ extension PlanViewController {
             }
         }
     }
-    
-    func performServiceCall() {
-        updateLocation { success in
-            if success {
-                // call api here
-                print(self.locationModel as Any)
-            } else {
-                print("Unable to make service call from current location beacuse location not recieved")
+}
+
+extension PlanViewController {
+    private func serviceCallFromCurrentLocation() {
+        guard let url = NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")" ,to: locationModel?.cityName ?? "", selectedDate: selectedDate) else {
+            return
+        }
+        
+        NetworkManager.shared.performRequest(with: url) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let dataModel):
+                    self?.handleServiceResponse(dataModel)
+                case .failure(let error):
+                    print("An error occurred while performing service call ERROR: \(error)")
+                    self?.handleServiceError()
+                }
             }
         }
     }
