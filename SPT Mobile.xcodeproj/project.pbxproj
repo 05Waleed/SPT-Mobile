@@ -13,6 +13,15 @@
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
+		2C4357CF2C84E0B30063D8A2 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */; };
+		2C4357D02C84E0B30063D8A2 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */; };
+		2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */; };
+		2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */; };
+		2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */; };
+		2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */; };
+		2C4357DA2C84EA190063D8A2 /* UpcomingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357D82C84EA190063D8A2 /* UpcomingTableViewCell.xib */; };
+		2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357DB2C84EA290063D8A2 /* ErrorTableViewCell.swift */; };
+		2C4357DE2C84EA290063D8A2 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357DC2C84EA290063D8A2 /* ErrorTableViewCell.xib */; };
 		2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */; };
 		2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */; };
 		2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39BD2C821193003D3DC5 /* TimetableView.swift */; };
@@ -27,6 +36,10 @@
 		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
 		2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */; };
 		2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C4E65512C7BE1E40088F7AB /* Lottie */; };
+		2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */; };
+		2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */; };
+		2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */; };
+		2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */; };
 		2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */; };
 		2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */; };
 		2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBFD7592C7BA30E0046A717 /* AppDelegate.swift */; };
@@ -47,6 +60,15 @@
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
+		2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewData.swift; sourceTree = "<group>"; };
+		2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
+		2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationTableViewCell.xib; sourceTree = "<group>"; };
+		2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTableViewCell.swift; sourceTree = "<group>"; };
+		2C4357D82C84EA190063D8A2 /* UpcomingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingTableViewCell.xib; sourceTree = "<group>"; };
+		2C4357DB2C84EA290063D8A2 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
+		2C4357DC2C84EA290063D8A2 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTripsViewController.swift; sourceTree = "<group>"; };
 		2C4A39BD2C821193003D3DC5 /* TimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableView.swift; sourceTree = "<group>"; };
@@ -60,6 +82,10 @@
 		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
+		2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
+		2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
+		2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LoaderIndicator.json; path = ../../../../Downloads/LoaderIndicator.json; sourceTree = "<group>"; };
 		2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fF9rPfdtXh.json; path = ../../../../Downloads/fF9rPfdtXh.json; sourceTree = "<group>"; };
 		2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarViewController.swift; sourceTree = "<group>"; };
 		2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SPT Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,11 +113,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C4357CC2C84E08C0063D8A2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */,
+				2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */,
+				2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */,
+				2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */,
+				2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */,
+				2C4357D82C84EA190063D8A2 /* UpcomingTableViewCell.xib */,
+				2C4357DB2C84EA290063D8A2 /* ErrorTableViewCell.swift */,
+				2C4357DC2C84EA290063D8A2 /* ErrorTableViewCell.xib */,
+				2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */,
+				2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2C4A39BC2C82117B003D3DC5 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
 				2C4A39BD2C821193003D3DC5 /* TimetableView.swift */,
 				2C4A39BF2C82119B003D3DC5 /* TimetableView.xib */,
+				2C4357CC2C84E08C0063D8A2 /* Cells */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -154,6 +198,7 @@
 				2C2411332C7E569500631F95 /* LocationManager.swift */,
 				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
 				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
+				2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -172,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */,
+				2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */,
 				2CBFD7792C7BA48A0046A717 /* ExampleAnimation.swift */,
 			);
 			path = LottieAnimations;
@@ -183,6 +229,7 @@
 				2CBFD7752C7BA4720046A717 /* ExampleModel.swift */,
 				2C4357C62C84CAF50063D8A2 /* LocationModel.swift */,
 				2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */,
+				2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,13 +332,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C4357DE2C84EA290063D8A2 /* ErrorTableViewCell.xib in Resources */,
+				2C4357DA2C84EA190063D8A2 /* UpcomingTableViewCell.xib in Resources */,
+				2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */,
 				2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */,
+				2C4357D02C84E0B30063D8A2 /* HeaderTableViewCell.xib in Resources */,
+				2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */,
 				2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */,
 				2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */,
 				2CBFD7632C7BA30F0046A717 /* Assets.xcassets in Resources */,
 				2C4A39C02C82119B003D3DC5 /* TimetableView.xib in Resources */,
 				2CBFD7662C7BA30F0046A717 /* Base in Resources */,
 				2CBFD7612C7BA30E0046A717 /* Base in Resources */,
+				2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */,
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,14 +369,21 @@
 				2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
+				2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */,
+				2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */,
 				2C2411342C7E569500631F95 /* LocationManager.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
+				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
+				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
+				2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */,
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
 				2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
+				2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */,
+				2C4357CF2C84E0B30063D8A2 /* HeaderTableViewCell.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

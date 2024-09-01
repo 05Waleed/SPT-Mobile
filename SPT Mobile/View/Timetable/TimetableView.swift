@@ -9,6 +9,9 @@ import UIKit
 
 class TimetableView: UIView {
     
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var connectionTableView: UITableView!
     @IBOutlet weak var toFieldRemover: UIButton!
     @IBOutlet weak var fromFieldRemover: UIButton!
     @IBOutlet weak var toField: UITextField!
@@ -31,6 +34,13 @@ class TimetableView: UIView {
         setupMainView()
         setupSearchView()
         hideFieldsRemover()
+        setTableView()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mainView.endEditing(true)
+        setFromFieldText()
+        setFieldsRemover()
     }
     
     @IBAction func fromFieldRemoverTap(_ sender: Any) {
@@ -61,6 +71,10 @@ class TimetableView: UIView {
         toFieldRemover.isHidden = true
     }
     
+    private func setTableView() {
+        connectionTableView.layer.cornerRadius = 20
+    }
+    
     func setFromFieldText() {
         if fromField.isFirstResponder {
             fromField.text = ""
@@ -76,6 +90,9 @@ class TimetableView: UIView {
             toFieldRemover.isHidden = true
         } else if toField.isFirstResponder {
             toFieldRemover.isHidden = false
+            fromFieldRemover.isHidden = true
+        } else {
+            toFieldRemover.isHidden = true
             fromFieldRemover.isHidden = true
         }
     }

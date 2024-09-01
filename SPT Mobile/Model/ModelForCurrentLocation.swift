@@ -29,10 +29,7 @@ struct ModelForCurrentLocation: Codable {
 
 // MARK: - Connection
 struct Connection: Codable {
-    let from: String
-    let departure: String
-    let to: String
-    let arrival: String
+    let from, departure, to, arrival: String
     let duration: Int
     let isMain: Bool
     let legs: [Leg]
@@ -44,43 +41,41 @@ struct Connection: Codable {
     }
 }
 
-
 // MARK: - Leg
 struct Leg: Codable {
-    let departure: String?
-    let isaddress: Bool?
     let name: String
-    let type: String?
-    let terminal: String?
+    let isaddress: Bool?
+    let departure, type: String?
     let runningtime: Int?
     let exit: Exit?
-    let typeName, arrival, tripid, stopid: String?
-    let x, y: Int?
+    let typeName: String?
     let sbbName: String?
-    let line: String?
+    let stopid: String?
+    let x, y: X?
+    let arrival: String?
+    let lon, lat: Double?
+    let terminal, tripid, line: String?
     let waittime: Int?
     let style, fgcolor, bgcolor, g: String?
     let l, z, legOperator: String?
-    let stops: [Exit]?
+    let stops: [Stop]?
     let contopStop, occupancy: JSONNull?
     let attributes: Attributes?
     let disruptions: [JSONAny]?
-    let lon, lat: Double?
     let normalTime: Int?
 
     enum CodingKeys: String, CodingKey {
-        case departure, isaddress, name, type, terminal, runningtime, exit
+        case name, isaddress, departure, type, runningtime, exit
         case typeName = "type_name"
-        case arrival, tripid, stopid, x, y
         case sbbName = "sbb_name"
-        case line, waittime, style, fgcolor, bgcolor
+        case stopid, x, y, arrival, lon, lat, terminal, tripid, line, waittime, style, fgcolor, bgcolor
         case g = "*G"
         case l = "*L"
         case z = "*Z"
         case legOperator = "operator"
         case stops
         case contopStop = "contop_stop"
-        case occupancy, attributes, disruptions, lon, lat
+        case occupancy, attributes, disruptions
         case normalTime = "normal_time"
     }
 }
@@ -96,28 +91,20 @@ struct Attributes: Codable {
 
 // MARK: - Exit
 struct Exit: Codable {
-    let arrival, stopid: String
-    let x, y: Int
     let name: String
     let sbbName: String?
-    let waittime: Int?
+    let stopid: String
+    let x, y: X
+    let arrival: String
+    let isaddress: Bool?
     let lon, lat: Double
-    let departure: String?
+    let waittime: Int?
 
     enum CodingKeys: String, CodingKey {
-        case arrival, stopid, x, y, name
+        case name
         case sbbName = "sbb_name"
-        case waittime, lon, lat, departure
+        case stopid, x, y, arrival, isaddress, lon, lat, waittime
     }
-}
-
-// MARK: - Point
-struct Point: Codable {
-    let text: String
-    let url: String
-    let x, y: X
-    let lon, lat: Double
-    let id: String?
 }
 
 enum X: Codable {
@@ -146,6 +133,22 @@ enum X: Codable {
             try container.encode(x)
         }
     }
+}
+
+// MARK: - Stop
+struct Stop: Codable {
+    let arrival, departure, name, stopid: String
+    let x, y: Int
+    let lon, lat: Double
+}
+
+// MARK: - Point
+struct Point: Codable {
+    let text: String
+    let url: String
+    let x, y: X
+    let lon, lat: Double
+    let id: String?
 }
 
 // MARK: - Encode/decode helpers
