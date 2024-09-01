@@ -92,7 +92,7 @@ class PlanViewController: UIViewController {
         planViewData = PlanViewData(connection: allConnections, legs: allLegs, stop: allStops)
         timetableView.connectionTableView.reloadData()
     }
-
+    
     private func handleServiceError() {
         print("Eror in response")
     }
@@ -139,17 +139,24 @@ extension PlanViewController {
     private func serviceCallFromCurrentLocation() {
         guard let url =  NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "", selectedDate: selectedDate, selectedTime: selectedTime) else {return}
         
-        NetworkManager.shared.performRequest(with: url) { [weak self] result in
+        NetworkManager.shared.performRequest(with: url, isFetching: { isLoading in
+            // Show or hide loading indicator
+            if isLoading {
+                // Show activity indicator
+            } else {
+                // Hide activity indicator
+            }
+        }, completion: { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let dataModel):
-                    self?.handleServiceResponse(dataModel)
+                    self.handleServiceResponse(dataModel)
                 case .failure(let error):
                     print("An error occurred while performing service call ERROR: \(error)")
-                    self?.handleServiceError()
+                    self.handleServiceError()
                 }
             }
-        }
+        })
     }
 }
 

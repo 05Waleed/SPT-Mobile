@@ -38,8 +38,14 @@ class NetworkManager {
     }
 
     // Function to perform the network request
-    func performRequest(with url: URL, completion: @escaping (Result<ModelForCurrentLocation, Error>) -> Void) {
+    func performRequest(with url: URL, isFetching: @escaping (Bool) -> Void, completion: @escaping (Result<ModelForCurrentLocation, Error>) -> Void) {
+        // Indicate that fetching has started
+        isFetching(true)
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            // Indicate that fetching has stopped
+            isFetching(false)
+            
             if let error = error {
                 DispatchQueue.main.async {
                     completion(.failure(error))
