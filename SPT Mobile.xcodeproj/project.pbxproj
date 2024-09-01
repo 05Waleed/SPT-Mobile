@@ -11,6 +11,8 @@
 		2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411312C7E429F00631F95 /* LocationViewController.swift */; };
 		2C2411342C7E569500631F95 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411332C7E569500631F95 /* LocationManager.swift */; };
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
+		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
+		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
 		2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */; };
 		2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */; };
 		2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4A39BD2C821193003D3DC5 /* TimetableView.swift */; };
@@ -43,6 +45,8 @@
 		2C2411312C7E429F00631F95 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2C2411332C7E569500631F95 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
 		2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTripsViewController.swift; sourceTree = "<group>"; };
 		2C4A39BD2C821193003D3DC5 /* TimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableView.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		2CBFD76E2C7BA40D0046A717 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */,
 				2CBFD7772C7BA47D0046A717 /* ExampleManager.swift */,
 				2C2411332C7E569500631F95 /* LocationManager.swift */,
 				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
@@ -177,6 +182,7 @@
 			children = (
 				2CBFD7752C7BA4720046A717 /* ExampleModel.swift */,
 				2C4357C62C84CAF50063D8A2 /* LocationModel.swift */,
+				2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */,
 				2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */,
 				2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */,
+				2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */,
 				2CBFD77A2C7BA48A0046A717 /* ExampleAnimation.swift in Sources */,
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
@@ -314,6 +321,7 @@
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
+				2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
