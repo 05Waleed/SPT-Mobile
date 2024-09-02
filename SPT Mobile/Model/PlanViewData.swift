@@ -7,7 +7,7 @@
 
 import Foundation
 
-// This model is used to pass data from "fetcher vc" to "plan vc"
+// This model is used to update UI on PlanView
 struct PlanViewData {
     let connection: [Connection]
     let legs: [Leg]?

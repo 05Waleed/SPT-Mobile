@@ -7,12 +7,12 @@
 
 import UIKit
 
+// MARK: PlanViewController
 class PlanViewController: UIViewController {
     
     var locationModel: LocationModel?
     var planViewData: PlanViewData?
-    var selectedDate: Date?
-    var selectedTime: Date?
+    var isFetching: Bool?
     
     @IBOutlet weak var timetableView: TimetableView!
     
@@ -20,12 +20,14 @@ class PlanViewController: UIViewController {
         super.viewDidLoad()
         conformProtocols()
         registerXib()
+        isFetching = true
+        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Calling the API here because it updates the data and location each time the user comes to this view controller
-        
+        performServiceCall()
     }
     
     private func conformProtocols() {
@@ -41,6 +43,7 @@ class PlanViewController: UIViewController {
                 self.serviceCallFromCurrentLocation()
                 print(self.locationModel as Any)
             } else {
+                self.handleServiceError()
                 print("Unable to make service call from current location beacuse location not recieved")
             }
         }
@@ -58,17 +61,11 @@ class PlanViewController: UIViewController {
         timetableView.connectionTableView.register(UINib(nibName: "LoaderTableViewCell", bundle: nil), forCellReuseIdentifier: "LoaderTableViewCell")
     }
     
-    private func fieldsAreActive() -> Bool {
-        if timetableView.fromField.isFirstResponder || timetableView.toField.isFirstResponder {
-            return true
-        } else {
-            return false
-        }
-    }
-    
     private func updateTableViewHeightWithResponse() {
-        timetableView.tableViewHeight.constant = timetableView.connectionTableView.contentSize.height
-        updateContentViewHeight()
+        DispatchQueue.main.async { [self] in
+            timetableView.tableViewHeight.constant = timetableView.connectionTableView.contentSize.height
+            updateContentViewHeight()
+        }
     }
     
     private func updateContentViewHeight() {
@@ -78,11 +75,15 @@ class PlanViewController: UIViewController {
     }
     
     private func updateTableViewHeightWithError() {
-        timetableView.tableViewHeight.constant = 240
+        DispatchQueue.main.async { [self] in
+            timetableView.tableViewHeight.constant = 280
+        }
     }
     
     private func updateTableViewHeightWhileLoading() {
-        timetableView.tableViewHeight.constant = 240
+        DispatchQueue.main.async { [self] in
+            timetableView.tableViewHeight.constant = 280
+        }
     }
     
     private func handleServiceResponse(_ response: ModelForCurrentLocation) {
@@ -90,13 +91,16 @@ class PlanViewController: UIViewController {
         let allLegs = allConnections.flatMap { $0.legs }
         let allStops = allLegs.compactMap { $0.stops }.flatMap { $0 }
         planViewData = PlanViewData(connection: allConnections, legs: allLegs, stop: allStops)
+        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
         timetableView.connectionTableView.reloadData()
     }
     
     private func handleServiceError() {
-        print("Eror in response")
+        print("Error in response")
+        isFetching = false
+        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
+        timetableView.connectionTableView.reloadData()
     }
-    
 }
 
 // MARK: UITextFieldDelegate
@@ -104,11 +108,21 @@ extension PlanViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == timetableView.fromField {
             timetableView.setFieldsRemover()
-            timetableView.setFromFieldText()
+            timetableView.fromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.fromField.returnKeyType = .next
         } else if textField == timetableView.toField {
-            timetableView.setFieldsRemover()
-            timetableView.setFromFieldText()
+            timetableView.fromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.toField.returnKeyType = .search
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == timetableView.fromField {
+            timetableView.toField.becomeFirstResponder()
+        } else if textField == timetableView.toField {
+            timetableView.fromField.becomeFirstResponder()
+        }
+        return false // Return false to prevent the default behavior of dismissing the keyboard
     }
 }
 
@@ -137,14 +151,14 @@ extension PlanViewController {
 // MARK: Service Call
 extension PlanViewController {
     private func serviceCallFromCurrentLocation() {
-        guard let url =  NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "", selectedDate: selectedDate, selectedTime: selectedTime) else {return}
+        guard let url =  NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "") else {return}
         
         NetworkManager.shared.performRequest(with: url, isFetching: { isLoading in
             // Show or hide loading indicator
             if isLoading {
-                // Show activity indicator
+                self.isFetching = true
             } else {
-                // Hide activity indicator
+                self.isFetching = false
             }
         }, completion: { result in
             DispatchQueue.main.async {
@@ -160,86 +174,36 @@ extension PlanViewController {
     }
 }
 
-// MARK: UITableViewDataSource, UITableViewDelegate
-extension PlanViewController: UITableViewDataSource, UITableViewDelegate {
+// MARK: UITableViewDelegate, UITableViewDataSource
+extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Use searchResults if not empty, else use planViewData
-        return 2
+        if isFetching == true {
+            return 2 // Show 2 rows during loading
+        } else {
+            return (planViewData?.legs?.count ?? 2) // Ensure at least 2 row for error or empty state
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if planViewData == nil {
-            return loaderCell(tableView)
+        if isFetching == true {
+            return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
+        } else if planViewData != nil {
+            return TableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData!)
         } else {
-            return UITableViewCell()
+            return TableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if planViewData == nil {
-            return heightForLoader(tableView, heightForRowAt: indexPath)
+        if isFetching == true {
+            updateTableViewHeightWhileLoading()
+            return TableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
+        } else if let legs = planViewData?.legs, indexPath.row < legs.count {
+            updateTableViewHeightWithResponse()
+            return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: planViewData?.legs?[indexPath.row])
         } else {
-            return 50
-        }
-    }
-    
-    private func searchLocationsCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let searchLocationsCell = tableView.dequeueReusableCell(withIdentifier: "SearchLocationTableViewCell") as! SearchLocationTableViewCell
-        return searchLocationsCell
-    }
-    
-    private func headerCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as! HeaderTableViewCell
-        
-        if let planViewData = planViewData {
-            headerCell.updateResponse(from: planViewData)
-        } else {
-            headerCell.updateError()
-        }
-        
-        return headerCell
-    }
-    
-    private func upcomingCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let upcomingCell = tableView.dequeueReusableCell(withIdentifier: "UpcomingTableViewCell") as! UpcomingTableViewCell
-        return upcomingCell
-    }
-    
-    private func errorCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorTableViewCell") as! ErrorTableViewCell
-        return errorCell
-    }
-    
-    private func loaderCell(_ tableView: UITableView) -> UITableViewCell {
-        let loaderCell = tableView.dequeueReusableCell(withIdentifier: "LoaderTableViewCell") as! LoaderTableViewCell
-        
-        if planViewData == nil {
-            loaderCell.showLoader()
-        } else {
-            loaderCell.hideLoader()
-        }
-        
-        return loaderCell
-    }
-    
-    private func showLoader(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            return headerCell(tableView, cellForRowAt: indexPath)
-        case 1:
-            return loaderCell(tableView)
-        default:
-            return UITableViewCell()
-        }
-    }
-    
-    private func heightForLoader(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        updateTableViewHeightWhileLoading()
-        switch indexPath.row {
-        case 0:
-            return 87
-        default:
-            return 150
+            updateTableViewHeightWithError()
+            return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
         }
     }
 }

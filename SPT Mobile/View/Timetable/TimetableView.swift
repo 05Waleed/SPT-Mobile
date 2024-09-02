@@ -37,11 +37,6 @@ class TimetableView: UIView {
         setTableView()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        mainView.endEditing(true)
-        setFromFieldText()
-        setFieldsRemover()
-    }
     
     @IBAction func fromFieldRemoverTap(_ sender: Any) {
         fromField.text = ""
@@ -64,6 +59,10 @@ class TimetableView: UIView {
     
     private func setupSearchView() {
         searchView.layer.cornerRadius = 20
+        searchView.layer.shadowRadius = 10
+        searchView.layer.shadowColor = UIColor.black.cgColor
+        searchView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        searchView.layer.shadowOpacity = 0.7
     }
     
     private func hideFieldsRemover() {
@@ -75,12 +74,27 @@ class TimetableView: UIView {
         connectionTableView.layer.cornerRadius = 20
     }
     
-    func setFromFieldText() {
-        if fromField.isFirstResponder {
-            fromField.text = ""
-            fromField.placeholder = "From"
-        } else if fromField.text?.isEmpty == true {
+    func fromFieldTextBasedOnFetching(planViewData: PlanViewData?, isFetching: Bool) {
+        if isFetching == true {
+            fromField.text = "Determining location..."
+        } else if planViewData != nil {
             fromField.text = "Current location"
+        } else {
+            fromField.text = "Insufficient location"
+        }
+    }
+    
+    func fromFieldTextBasedOnFocus(planViewData: PlanViewData?) {
+        setFieldsRemover()
+        if fromField.isFirstResponder {
+            if fromField.text == "Current location" || fromField.text == "Insufficient location" {
+                fromField.text = ""
+                fromField.placeholder = "From"
+            }
+        } else if toField.isFirstResponder && fromField.text == "" && planViewData != nil {
+            fromField.text = "Current location"
+        } else if planViewData == nil && fromField.text == "" {
+            fromField.text = "Insufficient location"
         }
     }
     

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTableViewCell" rowHeight="87" id="KGk-i7-Jjw" customClass="HeaderTableViewCell" customModule="SPT_Mobile" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderTableViewCell" rowHeight="85" id="KGk-i7-Jjw" customClass="HeaderTableViewCell" customModule="SPT_Mobile" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -25,25 +25,25 @@
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure board from current location:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUd-BY-TBV">
-                        <rect key="frame" x="16" y="35" width="369" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUd-BY-TBV">
+                        <rect key="frame" x="16" y="37" width="369" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="mBY-H1-hiC"/>
+                            <constraint firstAttribute="height" constant="17" id="mBY-H1-hiC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e99-G6-WQN">
-                        <rect key="frame" x="90" y="64" width="49" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e99-G6-WQN">
+                        <rect key="frame" x="105" y="68" width="39" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="49" id="EVu-pX-oN9"/>
+                            <constraint firstAttribute="width" constant="39" id="EVu-pX-oN9"/>
                             <constraint firstAttribute="height" constant="15" id="jnp-8t-JEc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWK-lh-Mop">
-                        <rect key="frame" x="147" y="64" width="74" height="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWK-lh-Mop">
+                        <rect key="frame" x="154" y="68" width="74" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="74" id="978-bc-eZ1"/>
                             <constraint firstAttribute="height" constant="15" id="cUv-0k-va7"/>
@@ -55,15 +55,15 @@
                 <color key="backgroundColor" name="Content Color"/>
                 <constraints>
                     <constraint firstItem="1uD-Yh-zQu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2uN-is-7DH"/>
-                    <constraint firstAttribute="bottom" secondItem="EWK-lh-Mop" secondAttribute="bottom" constant="8" id="5FA-yd-G8h"/>
-                    <constraint firstItem="LUd-BY-TBV" firstAttribute="top" secondItem="1uD-Yh-zQu" secondAttribute="bottom" constant="4" id="RYZ-vC-dFC"/>
-                    <constraint firstItem="EWK-lh-Mop" firstAttribute="leading" secondItem="e99-G6-WQN" secondAttribute="trailing" constant="8" id="XKn-R4-fgz"/>
-                    <constraint firstAttribute="bottom" secondItem="e99-G6-WQN" secondAttribute="bottom" constant="8" id="dhe-Aw-7i3"/>
+                    <constraint firstAttribute="bottom" secondItem="EWK-lh-Mop" secondAttribute="bottom" constant="4" id="5FA-yd-G8h"/>
+                    <constraint firstItem="LUd-BY-TBV" firstAttribute="top" secondItem="1uD-Yh-zQu" secondAttribute="bottom" constant="6" id="RYZ-vC-dFC"/>
+                    <constraint firstItem="EWK-lh-Mop" firstAttribute="leading" secondItem="e99-G6-WQN" secondAttribute="trailing" constant="10" id="XKn-R4-fgz"/>
+                    <constraint firstAttribute="bottom" secondItem="e99-G6-WQN" secondAttribute="bottom" constant="4" id="dhe-Aw-7i3"/>
                     <constraint firstItem="LUd-BY-TBV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fH2-J9-s94"/>
                     <constraint firstAttribute="trailing" secondItem="1uD-Yh-zQu" secondAttribute="trailing" constant="8" id="hH0-Qv-QeU"/>
                     <constraint firstAttribute="trailing" secondItem="LUd-BY-TBV" secondAttribute="trailing" constant="8" id="pJB-WC-8bU"/>
                     <constraint firstItem="1uD-Yh-zQu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yBM-zT-OsX"/>
-                    <constraint firstItem="e99-G6-WQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="90" id="z1f-jB-HVW"/>
+                    <constraint firstItem="e99-G6-WQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="105" id="z1f-jB-HVW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

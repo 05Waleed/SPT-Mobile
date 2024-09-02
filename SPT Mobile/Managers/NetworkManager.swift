@@ -13,27 +13,11 @@ class NetworkManager {
     private init() {}
     
     // Function to set up the URL with parameters
-    func setupURL(from: String, to: String, selectedDate: Date?, selectedTime: Date?) -> URL? {
+    func setupURL(from: String, to: String) -> URL? {
         let characterSet = CharacterSet.urlQueryAllowed
         let fromText = from.addingPercentEncoding(withAllowedCharacters: characterSet) ?? ""
         let toText = to.addingPercentEncoding(withAllowedCharacters: characterSet) ?? ""
-
         var urlString = "https://timetable.search.ch/api/route.json?from=\(fromText)&to=\(toText)"
-        
-        if let selectedDate = selectedDate {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let formattedDate = dateFormatter.string(from: selectedDate)
-            urlString += "&date=\(formattedDate)"
-        }
-        
-        if let selectedTime = selectedTime {
-            let timeFormatter = DateFormatter()
-            timeFormatter.dateFormat = "HH:mm"
-            let formattedTime = timeFormatter.string(from: selectedTime)
-            urlString += "&time=\(formattedTime)"
-        }
-        
         return URL(string: urlString)
     }
 
