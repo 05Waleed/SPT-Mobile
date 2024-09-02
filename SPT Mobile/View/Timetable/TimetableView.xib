@@ -103,7 +103,7 @@
                                 <constraint firstAttribute="height" constant="1" id="dYO-jU-ZBQ"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Current location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvr-gh-Exs">
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvr-gh-Exs">
                             <rect key="frame" x="39" y="12" width="335" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="N4P-vP-ZL6"/>
