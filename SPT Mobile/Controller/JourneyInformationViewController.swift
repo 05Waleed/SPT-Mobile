@@ -126,4 +126,5 @@ extension JourneyInformationViewController: UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    
 }
