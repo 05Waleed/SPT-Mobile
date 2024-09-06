@@ -1,5 +1,5 @@
 //
-//  HeaderTableViewCell.swift
+//  ConnectionHeaderTableViewCell.swift
 //  SPT Mobile
 //
 //  Created by Muhammad Waleed on 01.09.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeaderTableViewCell: UITableViewCell {
+class ConnectionHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var directionLbl: UILabel!
     @IBOutlet weak var fromLbl: UILabel!

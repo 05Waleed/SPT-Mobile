@@ -122,6 +122,24 @@
             </objects>
             <point key="canvasLocation" x="4907.6335877862593" y="-297.18309859154931"/>
         </scene>
+        <!--Journey Information View Controller-->
+        <scene sceneID="yEo-ql-CLO">
+            <objects>
+                <viewController storyboardIdentifier="JourneyInformationViewController" id="UbO-Vc-all" customClass="JourneyInformationViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hVA-ve-uEt" customClass="JourneyInformationView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WVb-bz-TSa"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="journeyView" destination="hVA-ve-uEt" id="noz-Fd-w3f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bJu-76-PGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5607" y="-297"/>
+        </scene>
         <!--Base Tab Bar View Controller-->
         <scene sceneID="Oaf-ML-GoU">
             <objects>
@@ -170,6 +188,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0UF-eC-3aT">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="AccentColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
