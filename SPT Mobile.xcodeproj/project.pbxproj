@@ -10,6 +10,8 @@
 		2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */; };
 		2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411312C7E429F00631F95 /* LocationViewController.swift */; };
 		2C2411342C7E569500631F95 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411332C7E569500631F95 /* LocationManager.swift */; };
+		2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */; };
+		2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */; };
 		2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39C8762C8630F7000BFAC0 /* TableViewCellManager.swift */; };
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
@@ -58,6 +60,8 @@
 		2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoViewController.swift; sourceTree = "<group>"; };
 		2C2411312C7E429F00631F95 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2C2411332C7E569500631F95 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyInformationView.xib; sourceTree = "<group>"; };
+		2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationView.swift; sourceTree = "<group>"; };
 		2C39C8762C8630F7000BFAC0 /* TableViewCellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellManager.swift; sourceTree = "<group>"; };
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -115,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C323CCA2C8B35C100BFC010 /* Journey */ = {
+			isa = PBXGroup;
+			children = (
+				2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */,
+				2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */,
+			);
+			path = Journey;
+			sourceTree = "<group>";
+		};
 		2C4357CC2C84E08C0063D8A2 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +253,7 @@
 		2CBFD7722C7BA4340046A717 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C323CCA2C8B35C100BFC010 /* Journey */,
 				2CBFD7742C7BA4440046A717 /* Main */,
 				2C4E65332C7BC0090088F7AB /* Starter */,
 				2C4E653C2C7BC40E0088F7AB /* LocationView */,
@@ -349,6 +363,7 @@
 				2CBFD7612C7BA30E0046A717 /* Base in Resources */,
 				2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */,
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
+				2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +404,7 @@
 				2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */,
 				2C4357CF2C84E0B30063D8A2 /* HeaderTableViewCell.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
+				2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
