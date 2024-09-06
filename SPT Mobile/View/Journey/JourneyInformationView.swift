@@ -8,7 +8,7 @@
 import UIKit
 
 class JourneyInformationView: UIView {
-
+    
     @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var journeyTableView: UITableView!
@@ -65,7 +65,13 @@ class JourneyInformationView: UIView {
     func updateVehicleImg(type: String, img: UIImageView) {
         img.layer.cornerRadius = 2
         if type == "bus" {
-            img.image = UIImage(named: "Bus")
+            img.image = UIImage(named: "bus 1")
+        } else if type == "bus" {
+            img.image = UIImage(named: "strain")
+        }  else if type == "strain" {
+            img.image = UIImage(named: "tram")
+        }  else {
+            img.image = UIImage(named: "dot")
         }
     }
 }

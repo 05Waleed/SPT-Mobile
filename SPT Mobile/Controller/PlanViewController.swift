@@ -101,6 +101,16 @@ class PlanViewController: UIViewController {
         timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
         timetableView.connectionTableView.reloadData()
     }
+    
+    private func fieldsAreActive() -> Bool{
+        timetableView.fromField.isFirstResponder || timetableView.toField.isFirstResponder ? true : false
+    }
+    
+    private func navigateToJourneyInformationVc(indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "JourneyInformationViewController") as! JourneyInformationViewController
+        vc.leg = planViewData?.legs?[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: UITextFieldDelegate
@@ -204,6 +214,14 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             updateTableViewHeightWithError()
             return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        timetableView.connectionTableView.deselectRow(at: indexPath, animated: true)
+        
+        if !fieldsAreActive() {
+            navigateToJourneyInformationVc(indexPath: indexPath)
         }
     }
 }

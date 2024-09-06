@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */; };
+		2C17579C2C8B47D600C51C83 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C17579B2C8B47D600C51C83 /* Lottie */; };
+		2C1757A52C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1757A42C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib */; };
+		2C1757A62C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1757A32C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift */; };
+		2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1757A82C8B49A700C51C83 /* JourneyLastTableViewCell.xib */; };
+		2C1757AA2C8B49A700C51C83 /* JourneyLastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1757A72C8B49A700C51C83 /* JourneyLastTableViewCell.swift */; };
+		2C1757AD2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1757AC2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.xib */; };
+		2C1757AE2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1757AB2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift */; };
 		2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */; };
 		2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411312C7E429F00631F95 /* LocationViewController.swift */; };
 		2C2411342C7E569500631F95 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2411332C7E569500631F95 /* LocationManager.swift */; };
@@ -16,7 +24,7 @@
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
-		2C4357CF2C84E0B30063D8A2 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */; };
+		2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */; };
 		2C4357D02C84E0B30063D8A2 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */; };
 		2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */; };
 		2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */; };
@@ -38,7 +46,6 @@
 		2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */; };
 		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
 		2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */; };
-		2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C4E65512C7BE1E40088F7AB /* Lottie */; };
 		2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */; };
 		2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */; };
 		2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */; };
@@ -57,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationViewController.swift; sourceTree = "<group>"; };
+		2C1757A32C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyMiddleTableViewCell.swift; sourceTree = "<group>"; };
+		2C1757A42C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyMiddleTableViewCell.xib; sourceTree = "<group>"; };
+		2C1757A72C8B49A700C51C83 /* JourneyLastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyLastTableViewCell.swift; sourceTree = "<group>"; };
+		2C1757A82C8B49A700C51C83 /* JourneyLastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyLastTableViewCell.xib; sourceTree = "<group>"; };
+		2C1757AB2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2C1757AC2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterInfoViewController.swift; sourceTree = "<group>"; };
 		2C2411312C7E429F00631F95 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2C2411332C7E569500631F95 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -66,7 +80,7 @@
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
-		2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewData.swift; sourceTree = "<group>"; };
 		2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,18 +126,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C4E65522C7BE1E40088F7AB /* Lottie in Frameworks */,
+				2C17579C2C8B47D600C51C83 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1757982C8B469600C51C83 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2C1757AB2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift */,
+				2C1757AC2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.xib */,
+				2C1757A32C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift */,
+				2C1757A42C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib */,
+				2C1757A72C8B49A700C51C83 /* JourneyLastTableViewCell.swift */,
+				2C1757A82C8B49A700C51C83 /* JourneyLastTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2C323CCA2C8B35C100BFC010 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
 				2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */,
 				2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */,
+				2C1757982C8B469600C51C83 /* Cells */,
 			);
 			path = Journey;
 			sourceTree = "<group>";
@@ -133,7 +161,7 @@
 			children = (
 				2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */,
 				2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */,
-				2C4357CD2C84E0B30063D8A2 /* HeaderTableViewCell.swift */,
+				2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */,
 				2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */,
 				2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */,
 				2C4357D82C84EA190063D8A2 /* UpcomingTableViewCell.xib */,
@@ -253,11 +281,11 @@
 		2CBFD7722C7BA4340046A717 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C323CCA2C8B35C100BFC010 /* Journey */,
 				2CBFD7742C7BA4440046A717 /* Main */,
 				2C4E65332C7BC0090088F7AB /* Starter */,
 				2C4E653C2C7BC40E0088F7AB /* LocationView */,
 				2C4A39BC2C82117B003D3DC5 /* Timetable */,
+				2C323CCA2C8B35C100BFC010 /* Journey */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,6 +299,7 @@
 				2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */,
 				2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */,
 				2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */,
+				2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -302,7 +331,7 @@
 			);
 			name = "SPT Mobile";
 			packageProductDependencies = (
-				2C4E65512C7BE1E40088F7AB /* Lottie */,
+				2C17579B2C8B47D600C51C83 /* Lottie */,
 			);
 			productName = "SPT Mobile";
 			productReference = 2CBFD7562C7BA30E0046A717 /* SPT Mobile.app */;
@@ -350,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C4357DE2C84EA290063D8A2 /* ErrorTableViewCell.xib in Resources */,
+				2C1757AD2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.xib in Resources */,
 				2C4357DA2C84EA190063D8A2 /* UpcomingTableViewCell.xib in Resources */,
 				2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */,
 				2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */,
@@ -362,7 +392,9 @@
 				2CBFD7662C7BA30F0046A717 /* Base in Resources */,
 				2CBFD7612C7BA30E0046A717 /* Base in Resources */,
 				2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */,
+				2C1757A52C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib in Resources */,
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
+				2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */,
 				2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,11 +412,13 @@
 				2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */,
 				2CBFD77A2C7BA48A0046A717 /* ExampleAnimation.swift in Sources */,
 				2CBFD7782C7BA47D0046A717 /* ExampleManager.swift in Sources */,
+				2C1757AA2C8B49A700C51C83 /* JourneyLastTableViewCell.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
 				2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */,
 				2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */,
 				2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */,
 				2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */,
+				2C1757AE2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */,
@@ -392,17 +426,19 @@
 				2C2411342C7E569500631F95 /* LocationManager.swift in Sources */,
 				2CBFD7762C7BA4720046A717 /* ExampleModel.swift in Sources */,
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
+				2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
 				2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */,
 				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
 				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
 				2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */,
+				2C1757A62C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift in Sources */,
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
 				2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
 				2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */,
-				2C4357CF2C84E0B30063D8A2 /* HeaderTableViewCell.swift in Sources */,
+				2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
 				2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */,
 			);
@@ -642,7 +678,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2C4E65512C7BE1E40088F7AB /* Lottie */ = {
+		2C17579B2C8B47D600C51C83 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2C4E65502C7BE1E40088F7AB /* XCRemoteSwiftPackageReference "lottie-spm" */;
 			productName = Lottie;
