@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -79,48 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46l-OB-iCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3981" y="386"/>
-        </scene>
-        <!--Plan-->
-        <scene sceneID="CCx-4O-3Gp">
-            <objects>
-                <viewController storyboardIdentifier="PlanViewController" id="e5O-9a-Eiu" customClass="PlanViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qae-S6-EIX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jw-1g-qZp" customClass="SegmentView" customModule="SPT_Mobile" customModuleProvider="target">
-                                <rect key="frame" x="8" y="103" width="377" height="50"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="n1X-6F-V35"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-W7-gn5" customClass="TimetableView" customModule="SPT_Mobile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
-                                <color key="backgroundColor" name="Main Theme"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="dEu-OQ-UV0"/>
-                        <color key="backgroundColor" name="AccentColor"/>
-                        <constraints>
-                            <constraint firstItem="aXM-W7-gn5" firstAttribute="leading" secondItem="dEu-OQ-UV0" secondAttribute="leading" id="0hJ-dp-Kpj"/>
-                            <constraint firstItem="aXM-W7-gn5" firstAttribute="trailing" secondItem="dEu-OQ-UV0" secondAttribute="trailing" id="BDd-Y2-w9b"/>
-                            <constraint firstItem="2jw-1g-qZp" firstAttribute="leading" secondItem="dEu-OQ-UV0" secondAttribute="leading" constant="8" id="Ecj-iR-dLn"/>
-                            <constraint firstItem="aXM-W7-gn5" firstAttribute="top" secondItem="2jw-1g-qZp" secondAttribute="bottom" constant="16" id="Pno-e0-AD3"/>
-                            <constraint firstItem="2jw-1g-qZp" firstAttribute="top" secondItem="dEu-OQ-UV0" secondAttribute="top" id="Uet-Mr-YUy"/>
-                            <constraint firstAttribute="bottom" secondItem="aXM-W7-gn5" secondAttribute="bottom" id="Vat-cc-hBN"/>
-                            <constraint firstItem="dEu-OQ-UV0" firstAttribute="trailing" secondItem="2jw-1g-qZp" secondAttribute="trailing" constant="8" id="aeS-9A-cgC"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Plan" id="eiG-5T-578"/>
-                    <connections>
-                        <outlet property="timetableView" destination="aXM-W7-gn5" id="W0R-Qf-jld"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ybx-lz-0yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4907.6335877862593" y="-297.18309859154931"/>
+            <point key="canvasLocation" x="3981" y="1046"/>
         </scene>
         <!--Journey Information View Controller-->
         <scene sceneID="yEo-ql-CLO">
@@ -138,7 +98,76 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJu-76-PGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5607" y="-297"/>
+            <point key="canvasLocation" x="7253" y="6"/>
+        </scene>
+        <!--Segment View Controller-->
+        <scene sceneID="zxn-ab-KDo">
+            <objects>
+                <viewController storyboardIdentifier="SegmentViewController" id="c9v-nC-2Vg" customClass="SegmentViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DVL-As-hqF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myP-1v-wrN" customClass="SegmentView" customModule="SPT_Mobile" customModuleProvider="target">
+                                <rect key="frame" x="8" y="103" width="377" height="50"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lKp-Ms-OqM"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODP-w2-wzW">
+                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                                <color key="backgroundColor" name="Main Theme"/>
+                                <connections>
+                                    <segue destination="r8O-79-9Vh" kind="embed" id="Uun-U3-our"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLh-z7-iGG">
+                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                                <color key="backgroundColor" name="Main Theme"/>
+                                <connections>
+                                    <segue destination="Qzz-Fh-fX1" kind="embed" id="lvQ-HG-0qd"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slY-dE-vbO">
+                                <rect key="frame" x="0.0" y="169" width="393" height="683"/>
+                                <color key="backgroundColor" name="Main Theme"/>
+                                <connections>
+                                    <segue destination="q36-2J-cb7" kind="embed" id="ESK-wh-8UB"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AMG-vG-JYV"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstItem="myP-1v-wrN" firstAttribute="leading" secondItem="AMG-vG-JYV" secondAttribute="leading" constant="8" id="19q-FR-OFh"/>
+                            <constraint firstItem="slY-dE-vbO" firstAttribute="top" secondItem="myP-1v-wrN" secondAttribute="bottom" constant="16" id="1BQ-it-MVK"/>
+                            <constraint firstItem="myP-1v-wrN" firstAttribute="top" secondItem="AMG-vG-JYV" secondAttribute="top" id="CHj-6E-aOL"/>
+                            <constraint firstItem="AMG-vG-JYV" firstAttribute="trailing" secondItem="myP-1v-wrN" secondAttribute="trailing" constant="8" id="DLo-3B-qmQ"/>
+                            <constraint firstItem="slY-dE-vbO" firstAttribute="trailing" secondItem="AMG-vG-JYV" secondAttribute="trailing" id="HNp-NR-arB"/>
+                            <constraint firstItem="mLh-z7-iGG" firstAttribute="leading" secondItem="AMG-vG-JYV" secondAttribute="leading" id="JcB-n5-c9H"/>
+                            <constraint firstAttribute="bottom" secondItem="mLh-z7-iGG" secondAttribute="bottom" id="Sgg-EY-deY"/>
+                            <constraint firstItem="mLh-z7-iGG" firstAttribute="top" secondItem="myP-1v-wrN" secondAttribute="bottom" constant="16" id="UGD-oh-WZa"/>
+                            <constraint firstAttribute="bottom" secondItem="slY-dE-vbO" secondAttribute="bottom" id="dd8-e4-M2o"/>
+                            <constraint firstItem="ODP-w2-wzW" firstAttribute="leading" secondItem="AMG-vG-JYV" secondAttribute="leading" id="hVq-dy-c14"/>
+                            <constraint firstItem="mLh-z7-iGG" firstAttribute="trailing" secondItem="AMG-vG-JYV" secondAttribute="trailing" id="mUd-k8-R0i"/>
+                            <constraint firstItem="slY-dE-vbO" firstAttribute="leading" secondItem="AMG-vG-JYV" secondAttribute="leading" id="pq6-5W-j5h"/>
+                            <constraint firstItem="ODP-w2-wzW" firstAttribute="top" secondItem="myP-1v-wrN" secondAttribute="bottom" constant="16" id="s2u-GZ-Ibu"/>
+                            <constraint firstAttribute="bottom" secondItem="ODP-w2-wzW" secondAttribute="bottom" id="yax-5a-UJ3"/>
+                            <constraint firstItem="ODP-w2-wzW" firstAttribute="trailing" secondItem="AMG-vG-JYV" secondAttribute="trailing" id="zHm-M0-lks"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hju-xO-vkM"/>
+                    <connections>
+                        <outlet property="containerA" destination="slY-dE-vbO" id="zXO-AS-cV8"/>
+                        <outlet property="containerB" destination="mLh-z7-iGG" id="5yW-K0-gTm"/>
+                        <outlet property="containerC" destination="ODP-w2-wzW" id="RTm-Ix-UmL"/>
+                        <outlet property="segmentView" destination="myP-1v-wrN" id="o1F-Wf-8Iy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Dz-Zd-rZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4895" y="-1274"/>
         </scene>
         <!--Base Tab Bar View Controller-->
         <scene sceneID="Oaf-ML-GoU">
@@ -198,12 +227,60 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="e5O-9a-Eiu" kind="relationship" relationship="rootViewController" id="h1C-SQ-N1n"/>
+                        <segue destination="c9v-nC-2Vg" kind="relationship" relationship="rootViewController" id="JgM-N8-7aj"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBY-K5-pp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3980.9160305343512" y="-297.18309859154931"/>
+            <point key="canvasLocation" x="3981" y="-1208"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xQc-5b-VQP">
+            <objects>
+                <viewController id="r8O-79-9Vh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Iz0-Dg-ztl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="683"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sMq-h8-lDK"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ceT-gQ-2gI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6025" y="-618"/>
+        </scene>
+        <!--Plan View Controller-->
+        <scene sceneID="eeW-vr-i7c">
+            <objects>
+                <viewController storyboardIdentifier="PlanViewController" id="q36-2J-cb7" customClass="PlanViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TtV-Ef-rG7" customClass="TimetableView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="683"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bvC-Ny-NHp"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="timetableView" destination="TtV-Ef-rG7" id="kwl-vt-C0u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnh-ZV-EyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6025" y="-1978"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KvI-cO-6y1">
+            <objects>
+                <viewController id="Qzz-Fh-fX1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Aw-Ee-hVH" customClass="TouchTimetableView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="683"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fro-5P-gC6"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXH-AW-Aeh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6025" y="-1268"/>
         </scene>
     </scenes>
     <resources>
@@ -216,7 +293,13 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Main Theme">
-            <color red="0.93199998140335083" green="0.91200000047683716" blue="0.92100000381469727" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.91500002145767212" green="0.91500002145767212" blue="0.91500002145767212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

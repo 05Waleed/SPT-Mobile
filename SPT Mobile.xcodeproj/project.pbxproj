@@ -49,6 +49,9 @@
 		2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */; };
 		2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */; };
 		2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */; };
+		2C61C4A62C8E61E800DC25E0 /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61C4A52C8E61E800DC25E0 /* SegmentViewController.swift */; };
+		2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C61C4AB2C8E661800DC25E0 /* TouchTimetableView.xib */; };
+		2C61C4AE2C8E663100DC25E0 /* TouchTimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61C4AD2C8E663100DC25E0 /* TouchTimetableView.swift */; };
 		2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */; };
 		2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */; };
 		2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */; };
@@ -108,6 +111,9 @@
 		2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchManager.swift; sourceTree = "<group>"; };
 		2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterViewController.swift; sourceTree = "<group>"; };
 		2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieManager.swift; sourceTree = "<group>"; };
+		2C61C4A52C8E61E800DC25E0 /* SegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
+		2C61C4AB2C8E661800DC25E0 /* TouchTimetableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchTimetableView.xib; sourceTree = "<group>"; };
+		2C61C4AD2C8E663100DC25E0 /* TouchTimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTimetableView.swift; sourceTree = "<group>"; };
 		2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
 		2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
@@ -211,6 +217,15 @@
 			path = LocationView;
 			sourceTree = "<group>";
 		};
+		2C61C4AA2C8E65F300DC25E0 /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				2C61C4AB2C8E661800DC25E0 /* TouchTimetableView.xib */,
+				2C61C4AD2C8E663100DC25E0 /* TouchTimetableView.swift */,
+			);
+			path = Touch;
+			sourceTree = "<group>";
+		};
 		2CBFD74D2C7BA30E0046A717 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +309,7 @@
 				2C4E65332C7BC0090088F7AB /* Starter */,
 				2C4E653C2C7BC40E0088F7AB /* LocationView */,
 				2C4A39BC2C82117B003D3DC5 /* Timetable */,
+				2C61C4AA2C8E65F300DC25E0 /* Touch */,
 				2C323CCA2C8B35C100BFC010 /* Journey */,
 			);
 			path = View;
@@ -306,6 +322,7 @@
 				2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */,
 				2C2411312C7E429F00631F95 /* LocationViewController.swift */,
 				2CA286352C7E8F13004413E8 /* BaseTabBarViewController.swift */,
+				2C61C4A52C8E61E800DC25E0 /* SegmentViewController.swift */,
 				2C4A39B32C8204DD003D3DC5 /* PlanViewController.swift */,
 				2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */,
 				2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */,
@@ -316,9 +333,9 @@
 		2CBFD7742C7BA4440046A717 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2CC119DF2C7E720F008BE671 /* SegmentView.swift */,
 				2CBFD75F2C7BA30E0046A717 /* Main.storyboard */,
 				2CBFD7642C7BA30F0046A717 /* LaunchScreen.storyboard */,
-				2CC119DF2C7E720F008BE671 /* SegmentView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -403,6 +420,7 @@
 				2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */,
 				2C1757A52C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib in Resources */,
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
+				2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */,
 				2C49EEC22C8E26E600237C69 /* CurrentLocationTableViewCell.xib in Resources */,
 				2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */,
 				2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */,
@@ -418,6 +436,7 @@
 			files = (
 				2C49EEBF2C8DF3CC00237C69 /* LocationSearchManager.swift in Sources */,
 				2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */,
+				2C61C4A62C8E61E800DC25E0 /* SegmentViewController.swift in Sources */,
 				2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */,
 				2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */,
 				2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */,
@@ -440,6 +459,7 @@
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
+				2C61C4AE2C8E663100DC25E0 /* TouchTimetableView.swift in Sources */,
 				2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */,
 				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
 				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
