@@ -36,6 +36,16 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
         commonInit()
     }
     
+    @IBAction private func fromFieldRemoverTap(_ sender: Any) {
+        clearFromField()
+        planViewController?.removeSearchResults()
+    }
+    
+    @IBAction private func toFieldRemoverTap(_ sender: Any) {
+        clearToField()
+        planViewController?.removeSearchResults()
+    }
+    
     // MARK: - Setup Methods
     
     private func commonInit() {
@@ -77,11 +87,20 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
          scrollView.addGestureRecognizer(tapGesture)
      }
      
-     // Delegate method to ensure the gesture recognizer doesn't block table view interactions
-     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-         // Only dismiss the keyboard if the tap is outside the table view
-         return !connectionTableView.frame.contains(touch.location(in: self))
-     }
+    // Delegate method to ensure the gesture recognizer doesn't block table view interactions
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // Check if the touch location is inside the table view
+        let location = touch.location(in: self.connectionTableView)
+        
+        // Allow gestures only if the touch is outside any table view cell or any scrollable content
+        if let indexPath = connectionTableView.indexPathForRow(at: location) {
+            // If the touch is on a cell, don't trigger the gesture recognizer
+            return false
+        }
+        
+        // Allow gesture if touch is not within the table view's frame
+        return true
+    }
 
      @objc private func dismissKeyboard() {
          fromField.resignFirstResponder()
@@ -149,16 +168,6 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
     
     private func clearToField() {
         toField.text = ""
-    }
-    
-    @IBAction private func fromFieldRemoverTap(_ sender: Any) {
-        clearFromField()
-        planViewController?.removeSearchResults()
-    }
-    
-    @IBAction private func toFieldRemoverTap(_ sender: Any) {
-        clearToField()
-        planViewController?.removeSearchResults()
     }
     
     // MARK: - Reset View Appearance After Gesture
