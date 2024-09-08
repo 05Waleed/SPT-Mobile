@@ -115,7 +115,7 @@ class SegmentView: UIView {
     
     //MARK: - Functions
     private func commonInit() {
-        backgroundColor = UIColor(red: 194/255, green: 41/255, blue: 30/255, alpha: 1)
+        backgroundColor = UIColor(red: 180/255, green: 37/255, blue: 36/255, alpha: 1)
         
         setupStackView()
         addSegments()
