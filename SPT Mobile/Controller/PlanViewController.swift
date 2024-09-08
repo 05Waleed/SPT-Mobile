@@ -47,7 +47,7 @@ class PlanViewController: UIViewController {
     private func registerXib() {
         let nibNames = [
             "SearchLocationTableViewCell",
-            "HeaderTableViewCell",
+            "ConnectionHeaderTableViewCell",
             "UpcomingTableViewCell",
             "ErrorTableViewCell",
             "LoaderTableViewCell",

@@ -19,7 +19,9 @@ class ConnectionHeaderTableViewCell: UITableViewCell {
     }
     
     func updateResponse(from: PlanViewData) {
-        currentLocationLbl.text = from.legs?.first?.terminal
+        DispatchQueue.main.async { [self] in
+            currentLocationLbl.text = from.legs?.first?.terminal
+        }
         fromLbl.text = "From"
         directionLbl.text = "Direction"
     }

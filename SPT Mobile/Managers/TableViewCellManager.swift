@@ -38,7 +38,7 @@ extension TableViewCellManager {
     
     /// Private Methods for Fetching State: Cell Configuration
     private func headerCellConfigurationWhileFetching(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! ConnectionHeaderTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionHeaderTableViewCell", for: indexPath) as! ConnectionHeaderTableViewCell
         tableView.separatorStyle = .none
         cell.updateWhileLoading()
         return cell
@@ -61,7 +61,6 @@ extension TableViewCellManager {
     }
 }
 
-
 // MARK: -  Methods for Updating Date
 extension TableViewCellManager {
     func cellForRowWhileUpdatingData(in tableView: UITableView, at indexPath: IndexPath, planViewData: PlanViewData) -> UITableViewCell {
@@ -79,7 +78,7 @@ extension TableViewCellManager {
     
     /// Private Methods for Updating Data State: Cell Configuration
     private func headerCellConfigurationWithData(in tableView: UITableView, at indexPath: IndexPath, from: PlanViewData) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! ConnectionHeaderTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionHeaderTableViewCell", for: indexPath) as! ConnectionHeaderTableViewCell
         tableView.separatorStyle = .singleLine
         cell.updateResponse(from: from)
         return cell
@@ -103,7 +102,6 @@ extension TableViewCellManager {
         }
     }
 }
-
 
 // MARK: - Methods for Showing Error
 extension TableViewCellManager {
@@ -131,7 +129,7 @@ extension TableViewCellManager {
     
     /// Private Methods for Error State: Cell Configuration
     private func headerCellWithError(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as! ConnectionHeaderTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionHeaderTableViewCell") as! ConnectionHeaderTableViewCell
         tableView.separatorStyle = .none
         cell.updateError()
         return cell

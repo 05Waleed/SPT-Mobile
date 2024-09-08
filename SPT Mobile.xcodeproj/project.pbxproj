@@ -25,7 +25,7 @@
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
 		2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */; };
-		2C4357D02C84E0B30063D8A2 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */; };
+		2C4357D02C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357CE2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib */; };
 		2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */; };
 		2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */; };
 		2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */; };
@@ -84,7 +84,7 @@
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
 		2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
+		2C4357CE2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewData.swift; sourceTree = "<group>"; };
 		2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationTableViewCell.xib; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */,
 				2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */,
 				2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */,
-				2C4357CE2C84E0B30063D8A2 /* HeaderTableViewCell.xib */,
+				2C4357CE2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib */,
 				2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */,
 				2C4357D82C84EA190063D8A2 /* UpcomingTableViewCell.xib */,
 				2C4357DB2C84EA290063D8A2 /* ErrorTableViewCell.swift */,
@@ -392,7 +392,7 @@
 				2C4357DA2C84EA190063D8A2 /* UpcomingTableViewCell.xib in Resources */,
 				2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */,
 				2C4E65352C7BC02E0088F7AB /* StarterView.xib in Resources */,
-				2C4357D02C84E0B30063D8A2 /* HeaderTableViewCell.xib in Resources */,
+				2C4357D02C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib in Resources */,
 				2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */,
 				2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */,
 				2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */,
