@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class TableViewCellManager {
     static let shared = TableViewCellManager()
@@ -150,5 +151,40 @@ extension TableViewCellManager {
     
     private func errorCellHeightWithError() -> CGFloat {
         return 200.0
+    }
+}
+
+// MARK: - Methods for Showing Search Locations
+extension TableViewCellManager {
+    func cellForRowWithSearchLocation(in tableView: UITableView, at indexPath: IndexPath, results: [MKMapItem]) -> UITableViewCell {
+        
+        if results.isEmpty {
+            switch indexPath.row {
+            case 0:
+                return currentLocationCell(in: tableView, at: indexPath)
+            default:
+               return searchLocationCellConfiguration(in: tableView, at: indexPath, results: results)
+            }
+        } else {
+            return searchLocationCellConfiguration(in: tableView, at: indexPath, results: results)
+        }
+    }
+    
+    /// Private Methods for Search Locations State: Cell Configuration
+    private func currentLocationCell(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentLocationTableViewCell") as! CurrentLocationTableViewCell
+        return cell
+    }
+    
+   private func searchLocationCellConfiguration(in tableView: UITableView, at indexPath: IndexPath, results: [MKMapItem]) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchLocationTableViewCell", for: indexPath) as! SearchLocationTableViewCell
+        tableView.separatorStyle = .singleLine
+        cell.updateSearchedResults(results: results, indexPath: indexPath)
+        return cell
+    }
+    
+    /// Private Methods for Search Locations State: Cell Height
+    func searchLocationCellHeight() -> CGFloat {
+        return 50.0
     }
 }

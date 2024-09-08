@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_72" orientation="portrait" appearance="dark"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -11,13 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TimetableView" customModule="SPT_Mobile" customModuleProvider="target">
             <connections>
+                <outlet property="backView" destination="pvg-mV-hdU" id="yIR-px-IZN"/>
                 <outlet property="connectionTableView" destination="QSX-TK-dXA" id="O3w-NO-ugW"/>
                 <outlet property="contentViewHeight" destination="WVX-90-ISm" id="FNO-Bp-kgp"/>
                 <outlet property="fromField" destination="tvr-gh-Exs" id="ITG-37-U7f"/>
                 <outlet property="fromFieldRemover" destination="Khq-3Z-Pd5" id="6IF-Hk-JZB"/>
                 <outlet property="mainView" destination="iN0-l3-epB" id="iPw-1G-OEA"/>
+                <outlet property="scrollView" destination="nNl-4K-bn2" id="OWC-td-G9g"/>
                 <outlet property="searchView" destination="kf1-s6-UDf" id="wWt-xJ-FY5"/>
                 <outlet property="tableViewHeight" destination="YkO-th-yF8" id="8r0-yr-VX0"/>
+                <outlet property="tableViewTop" destination="esg-in-3Be" id="eWn-CV-0xz"/>
                 <outlet property="toField" destination="2NQ-8u-gjw" id="QmF-ov-JG2"/>
                 <outlet property="toFieldRemover" destination="pQA-wj-XAq" id="K7f-Um-lkz"/>
             </connections>
@@ -36,6 +39,10 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVo-4f-9zf" userLabel="ContentView">
                                     <rect key="frame" x="0.0" y="0.0" width="430" height="900"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvg-mV-hdU">
+                                            <rect key="frame" x="8" y="-500" width="414" height="626"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QSX-TK-dXA">
                                             <rect key="frame" x="8" y="96" width="414" height="128"/>
                                             <color key="backgroundColor" name="Content Color"/>
@@ -45,11 +52,15 @@
                                             <color key="sectionIndexBackgroundColor" name="Main Theme"/>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="Main Theme"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="pvg-mV-hdU" firstAttribute="top" secondItem="cVo-4f-9zf" secondAttribute="top" constant="-500" id="8Sr-5u-dTJ"/>
+                                        <constraint firstAttribute="trailing" secondItem="pvg-mV-hdU" secondAttribute="trailing" constant="8" id="OAC-hT-vbB"/>
                                         <constraint firstItem="QSX-TK-dXA" firstAttribute="leading" secondItem="cVo-4f-9zf" secondAttribute="leading" constant="8" id="QTh-Ob-g6w"/>
                                         <constraint firstAttribute="height" constant="900" id="WVX-90-ISm"/>
                                         <constraint firstItem="QSX-TK-dXA" firstAttribute="top" secondItem="cVo-4f-9zf" secondAttribute="top" constant="96" id="esg-in-3Be"/>
+                                        <constraint firstItem="QSX-TK-dXA" firstAttribute="top" secondItem="pvg-mV-hdU" secondAttribute="bottom" constant="-30" id="t5B-bb-srV"/>
+                                        <constraint firstItem="pvg-mV-hdU" firstAttribute="leading" secondItem="cVo-4f-9zf" secondAttribute="leading" constant="8" id="uDU-1q-7IO"/>
                                         <constraint firstAttribute="trailing" secondItem="QSX-TK-dXA" secondAttribute="trailing" constant="8" id="vvq-Zv-Bj4"/>
                                     </constraints>
                                 </view>

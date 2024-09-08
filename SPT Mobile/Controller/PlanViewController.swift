@@ -6,122 +6,141 @@
 //
 
 import UIKit
+import MapKit
 
-// MARK: PlanViewController
+// MARK: - PlanViewController
 class PlanViewController: UIViewController {
     
     var locationModel: LocationModel?
     var planViewData: PlanViewData?
-    var isFetching: Bool?
+    var isFetching: Bool = true
+    var searchResults: [MKMapItem] = []
+    private let locationSearchManager = LocationSearchManager()
     
     @IBOutlet weak var timetableView: TimetableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        conformProtocols()
-        registerXib()
-        isFetching = true
-        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
+        setupView()
+        configureDelegates()
+        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Calling the API here because it updates the data and location each time the user comes to this view controller
         performServiceCall()
     }
     
-    private func conformProtocols() {
+    private func setupView() {
+        registerXib()
+    }
+    
+    private func configureDelegates() {
+        timetableView.planViewController = self
         timetableView.connectionTableView.dataSource = self
         timetableView.connectionTableView.delegate = self
         timetableView.fromField.delegate = self
         timetableView.toField.delegate = self
+        locationSearchManager.delegate = self
     }
     
-    func performServiceCall() {
-        updateLocation { success in
+    private func registerXib() {
+        let nibNames = [
+            "SearchLocationTableViewCell",
+            "HeaderTableViewCell",
+            "UpcomingTableViewCell",
+            "ErrorTableViewCell",
+            "LoaderTableViewCell",
+            "CurrentLocationTableViewCell"
+        ]
+        
+        nibNames.forEach {
+            timetableView.connectionTableView.register(UINib(nibName: $0, bundle: nil), forCellReuseIdentifier: $0)
+        }
+    }
+    
+    private func performServiceCall() {
+        updateLocation { [weak self] success in
+            guard let self = self else { return }
             if success {
                 self.serviceCallFromCurrentLocation()
-                print(self.locationModel as Any)
             } else {
                 self.handleServiceError()
-                print("Unable to make service call from current location beacuse location not recieved")
             }
         }
     }
     
-    private func registerXib() {
-        timetableView.connectionTableView.register(UINib(nibName: "SearchLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchLocationTableViewCell")
-        
-        timetableView.connectionTableView.register(UINib(nibName: "HeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "HeaderTableViewCell")
-        
-        timetableView.connectionTableView.register(UINib(nibName: "UpcomingTableViewCell", bundle: nil), forCellReuseIdentifier: "UpcomingTableViewCell")
-        
-        timetableView.connectionTableView.register(UINib(nibName: "ErrorTableViewCell", bundle: nil), forCellReuseIdentifier: "ErrorTableViewCell")
-        
-        timetableView.connectionTableView.register(UINib(nibName: "LoaderTableViewCell", bundle: nil), forCellReuseIdentifier: "LoaderTableViewCell")
-    }
-    
-    private func updateTableViewHeightWithResponse() {
-        DispatchQueue.main.async { [self] in
-            timetableView.tableViewHeight.constant = timetableView.connectionTableView.contentSize.height
-            updateContentViewHeight()
+    private func updateTableViewHeight(plus: Double = 0.0) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3) {
+                self.timetableView.tableViewHeight.constant = self.timetableView.connectionTableView.contentSize.height + plus
+                self.view.layoutIfNeeded()
+            }
+            self.updateContentViewHeight()
         }
     }
     
     private func updateContentViewHeight() {
-        let tableViewHeight = timetableView.connectionTableView.contentSize.height
-        timetableView.contentViewHeight.constant = tableViewHeight + 500
-        
-    }
-    
-    private func updateTableViewHeightWithError() {
-        DispatchQueue.main.async { [self] in
-            timetableView.tableViewHeight.constant = 280
-        }
-    }
-    
-    private func updateTableViewHeightWhileLoading() {
-        DispatchQueue.main.async { [self] in
-            timetableView.tableViewHeight.constant = 280
-        }
+        timetableView.contentViewHeight.constant = timetableView.connectionTableView.contentSize.height + 500
     }
     
     private func handleServiceResponse(_ response: ModelForCurrentLocation) {
         let allConnections = response.connections
         let allLegs = allConnections.flatMap { $0.legs }
-        let allStops = allLegs.compactMap { $0.stops }.flatMap { $0 }
+        let allStops = allLegs.flatMap { $0.stops }.flatMap { $0 }
         planViewData = PlanViewData(connection: allConnections, legs: allLegs, stop: allStops)
-        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
+        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
         timetableView.connectionTableView.reloadData()
     }
     
     private func handleServiceError() {
-        print("Error in response")
         isFetching = false
-        timetableView.fromFieldTextBasedOnFetching(planViewData: planViewData, isFetching: isFetching!)
+        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
         timetableView.connectionTableView.reloadData()
     }
     
-    private func fieldsAreActive() -> Bool{
-        timetableView.fromField.isFirstResponder || timetableView.toField.isFirstResponder ? true : false
+    private func fieldsAreActive() -> Bool {
+        timetableView.fromField.isFirstResponder || timetableView.toField.isFirstResponder
     }
     
     private func navigateToJourneyInformationVc(indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(identifier: "JourneyInformationViewController") as! JourneyInformationViewController
+        guard let vc = storyboard?.instantiateViewController(identifier: "JourneyInformationViewController") as? JourneyInformationViewController else { return }
         vc.leg = planViewData?.legs?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
+        
+    private func updateFieldsWithLocation(result: [MKMapItem], at indexPath: IndexPath) {
+        let selectedLocation = result[indexPath.row].name
+        if timetableView.fromField.isFirstResponder {
+            timetableView.fromField.text = selectedLocation
+            if timetableView.toField.text?.isEmpty == true {
+                timetableView.toField.becomeFirstResponder()
+            }
+        } else if timetableView.toField.isFirstResponder {
+            timetableView.toField.text = selectedLocation
+            if timetableView.fromField.text?.isEmpty == true {
+                timetableView.fromField.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func removeSearchResults() {
+        searchResults.removeAll()
+        timetableView.connectionTableView.reloadData()
+    }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 extension PlanViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == timetableView.fromField {
-            timetableView.setFieldsRemover()
-            timetableView.fromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.configureViewForSearchLocation()
+            updateTableViewHeight(plus: 50)
+            timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
             timetableView.fromField.returnKeyType = .next
         } else if textField == timetableView.toField {
-            timetableView.fromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.configureViewForSearchLocation()
+            timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
             timetableView.toField.returnKeyType = .search
         }
     }
@@ -130,26 +149,57 @@ extension PlanViewController: UITextFieldDelegate {
         if textField == timetableView.fromField {
             timetableView.toField.becomeFirstResponder()
         } else if textField == timetableView.toField {
-            timetableView.fromField.becomeFirstResponder()
+            if timetableView.fromField.text?.isEmpty == true {
+                timetableView.fromField.becomeFirstResponder()
+            } else {
+                // Perform navigation or other actions
+                print("Navigation performed")
+            }
         }
-        return false // Return false to prevent the default behavior of dismissing the keyboard
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = (textField.text ?? "") as NSString
+        let updatedText = currentText.replacingCharacters(in: range, with: string)
+        
+        if !updatedText.isEmpty {
+            searchForLocation(query: updatedText)
+        } else {
+            searchResults.removeAll()
+            timetableView.connectionTableView.reloadData()
+        }
+        
+        return true
     }
 }
 
-// MARK: Update Location
+// MARK: - LocationSearchManagerDelegate
+extension PlanViewController: LocationSearchManagerDelegate {
+    func searchForLocation(query: String) {
+        locationSearchManager.searchForLocation(query: query)
+    }
+    
+    func didReceiveSearchResults(_ results: [MKMapItem]) {
+        searchResults = results
+        timetableView.connectionTableView.reloadData()
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print("Search error: \(error.localizedDescription)")
+    }
+}
+
+// MARK: - Location Update
 extension PlanViewController {
-    func updateLocation(completion: @escaping (Bool) -> Void) {
-        LocationManager.shared.requestLocation { location, streetName, cityName, error in
+    private func updateLocation(completion: @escaping (Bool) -> Void) {
+        LocationManager.shared.requestLocation { [weak self] location, streetName, cityName, error in
+            guard let self = self else { return }
             if let error = error {
                 print("Failed to get location: \(error.localizedDescription)")
                 completion(false)
-                return
-            }
-            
-            if location != nil {
-                self.locationModel = LocationModel(streetName: streetName,
-                                                   cityName: cityName)
-                print(self.locationModel as Any)
+            } else if location != nil {
+                self.locationModel = LocationModel(streetName: streetName, cityName: cityName)
                 completion(true)
             } else {
                 completion(false)
@@ -158,69 +208,77 @@ extension PlanViewController {
     }
 }
 
-// MARK: Service Call
+// MARK: - Service Call
 extension PlanViewController {
     private func serviceCallFromCurrentLocation() {
-        guard let url =  NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "") else {return}
+        guard let url = NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "") else { return }
         
-        NetworkManager.shared.performRequest(with: url, isFetching: { isLoading in
-            // Show or hide loading indicator
-            if isLoading {
-                self.isFetching = true
-            } else {
-                self.isFetching = false
-            }
-        }, completion: { result in
+        NetworkManager.shared.performRequest(with: url, isFetching: { [weak self] isLoading in
+            self?.isFetching = isLoading
+        }, completion: { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let dataModel):
-                    self.handleServiceResponse(dataModel)
+                    self?.handleServiceResponse(dataModel)
                 case .failure(let error):
-                    print("An error occurred while performing service call ERROR: \(error)")
-                    self.handleServiceError()
+                    print("Service call error: \(error)")
+                    self?.handleServiceError()
                 }
             }
         })
     }
 }
 
-// MARK: UITableViewDelegate, UITableViewDataSource
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFetching == true {
-            return 2 // Show 2 rows during loading
+        if fieldsAreActive() {
+            return searchResults.isEmpty ? 1 : searchResults.count
         } else {
-            return (planViewData?.legs?.count ?? 2) // Ensure at least 2 row for error or empty state
+            return isFetching ? 2 : (planViewData?.legs?.count ?? 2)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isFetching == true {
-            return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
-        } else if planViewData != nil {
-            return TableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData!)
+        if fieldsAreActive() {
+            return TableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults)
         } else {
-            return TableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
+            if isFetching {
+                return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
+            } else if let planViewData = planViewData {
+                return TableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
+            } else {
+                return TableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isFetching == true {
-            updateTableViewHeightWhileLoading()
-            return TableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
-        } else if let legs = planViewData?.legs, indexPath.row < legs.count {
-            updateTableViewHeightWithResponse()
-            return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: planViewData?.legs?[indexPath.row])
+        if fieldsAreActive() {
+            updateTableViewHeight(plus: 50.0)
+            return TableViewCellManager.shared.searchLocationCellHeight()
         } else {
-            updateTableViewHeightWithError()
-            return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
+            if isFetching {
+                updateTableViewHeight()
+                return TableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
+            } else if let legs = planViewData?.legs, indexPath.row < legs.count {
+                updateTableViewHeight()
+                return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: planViewData?.legs?[indexPath.row])
+            } else {
+                updateTableViewHeight()
+                return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         timetableView.connectionTableView.deselectRow(at: indexPath, animated: true)
         
-        if !fieldsAreActive() {
+        if fieldsAreActive() {
+            if !searchResults.isEmpty {
+                updateFieldsWithLocation(result: searchResults, at: indexPath)
+            }
+        } else if indexPath.row > 0 {
             navigateToJourneyInformationVc(indexPath: indexPath)
         }
     }
