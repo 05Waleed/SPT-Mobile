@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SavedSearchResultsTableViewCell" id="qaP-iZ-0Nc" customClass="SavedSearchResultsTableViewCell" customModule="SPT_Mobile" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qaP-iZ-0Nc" id="IoI-i3-Umq">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l09-SR-BUV">
+                        <rect key="frame" x="60" y="8" width="252" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hkb-aV-Lgi">
+                        <rect key="frame" x="16" y="13.999999999999998" width="24" height="22.666666666666664"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="YtT-tG-MD7"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="l09-SR-BUV" secondAttribute="bottom" constant="8" id="EEJ-eC-FgT"/>
+                    <constraint firstItem="l09-SR-BUV" firstAttribute="top" secondItem="IoI-i3-Umq" secondAttribute="top" constant="8" id="JIf-6I-F2t"/>
+                    <constraint firstItem="Hkb-aV-Lgi" firstAttribute="leading" secondItem="IoI-i3-Umq" secondAttribute="leading" constant="16" id="dM6-T3-fG9"/>
+                    <constraint firstAttribute="bottom" secondItem="Hkb-aV-Lgi" secondAttribute="bottom" constant="13" id="jtP-xo-2Gc"/>
+                    <constraint firstItem="Hkb-aV-Lgi" firstAttribute="top" secondItem="IoI-i3-Umq" secondAttribute="top" constant="13" id="pTI-cv-ffZ"/>
+                    <constraint firstItem="l09-SR-BUV" firstAttribute="leading" secondItem="Hkb-aV-Lgi" secondAttribute="trailing" constant="20" id="rMr-yf-gNg"/>
+                    <constraint firstAttribute="trailing" secondItem="l09-SR-BUV" secondAttribute="trailing" constant="8" id="ybO-iU-vAF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="QLx-ic-DdF"/>
+            <color key="backgroundColor" name="Content Color"/>
+            <connections>
+                <outlet property="recentLocationLbl" destination="l09-SR-BUV" id="HcN-1X-mVP"/>
+            </connections>
+            <point key="canvasLocation" x="126.71755725190839" y="19.718309859154932"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
+        <namedColor name="Content Color">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

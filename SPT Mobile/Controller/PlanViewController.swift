@@ -11,11 +11,13 @@ import MapKit
 // MARK: - PlanViewController
 class PlanViewController: UIViewController {
     
-    var locationModel: LocationModel?
-    var planViewData: PlanViewData?
-    var isFetching: Bool = true
-    var searchResults: [MKMapItem] = []
+    private let coreDataManager = CoreDataManager.shared
     private let locationSearchManager = LocationSearchManager()
+    private var resultsObject: RecentLocations? // Object to store Core Data results
+    private var locationModel: LocationModel?
+    private var planViewData: PlanViewData?
+    private var isFetching: Bool = true
+    private var searchResults: [MKMapItem] = []
     
     @IBOutlet weak var timetableView: TimetableView!
     
@@ -51,7 +53,8 @@ class PlanViewController: UIViewController {
             "UpcomingTableViewCell",
             "ErrorTableViewCell",
             "LoaderTableViewCell",
-            "CurrentLocationTableViewCell"
+            "CurrentLocationTableViewCell",
+            "SavedSearchResultsTableViewCell"
         ]
         
         nibNames.forEach {
@@ -108,24 +111,71 @@ class PlanViewController: UIViewController {
         vc.leg = planViewData?.legs?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func updateFieldsWithLocation(result: [MKMapItem]?, saved location: [String]?, at indexPath: IndexPath) {
+        // Determine the location to show
+        let locationToShow: String?
         
-    private func updateFieldsWithLocation(result: [MKMapItem], at indexPath: IndexPath) {
-        let selectedLocation = result[indexPath.row].name
+        if let result = result, !result.isEmpty {
+            // If result is non-empty, use its data
+            locationToShow = result[indexPath.row].name
+        } else if let saved = location, !saved.isEmpty {
+            // Ensure that indexPath.row - 1 is within bounds
+            let index = indexPath.row - 1
+            if index >= 0 && index < saved.count {
+                locationToShow = saved[index]
+            } else {
+                locationToShow = nil
+            }
+        } else {
+            // If both result and saved are empty
+            locationToShow = nil
+        }
+
+        // Update fields based on the current first responder
         if timetableView.fromField.isFirstResponder {
-            timetableView.fromField.text = selectedLocation
+            timetableView.fromField.text = locationToShow
             if timetableView.toField.text?.isEmpty == true {
                 timetableView.toField.becomeFirstResponder()
             }
         } else if timetableView.toField.isFirstResponder {
-            timetableView.toField.text = selectedLocation
+            timetableView.toField.text = locationToShow
             if timetableView.fromField.text?.isEmpty == true {
                 timetableView.fromField.becomeFirstResponder()
             }
         }
     }
-    
+
+
     func removeSearchResults() {
         searchResults.removeAll()
+        timetableView.connectionTableView.reloadData()
+    }
+    
+    private func saveSearchResults(location: MKMapItem) {
+        // Get the existing recent locations, decode if needed
+        var updatedLocations = coreDataManager.getStringArray(from: resultsObject!) ?? []
+        
+        // Extract relevant info from MKMapItem (e.g., its name)
+        if let locationName = location.name {
+            if !updatedLocations.contains(locationName) {
+                updatedLocations.append(locationName) // Append the location's name as a String
+            }
+        }
+        
+        // Encode the updated array and save it to Core Data
+        coreDataManager.saveStringArray(updatedLocations, to: resultsObject!)
+    }
+    
+    private func fetchSearchResults() {
+        // Fetch the Core Data object (if it exists)
+        if let fetchedResults = coreDataManager.fetchResults() {
+            resultsObject = fetchedResults
+        } else {
+            // If no existing object is found, create a new one
+            resultsObject = RecentLocations(context: coreDataManager.context)
+        }
+        
         timetableView.connectionTableView.reloadData()
     }
 }
@@ -138,10 +188,12 @@ extension PlanViewController: UITextFieldDelegate {
             updateTableViewHeight(plus: 50)
             timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
             timetableView.fromField.returnKeyType = .next
+            fetchSearchResults()
         } else if textField == timetableView.toField {
             timetableView.configureViewForSearchLocation()
             timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
             timetableView.toField.returnKeyType = .search
+            fetchSearchResults()
         }
     }
     
@@ -233,15 +285,21 @@ extension PlanViewController {
 extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if fieldsAreActive() {
-            return searchResults.isEmpty ? 1 : searchResults.count
+            // When fields are active, determine the number of rows based on searchResults or Core Data
+            if let resultsObject = resultsObject {
+                return searchResults.isEmpty ? (coreDataManager.getStringArray(from: resultsObject)?.count ?? 0) + 1 : searchResults.count
+            } else {
+                return searchResults.count
+            }
         } else {
-            return isFetching ? 2 : (planViewData?.legs?.count ?? 2)
+            // When fields are not active, determine the number of rows based on fetching state and planViewData
+            return isFetching ? 2 : (planViewData?.legs?.count ?? 0)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if fieldsAreActive() {
-            return TableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults)
+            return TableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
         } else {
             if isFetching {
                 return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
@@ -256,7 +314,7 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if fieldsAreActive() {
             updateTableViewHeight(plus: 50.0)
-            return TableViewCellManager.shared.searchLocationCellHeight()
+            return TableViewCellManager.shared.searchLocationCellHeight(indexPath: indexPath)
         } else {
             if isFetching {
                 updateTableViewHeight()
@@ -276,7 +334,10 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         
         if fieldsAreActive() {
             if !searchResults.isEmpty {
-                updateFieldsWithLocation(result: searchResults, at: indexPath)
+                updateFieldsWithLocation(result: searchResults, saved: [], at: indexPath)
+                saveSearchResults(location: searchResults[indexPath.row])
+            } else if let locations = coreDataManager.getStringArray(from: resultsObject ?? RecentLocations()) {
+                updateFieldsWithLocation(result: [], saved: locations, at: indexPath)
             }
         } else if indexPath.row > 0 {
             navigateToJourneyInformationVc(indexPath: indexPath)
