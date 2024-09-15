@@ -336,6 +336,8 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             if !searchResults.isEmpty {
                 updateFieldsWithLocation(result: searchResults, saved: [], at: indexPath)
                 saveSearchResults(location: searchResults[indexPath.row])
+                // post a notification when row is selected
+                NotificationCenter.default.post(name: .touchCollectionViewDidUpdate, object: nil)
             } else if let locations = coreDataManager.getStringArray(from: resultsObject ?? RecentLocations()) {
                 updateFieldsWithLocation(result: [], saved: locations, at: indexPath)
             }

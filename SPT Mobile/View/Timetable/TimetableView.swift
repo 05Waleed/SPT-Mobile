@@ -102,7 +102,7 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
         return true
     }
 
-     @objc private func dismissKeyboard() {
+     @objc func dismissKeyboard() {
          fromField.resignFirstResponder()
          toField.resignFirstResponder()
          resetViewAppearance()
