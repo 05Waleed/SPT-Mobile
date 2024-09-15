@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -8,19 +8,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TouchTimetableView" customModule="SPT_Mobile" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TouchTimetableView" customModule="SPT_Mobile" customModuleProvider="target">
+            <connections>
+                <outlet property="mainView" destination="7ST-uk-VgP" id="iF6-u3-Te8"/>
+                <outlet property="touchCollectionView" destination="Qph-ZD-EeJ" id="4PC-tl-qNP"/>
+                <outlet property="touchCollectionViewHeight" destination="WzO-gv-oxv" id="yjQ-BG-7z9"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="7ST-uk-VgP">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfh-nP-17L">
+                    <rect key="frame" x="0.0" y="99" width="430" height="833"/>
+                    <color key="backgroundColor" name="Main Theme"/>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Qph-ZD-EeJ">
+                    <rect key="frame" x="8" y="59" width="414" height="784"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="784" id="WzO-gv-oxv"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="CDX-Kb-Q0d">
+                        <size key="itemSize" width="205" height="90"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="l7V-P2-xMh"/>
+                        <outlet property="delegate" destination="-1" id="FRs-ty-ouN"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="Knv-QF-CBv"/>
             <color key="backgroundColor" name="AccentColor"/>
-            <point key="canvasLocation" x="314" y="-248"/>
+            <constraints>
+                <constraint firstItem="mfh-nP-17L" firstAttribute="top" secondItem="Knv-QF-CBv" secondAttribute="top" constant="40" id="7LA-ox-bhb"/>
+                <constraint firstItem="mfh-nP-17L" firstAttribute="trailing" secondItem="Knv-QF-CBv" secondAttribute="trailing" id="R5f-gn-xAI"/>
+                <constraint firstItem="Qph-ZD-EeJ" firstAttribute="top" secondItem="Knv-QF-CBv" secondAttribute="top" id="Rfq-tS-k8g"/>
+                <constraint firstItem="mfh-nP-17L" firstAttribute="leading" secondItem="Knv-QF-CBv" secondAttribute="leading" id="XuS-46-oXs"/>
+                <constraint firstItem="Qph-ZD-EeJ" firstAttribute="leading" secondItem="Knv-QF-CBv" secondAttribute="leading" constant="8" id="hHB-7c-3cV"/>
+                <constraint firstAttribute="bottom" secondItem="mfh-nP-17L" secondAttribute="bottom" id="mY6-4k-wpB"/>
+                <constraint firstItem="Knv-QF-CBv" firstAttribute="trailing" secondItem="Qph-ZD-EeJ" secondAttribute="trailing" constant="8" id="oak-Vk-8Jq"/>
+            </constraints>
+            <point key="canvasLocation" x="313.74045801526717" y="-248.59154929577466"/>
         </view>
     </objects>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.86299997568130493" green="0.18400000035762787" blue="0.1289999932050705" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="Main Theme">
+            <color red="0.91500002145767212" green="0.91500002145767212" blue="0.91500002145767212" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
