@@ -18,7 +18,7 @@ class ConnectionHeaderTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func updateResponse(from: PlanViewData) {
+    func updateResponse(from: APIResponseDataModel) {
         DispatchQueue.main.async { [self] in
             currentLocationLbl.text = from.legs?.first?.terminal
         }

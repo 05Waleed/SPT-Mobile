@@ -32,7 +32,7 @@
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
 		2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */; };
 		2C4357D02C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357CE2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib */; };
-		2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */; };
+		2C4357D22C84E6E10063D8A2 /* APIResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D12C84E6E10063D8A2 /* APIResponseDataModel.swift */; };
 		2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */; };
 		2C4357D62C84E97A0063D8A2 /* SearchLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */; };
 		2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */; };
@@ -58,6 +58,8 @@
 		2C4E9F0A2C9734DA00FC5320 /* TouchTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E9F092C9734DA00FC5320 /* TouchTimetableViewController.swift */; };
 		2C4E9F102C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4E9F0E2C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.swift */; };
 		2C4E9F112C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C4E9F0F2C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib */; };
+		2C61B5BD2CA081A100D3DBB6 /* ConnectionsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61B5BC2CA081A100D3DBB6 /* ConnectionsDataModel.swift */; };
+		2C61B5C22CA097C800D3DBB6 /* ModelForSelectedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61B5C12CA097C800D3DBB6 /* ModelForSelectedLocation.swift */; };
 		2C61C4A62C8E61E800DC25E0 /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61C4A52C8E61E800DC25E0 /* SegmentViewController.swift */; };
 		2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C61C4AB2C8E661800DC25E0 /* TouchTimetableView.xib */; };
 		2C61C4AE2C8E663100DC25E0 /* TouchTimetableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C61C4AD2C8E663100DC25E0 /* TouchTimetableView.swift */; };
@@ -65,6 +67,9 @@
 		2C71B0F72C85104000B1CB33 /* LoaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */; };
 		2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */; };
 		2C71B0FB2C8514D400B1CB33 /* LoaderIndicator.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */; };
+		2C947F112C98CC5F0020CFBB /* ConnectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C947F102C98CC5F0020CFBB /* ConnectionsView.swift */; };
+		2C947F132C98CC650020CFBB /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C947F122C98CC650020CFBB /* ConnectionsView.xib */; };
+		2C947F152C98CFD70020CFBB /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C947F142C98CFD70020CFBB /* ConnectionsViewController.swift */; };
 		2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */; };
 		2C9B90792C975ADA002A6633 /* DefaultLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B90782C975ADA002A6633 /* DefaultLocations.swift */; };
 		2C9B907C2C976EA7002A6633 /* TouchCollectionViewRefresher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9B907B2C976EA7002A6633 /* TouchCollectionViewRefresher.swift */; };
@@ -104,7 +109,7 @@
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
 		2C4357CD2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		2C4357CE2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionHeaderTableViewCell.xib; sourceTree = "<group>"; };
-		2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewData.swift; sourceTree = "<group>"; };
+		2C4357D12C84E6E10063D8A2 /* APIResponseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseDataModel.swift; sourceTree = "<group>"; };
 		2C4357D32C84E97A0063D8A2 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		2C4357D42C84E97A0063D8A2 /* SearchLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationTableViewCell.xib; sourceTree = "<group>"; };
 		2C4357D72C84EA190063D8A2 /* UpcomingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +135,8 @@
 		2C4E9F092C9734DA00FC5320 /* TouchTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTimetableViewController.swift; sourceTree = "<group>"; };
 		2C4E9F0E2C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchedLocationsCollectionViewCell.swift; sourceTree = "<group>"; };
 		2C4E9F0F2C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentSearchedLocationsCollectionViewCell.xib; sourceTree = "<group>"; };
+		2C61B5BC2CA081A100D3DBB6 /* ConnectionsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsDataModel.swift; sourceTree = "<group>"; };
+		2C61B5C12CA097C800D3DBB6 /* ModelForSelectedLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForSelectedLocation.swift; sourceTree = "<group>"; };
 		2C61C4A52C8E61E800DC25E0 /* SegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
 		2C61C4AB2C8E661800DC25E0 /* TouchTimetableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TouchTimetableView.xib; sourceTree = "<group>"; };
 		2C61C4AD2C8E663100DC25E0 /* TouchTimetableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchTimetableView.swift; sourceTree = "<group>"; };
@@ -137,6 +144,9 @@
 		2C71B0F52C85104000B1CB33 /* LoaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTableViewCell.swift; sourceTree = "<group>"; };
 		2C71B0F62C85104000B1CB33 /* LoaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoaderTableViewCell.xib; sourceTree = "<group>"; };
 		2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LoaderIndicator.json; path = ../../../../Downloads/LoaderIndicator.json; sourceTree = "<group>"; };
+		2C947F102C98CC5F0020CFBB /* ConnectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsView.swift; sourceTree = "<group>"; };
+		2C947F122C98CC650020CFBB /* ConnectionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
+		2C947F142C98CFD70020CFBB /* ConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
 		2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = fF9rPfdtXh.json; path = ../../../../Downloads/fF9rPfdtXh.json; sourceTree = "<group>"; };
 		2C9B90782C975ADA002A6633 /* DefaultLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DefaultLocations.swift; path = CoreData/DefaultLocations.swift; sourceTree = "<group>"; };
 		2C9B907B2C976EA7002A6633 /* TouchCollectionViewRefresher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TouchCollectionViewRefresher.swift; path = ../TouchCollectionViewRefresher.swift; sourceTree = "<group>"; };
@@ -268,6 +278,15 @@
 			path = Touch;
 			sourceTree = "<group>";
 		};
+		2C947F0F2C98CC2A0020CFBB /* Connectios */ = {
+			isa = PBXGroup;
+			children = (
+				2C947F102C98CC5F0020CFBB /* ConnectionsView.swift */,
+				2C947F122C98CC650020CFBB /* ConnectionsView.xib */,
+			);
+			path = Connectios;
+			sourceTree = "<group>";
+		};
 		2CBFD74D2C7BA30E0046A717 = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +361,9 @@
 				2C4357C62C84CAF50063D8A2 /* LocationModel.swift */,
 				2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */,
 				2C9B90782C975ADA002A6633 /* DefaultLocations.swift */,
-				2C4357D12C84E6E10063D8A2 /* PlanViewData.swift */,
+				2C4357D12C84E6E10063D8A2 /* APIResponseDataModel.swift */,
+				2C61B5BC2CA081A100D3DBB6 /* ConnectionsDataModel.swift */,
+				2C61B5C12CA097C800D3DBB6 /* ModelForSelectedLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +377,7 @@
 				2C4A39BC2C82117B003D3DC5 /* Timetable */,
 				2C61C4AA2C8E65F300DC25E0 /* Touch */,
 				2C323CCA2C8B35C100BFC010 /* Journey */,
+				2C947F0F2C98CC2A0020CFBB /* Connectios */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +394,7 @@
 				2C4A39B52C82059A003D3DC5 /* SavedTripsViewController.swift */,
 				2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */,
 				2C4E9F092C9734DA00FC5320 /* TouchTimetableViewController.swift */,
+				2C947F142C98CFD70020CFBB /* ConnectionsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -468,6 +491,7 @@
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
 				2C4E9F112C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib in Resources */,
 				2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */,
+				2C947F132C98CC650020CFBB /* ConnectionsView.xib in Resources */,
 				2C2B74822C947DD600247D6D /* SavedSearchResultsTableViewCell.xib in Resources */,
 				2C49EEC22C8E26E600237C69 /* CurrentLocationTableViewCell.xib in Resources */,
 				2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */,
@@ -497,13 +521,14 @@
 				2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */,
 				2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */,
 				2C49EEC32C8E26E600237C69 /* CurrentLocationTableViewCell.swift in Sources */,
+				2C61B5BD2CA081A100D3DBB6 /* ConnectionsDataModel.swift in Sources */,
 				2C9B907C2C976EA7002A6633 /* TouchCollectionViewRefresher.swift in Sources */,
 				2C1757AE2C8B49BF00C51C83 /* JourneyHeaderTableViewCell.swift in Sources */,
 				2CBFD75A2C7BA30E0046A717 /* AppDelegate.swift in Sources */,
 				2C4E9F102C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */,
-				2C4357D22C84E6E10063D8A2 /* PlanViewData.swift in Sources */,
+				2C4357D22C84E6E10063D8A2 /* APIResponseDataModel.swift in Sources */,
 				2C2411342C7E569500631F95 /* LocationManager.swift in Sources */,
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */,
@@ -512,6 +537,7 @@
 				2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */,
 				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
 				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
+				2C947F112C98CC5F0020CFBB /* ConnectionsView.swift in Sources */,
 				2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */,
 				2C1757A62C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift in Sources */,
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
@@ -522,11 +548,13 @@
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
 				2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */,
 				2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */,
+				2C61B5C22CA097C800D3DBB6 /* ModelForSelectedLocation.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
 				2C2B74812C947DD600247D6D /* SavedSearchResultsTableViewCell.swift in Sources */,
 				2C2B74762C94786300247D6D /* CoreDataManager.swift in Sources */,
 				2C2B74882C94818100247D6D /* RecentLocations+CoreDataClass.swift in Sources */,
 				2C2B74892C94818100247D6D /* RecentLocations+CoreDataProperties.swift in Sources */,
+				2C947F152C98CFD70020CFBB /* ConnectionsViewController.swift in Sources */,
 				2C4E9F0A2C9734DA00FC5320 /* TouchTimetableViewController.swift in Sources */,
 				2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */,
 			);

@@ -63,7 +63,7 @@ extension TableViewCellManager {
 
 // MARK: -  Methods for Updating Date
 extension TableViewCellManager {
-    func cellForRowWhileUpdatingData(in tableView: UITableView, at indexPath: IndexPath, planViewData: PlanViewData) -> UITableViewCell {
+    func cellForRowWhileUpdatingData(in tableView: UITableView, at indexPath: IndexPath, planViewData: APIResponseDataModel) -> UITableViewCell {
         switch indexPath.row {
         case 0:
             return headerCellConfigurationWithData(in: tableView, at: indexPath, from: planViewData)
@@ -77,7 +77,7 @@ extension TableViewCellManager {
     }
     
     /// Private Methods for Updating Data State: Cell Configuration
-    private func headerCellConfigurationWithData(in tableView: UITableView, at indexPath: IndexPath, from: PlanViewData) -> UITableViewCell {
+    private func headerCellConfigurationWithData(in tableView: UITableView, at indexPath: IndexPath, from: APIResponseDataModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionHeaderTableViewCell", for: indexPath) as! ConnectionHeaderTableViewCell
         tableView.separatorStyle = .singleLine
         cell.updateResponse(from: from)
@@ -85,7 +85,7 @@ extension TableViewCellManager {
     }
     
     /// Private Methods for Updating Data State: Cell Height
-    private func upcomingCellConfigurationWithData(in tableView: UITableView, at indexPath: IndexPath, from: PlanViewData) -> UITableViewCell {
+    private func upcomingCellConfigurationWithData(in tableView: UITableView, at indexPath: IndexPath, from: APIResponseDataModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UpcomingTableViewCell") as! UpcomingTableViewCell
         tableView.separatorStyle = .singleLine
         cell.updateData(from: from, indexPath: indexPath)
