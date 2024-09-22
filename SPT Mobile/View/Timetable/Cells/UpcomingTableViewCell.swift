@@ -19,7 +19,7 @@ class UpcomingTableViewCell: UITableViewCell {
        
     }
     
-    func updateData(from: PlanViewData, indexPath: IndexPath) {
+    func updateData(from: APIResponseDataModel, indexPath: IndexPath) {
         directionLbl.text = from.legs?[indexPath.row].exit?.name
         
         timeLbl.text = HelperFunctions.getTime(from: "\(from.legs?[indexPath.row].departure ?? "")")
@@ -27,7 +27,7 @@ class UpcomingTableViewCell: UITableViewCell {
         lineLbl.text = "\(from.legs?[indexPath.row].g ?? "") \(from.legs?[indexPath.row].l ?? "")"        
     }
     
-    func updateImage(from: PlanViewData, indexPath: IndexPath) {
+    func updateImage(from: APIResponseDataModel, indexPath: IndexPath) {
         if from.legs?[indexPath.row].type == "bus" {
             vehicleImg.image = UIImage(named: "bus 1")
         } else if from.legs?[indexPath.row].type == "strain" {

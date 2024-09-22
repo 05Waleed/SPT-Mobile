@@ -15,7 +15,7 @@ class PlanViewController: UIViewController {
     private let locationSearchManager = LocationSearchManager()
     private var resultsObject: RecentLocations? // Object to store Core Data results
     private var locationModel: LocationModel?
-    private var planViewData: PlanViewData?
+    private var responseModel: APIResponseDataModel?
     private var isFetching: Bool = true
     private var searchResults: [MKMapItem] = []
     
@@ -25,7 +25,7 @@ class PlanViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         configureDelegates()
-        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
+        timetableView.updateView(isFetching: isFetching, responseModel: responseModel)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,14 +91,14 @@ class PlanViewController: UIViewController {
         let allConnections = response.connections
         let allLegs = allConnections.flatMap { $0.legs }
         let allStops = allLegs.flatMap { $0.stops }.flatMap { $0 }
-        planViewData = PlanViewData(connection: allConnections, legs: allLegs, stop: allStops)
-        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
+        responseModel = APIResponseDataModel(connection: allConnections, legs: allLegs, stop: allStops)
+        timetableView.updateView(isFetching: isFetching, responseModel: responseModel)
         timetableView.connectionTableView.reloadData()
     }
     
     private func handleServiceError() {
         isFetching = false
-        timetableView.updateView(isFetching: isFetching, planViewData: planViewData)
+        timetableView.updateView(isFetching: isFetching, responseModel: responseModel)
         timetableView.connectionTableView.reloadData()
     }
     
@@ -108,7 +108,7 @@ class PlanViewController: UIViewController {
     
     private func navigateToJourneyInformationVc(indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(identifier: "JourneyInformationViewController") as? JourneyInformationViewController else { return }
-        vc.leg = planViewData?.legs?[indexPath.row]
+        vc.leg = responseModel?.legs?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -131,7 +131,7 @@ class PlanViewController: UIViewController {
             // If both result and saved are empty
             locationToShow = nil
         }
-
+        
         // Update fields based on the current first responder
         if timetableView.fromField.isFirstResponder {
             timetableView.fromField.text = locationToShow
@@ -145,8 +145,8 @@ class PlanViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
     func removeSearchResults() {
         searchResults.removeAll()
         timetableView.connectionTableView.reloadData()
@@ -178,6 +178,15 @@ class PlanViewController: UIViewController {
         
         timetableView.connectionTableView.reloadData()
     }
+    
+    func navigateToConnectionsVc() {
+        let vc = storyboard?.instantiateViewController(identifier: "ConnectionsViewController") as! ConnectionsViewController
+        
+        let connectionsDataModel = ConnectionsDataModel(fromText: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", toText: timetableView.toField.text ?? "")
+        vc.connectionsDataModel = connectionsDataModel
+        timetableView.dismissKeyboard()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -186,12 +195,12 @@ extension PlanViewController: UITextFieldDelegate {
         if textField == timetableView.fromField {
             timetableView.configureViewForSearchLocation()
             updateTableViewHeight(plus: 50)
-            timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.updateFromFieldTextBasedOnFocus(planViewData: responseModel)
             timetableView.fromField.returnKeyType = .next
             fetchSearchResults()
         } else if textField == timetableView.toField {
             timetableView.configureViewForSearchLocation()
-            timetableView.updateFromFieldTextBasedOnFocus(planViewData: planViewData)
+            timetableView.updateFromFieldTextBasedOnFocus(planViewData: responseModel)
             timetableView.toField.returnKeyType = .search
             fetchSearchResults()
         }
@@ -203,9 +212,8 @@ extension PlanViewController: UITextFieldDelegate {
         } else if textField == timetableView.toField {
             if timetableView.fromField.text?.isEmpty == true {
                 timetableView.fromField.becomeFirstResponder()
-            } else {
-                // Perform navigation or other actions
-                print("Navigation performed")
+            } else if timetableView.fromField.text != "" && timetableView.toField.text != ""{
+                navigateToConnectionsVc()
             }
         }
         return false
@@ -263,16 +271,22 @@ extension PlanViewController {
 // MARK: - Service Call
 extension PlanViewController {
     private func serviceCallFromCurrentLocation() {
+        // Construct the URL using the current location data.
         guard let url = NetworkManager.shared.setupURL(from: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", to: locationModel?.cityName ?? "") else { return }
         
+        // Call the generic performRequest method, specifying the expected data model.
         NetworkManager.shared.performRequest(with: url, isFetching: { [weak self] isLoading in
+            // Update the fetching state (e.g., show or hide a loading indicator).
             self?.isFetching = isLoading
-        }, completion: { [weak self] result in
+        }, completion: { [weak self] (result: Result<ModelForCurrentLocation, Error>) in
+            // Handle the result on the main thread.
             DispatchQueue.main.async {
                 switch result {
                 case .success(let dataModel):
+                    // Handle the success response with the data model.
                     self?.handleServiceResponse(dataModel)
                 case .failure(let error):
+                    // Log and handle the error appropriately.
                     print("Service call error: \(error)")
                     self?.handleServiceError()
                 }
@@ -293,7 +307,7 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             // When fields are not active, determine the number of rows based on fetching state and planViewData
-            return isFetching ? 2 : (planViewData?.legs?.count ?? 0)
+            return isFetching ? 2 : (responseModel?.legs?.count ?? 0)
         }
     }
     
@@ -303,7 +317,7 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             if isFetching {
                 return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
-            } else if let planViewData = planViewData {
+            } else if let planViewData = responseModel {
                 return TableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
             } else {
                 return TableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
@@ -319,9 +333,9 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             if isFetching {
                 updateTableViewHeight()
                 return TableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
-            } else if let legs = planViewData?.legs, indexPath.row < legs.count {
+            } else if let legs = responseModel?.legs, indexPath.row < legs.count {
                 updateTableViewHeight()
-                return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: planViewData?.legs?[indexPath.row])
+                return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: responseModel?.legs?[indexPath.row])
             } else {
                 updateTableViewHeight()
                 return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
@@ -341,8 +355,12 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             } else if let locations = coreDataManager.getStringArray(from: resultsObject ?? RecentLocations()) {
                 updateFieldsWithLocation(result: [], saved: locations, at: indexPath)
             }
-        } else if indexPath.row > 0 {
+        } else if indexPath.row > 0 && responseModel != nil {
             navigateToJourneyInformationVc(indexPath: indexPath)
+        }
+        
+         if fieldsAreActive() && timetableView.fromField.text != "" && timetableView.toField.text != "" {
+            navigateToConnectionsVc()
         }
     }
 }

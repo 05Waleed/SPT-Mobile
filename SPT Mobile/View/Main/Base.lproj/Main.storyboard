@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46l-OB-iCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3981" y="1046"/>
+            <point key="canvasLocation" x="4062" y="637"/>
         </scene>
         <!--Journey Information View Controller-->
         <scene sceneID="yEo-ql-CLO">
@@ -98,7 +98,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bJu-76-PGm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7253" y="6"/>
+            <point key="canvasLocation" x="5792" y="-587"/>
+        </scene>
+        <!--Connections View Controller-->
+        <scene sceneID="dva-ao-wjg">
+            <objects>
+                <viewController storyboardIdentifier="ConnectionsViewController" id="EXf-th-xN1" customClass="ConnectionsViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Swh-Je-4HM" customClass="ConnectionsView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HAK-YA-aCC"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="connectionsView" destination="Swh-Je-4HM" id="XKM-1d-jbv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mjN-e3-JLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6543" y="-587"/>
         </scene>
         <!--Segment View Controller-->
         <scene sceneID="zxn-ab-KDo">
@@ -167,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dz-Zd-rZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4895" y="-1274"/>
+            <point key="canvasLocation" x="4931" y="-587"/>
         </scene>
         <!--Base Tab Bar View Controller-->
         <scene sceneID="Oaf-ML-GoU">
@@ -232,7 +250,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBY-K5-pp0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3981" y="-1208"/>
+            <point key="canvasLocation" x="4062" y="-587"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="xQc-5b-VQP">
@@ -247,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceT-gQ-2gI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6025" y="-618"/>
+            <point key="canvasLocation" x="5578" y="-1625"/>
         </scene>
         <!--Plan View Controller-->
         <scene sceneID="eeW-vr-i7c">
@@ -265,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mnh-ZV-EyL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6025" y="-1978"/>
+            <point key="canvasLocation" x="3891" y="-1625"/>
         </scene>
         <!--Touch Timetable View Controller-->
         <scene sceneID="KvI-cO-6y1">
@@ -283,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LXH-AW-Aeh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6025" y="-1268"/>
+            <point key="canvasLocation" x="4763" y="-1625"/>
         </scene>
     </scenes>
     <resources>

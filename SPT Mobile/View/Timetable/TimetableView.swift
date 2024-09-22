@@ -119,11 +119,11 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
             connectionTableView.reloadData()
         }
     
-    func updateView(isFetching: Bool, planViewData: PlanViewData?) {
-        fromField.text = isFetching ? "Determining location..." : (planViewData != nil ? "Current location" : "Insufficient location")
+    func updateView(isFetching: Bool, responseModel: APIResponseDataModel?) {
+        fromField.text = isFetching ? "Determining location..." : (responseModel != nil ? "Current location" : "Insufficient location")
     }
     
-    func updateFromFieldTextBasedOnFocus(planViewData: PlanViewData?) {
+    func updateFromFieldTextBasedOnFocus(planViewData: APIResponseDataModel?) {
         setFieldRemoverVisibility()
         if fromField.isFirstResponder {
             handleFromFieldFocus(planViewData: planViewData)
@@ -134,14 +134,14 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Field Focus Handlers
     
-    private func handleFromFieldFocus(planViewData: PlanViewData?) {
+    private func handleFromFieldFocus(planViewData: APIResponseDataModel?) {
         if ["Current location", "Insufficient location"].contains(fromField.text) {
             fromField.text = ""
             fromField.placeholder = "From"
         }
     }
     
-    private func handleToFieldFocus(planViewData: PlanViewData?) {
+    private func handleToFieldFocus(planViewData: APIResponseDataModel?) {
         if fromField.text?.isEmpty == true {
             fromField.text = planViewData != nil ? "Current location" : "Insufficient location"
         }
@@ -180,5 +180,9 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
         fromField.text = "Current location"
         clearToField()
         connectionTableView.reloadData()
+    }
+    
+    @IBAction func testBttn(_ sender: Any) {
+        planViewController?.navigateToConnectionsVc()
     }
 }
