@@ -33,7 +33,7 @@ class HelperFunctions {
     static func convertSecondsToHoursMinutes(seconds: Int) -> String {
         let hours = seconds / 3600
         let minutes = (seconds % 3600) / 60
-        return "\(hours) h: \(minutes) min"
+        return "\(hours)h:\(minutes)min"
     }
     
     static func convertWalkSecondsToMinutes(seconds: Int) -> String {

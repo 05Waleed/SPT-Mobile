@@ -91,7 +91,7 @@ class PlanViewController: UIViewController {
         let allConnections = response.connections
         let allLegs = allConnections.flatMap { $0.legs }
         let allStops = allLegs.flatMap { $0.stops }.flatMap { $0 }
-        responseModel = APIResponseDataModel(connection: allConnections, legs: allLegs, stop: allStops)
+        responseModel = APIResponseDataModel(connection: allConnections, leg: allLegs, stop: allStops)
         timetableView.updateView(isFetching: isFetching, responseModel: responseModel)
         timetableView.connectionTableView.reloadData()
     }
@@ -108,7 +108,7 @@ class PlanViewController: UIViewController {
     
     private func navigateToJourneyInformationVc(indexPath: IndexPath) {
         guard let vc = storyboard?.instantiateViewController(identifier: "JourneyInformationViewController") as? JourneyInformationViewController else { return }
-        vc.leg = responseModel?.legs?[indexPath.row]
+        vc.leg = responseModel?.leg?[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -182,8 +182,11 @@ class PlanViewController: UIViewController {
     func navigateToConnectionsVc() {
         let vc = storyboard?.instantiateViewController(identifier: "ConnectionsViewController") as! ConnectionsViewController
         
-        let connectionsDataModel = ConnectionsDataModel(fromText: "\(locationModel?.cityName ?? "") \(locationModel?.streetName ?? "")", toText: timetableView.toField.text ?? "")
-        vc.connectionsDataModel = connectionsDataModel
+        if let nearestStop = responseModel?.leg?.first?.terminal {
+            let connectionsDataModel = ConnectionsDataModel(fromText: timetableView.fromField.text ?? "", toText: timetableView.toField.text ?? "", currentText: nearestStop)
+            vc.connectionsDataModel = connectionsDataModel
+        }
+        
         timetableView.dismissKeyboard()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -307,20 +310,20 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             // When fields are not active, determine the number of rows based on fetching state and planViewData
-            return isFetching ? 2 : (responseModel?.legs?.count ?? 0)
+            return isFetching ? 2 : (responseModel?.leg?.count ?? 0)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if fieldsAreActive() {
-            return TableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
+            return PlanTableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
         } else {
             if isFetching {
-                return TableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
+                return PlanTableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
             } else if let planViewData = responseModel {
-                return TableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
+                return PlanTableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
             } else {
-                return TableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
+                return PlanTableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
             }
         }
     }
@@ -328,17 +331,17 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if fieldsAreActive() {
             updateTableViewHeight(plus: 50.0)
-            return TableViewCellManager.shared.searchLocationCellHeight(indexPath: indexPath)
+            return PlanTableViewCellManager.shared.searchLocationCellHeight(indexPath: indexPath)
         } else {
             if isFetching {
                 updateTableViewHeight()
-                return TableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
-            } else if let legs = responseModel?.legs, indexPath.row < legs.count {
+                return PlanTableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
+            } else if let legs = responseModel?.leg, indexPath.row < legs.count {
                 updateTableViewHeight()
-                return TableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: responseModel?.legs?[indexPath.row])
+                return PlanTableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: responseModel?.leg?[indexPath.row])
             } else {
                 updateTableViewHeight()
-                return TableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
+                return PlanTableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
             }
         }
     }

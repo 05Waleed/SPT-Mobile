@@ -181,8 +181,4 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
         clearToField()
         connectionTableView.reloadData()
     }
-    
-    @IBAction func testBttn(_ sender: Any) {
-        planViewController?.navigateToConnectionsVc()
-    }
 }

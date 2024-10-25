@@ -1,5 +1,5 @@
 //
-//  TableViewCellManager.swift
+//  PlanTableViewCellManager.swift
 //  SPT Mobile
 //
 //  Created by Muhammad Waleed on 02.09.2024.
@@ -8,12 +8,12 @@
 import UIKit
 import MapKit
 
-class TableViewCellManager {
-    static let shared = TableViewCellManager()
+class PlanTableViewCellManager {
+    static let shared = PlanTableViewCellManager()
 }
 
 // MARK: - Methods for Fetching State
-extension TableViewCellManager {
+extension PlanTableViewCellManager {
     func cellForRowWhileFetching(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -62,7 +62,7 @@ extension TableViewCellManager {
 }
 
 // MARK: -  Methods for Updating Date
-extension TableViewCellManager {
+extension PlanTableViewCellManager {
     func cellForRowWhileUpdatingData(in tableView: UITableView, at indexPath: IndexPath, planViewData: APIResponseDataModel) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -104,7 +104,7 @@ extension TableViewCellManager {
 }
 
 // MARK: - Methods for Showing Error
-extension TableViewCellManager {
+extension PlanTableViewCellManager {
     func cellForRowWithError(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -153,7 +153,7 @@ extension TableViewCellManager {
 }
 
 // MARK: - Methods for Showing Search Locations
-extension TableViewCellManager {
+extension PlanTableViewCellManager {
     func cellForRowWithSearchLocation(in tableView: UITableView, at indexPath: IndexPath, results: [MKMapItem], manager coreDataManager: CoreDataManager, from recentLocations: RecentLocations) -> UITableViewCell {
         
         if results.isEmpty {
@@ -192,7 +192,7 @@ extension TableViewCellManager {
     }
 }  
 
-extension TableViewCellManager {
+extension PlanTableViewCellManager {
     /// Private Methods for Saved Locations: Cell Configuration
     private func savedLocationCell(in tableView: UITableView, manager coreDataManager: CoreDataManager, from resultsObject: RecentLocations, at indexPath: IndexPath) -> UITableViewCell {
         

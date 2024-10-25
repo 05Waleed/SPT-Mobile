@@ -20,19 +20,17 @@ class UpcomingTableViewCell: UITableViewCell {
     }
     
     func updateData(from: APIResponseDataModel, indexPath: IndexPath) {
-        directionLbl.text = from.legs?[indexPath.row].exit?.name
-        
-        timeLbl.text = HelperFunctions.getTime(from: "\(from.legs?[indexPath.row].departure ?? "")")
-        
-        lineLbl.text = "\(from.legs?[indexPath.row].g ?? "") \(from.legs?[indexPath.row].l ?? "")"        
+        directionLbl.text = from.leg?[indexPath.row].exit?.name
+        timeLbl.text = HelperFunctions.getTime(from: "\(from.leg?[indexPath.row].departure ?? "")")
+        lineLbl.text = "\(from.leg?[indexPath.row].g ?? "") \(from.leg?[indexPath.row].l ?? "")"
     }
     
     func updateImage(from: APIResponseDataModel, indexPath: IndexPath) {
-        if from.legs?[indexPath.row].type == "bus" {
+        if from.leg?[indexPath.row].type == "bus" {
             vehicleImg.image = UIImage(named: "bus 1")
-        } else if from.legs?[indexPath.row].type == "strain" {
+        } else if from.leg?[indexPath.row].type == "strain" {
             vehicleImg.image = UIImage(named: "strain")
-        } else if from.legs?[indexPath.row].type == "tram" {
+        } else if from.leg?[indexPath.row].type == "tram" {
             vehicleImg.image = UIImage(named: "tram")
         } else {
             vehicleImg.image = UIImage(named: "dot")

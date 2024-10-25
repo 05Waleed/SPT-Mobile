@@ -22,8 +22,13 @@ class ConnectionsViewController: UIViewController {
         super.viewDidLoad()
         conformProtocols()
         registerXib()
-        connectionsView.updateFields(connectionsDataModel: connectionsDataModel!)
+        connectionsView.updateFields(connectionsDataModel: connectionsDataModel ?? ConnectionsDataModel(fromText: "", toText: "", currentText: ""))
         registerForKeyboardNotifications()
+        tableViweVisibility()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         serviceCallFromSelectedLocation()
     }
     
@@ -37,11 +42,13 @@ class ConnectionsViewController: UIViewController {
         connectionsView.toField.delegate = self
         connectionsView.connectionsTableView.dataSource = self
         connectionsView.connectionsTableView.delegate = self
+        connectionsView.scrollView.delegate = self
     }
     
     private func registerXib() {
         let nibNames = [
-            "SearchLocationTableViewCell"
+            "SearchLocationTableViewCell",
+            "ConnectionsTableViewCell"
         ]
         
         nibNames.forEach {
@@ -75,11 +82,14 @@ class ConnectionsViewController: UIViewController {
         let allLegs = allConnections.flatMap { $0.legs }
         let allStops = allLegs.flatMap { $0.stops }.flatMap { $0 }
         responseModel = APIResponseDataModelForSelectedLocation(connection: allConnections, legs: allLegs, stop: allStops)
+        tableViweVisibility()
         connectionsView.connectionsTableView.reloadData()
     }
     
-    private func handleServiceError() {
+    private func handleServiceError(error: Error) {
         isFetching = false
+        tableViweVisibility()
+        print("Service call error: \(error)")
         connectionsView.connectionsTableView.reloadData()
     }
 }
@@ -113,7 +123,15 @@ extension ConnectionsViewController: UITextFieldDelegate {
 extension ConnectionsViewController {
     private func serviceCallFromSelectedLocation() {
         // Construct the URL for the network call.
-        guard let url = NetworkManager.shared.setupURL(from: connectionsDataModel?.fromText ?? "", to: connectionsDataModel?.toText ?? "") else { return }
+        
+        var fromText = ""
+        if connectionsDataModel?.fromText == "Current location" {
+            fromText = connectionsDataModel?.currentText ?? ""
+        } else {
+            fromText = connectionsDataModel?.fromText ?? ""
+        }
+        
+        guard let url = NetworkManager.shared.setupURL(from: fromText, to: connectionsDataModel?.toText ?? "") else { return }
         
         // Call the generic performRequest method, specifying the expected data model.
         NetworkManager.shared.performRequest(with: url, isFetching: { [weak self] isLoading in
@@ -128,40 +146,10 @@ extension ConnectionsViewController {
                     self?.handleServiceResponse(dataModel)
                 case .failure(let error):
                     // Log the error and handle it appropriately.
-                    print("Service call error: \(error)")
-                    self?.handleServiceError()
+                    self?.handleServiceError(error: error)
                 }
             }
         })
-    }
-}
-
-extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if connectionsDataModel != nil {
-          return responseModel?.legs?.count ?? 0
-        } else if connectionsView.fieldsAreActive() {
-            return searchResults.count
-        } else {
-            return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchLocationTableViewCell", for: indexPath) as! SearchLocationTableViewCell
-        tableView.separatorStyle = .singleLine
-        cell.locationNameLbl.text = "Loc"
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if connectionsDataModel != nil {
-          return 50// return connections count from response
-        } else if connectionsView.fieldsAreActive() {
-            return 50
-        } else {
-            return 0
-        }
     }
 }
 
@@ -178,5 +166,65 @@ extension ConnectionsViewController: LocationSearchManagerDelegate {
     
     func didFailWithError(_ error: Error) {
         print("Search error: \(error.localizedDescription)")
+    }
+}
+
+extension ConnectionsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let translation = connectionsView.scrollView.panGestureRecognizer.translation(in: connectionsView.scrollView.superview)
+        
+        if translation.y > 0 {
+            connectionsView.forScrollUp()
+        } else {
+            connectionsView.forScrollDown()
+        }
+    }
+}
+
+extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if connectionsDataModel != nil {
+            return responseModel?.connection.count ?? 0
+        } else if connectionsView.fieldsAreActive() {
+            return searchResults.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionsTableViewCell", for: indexPath) as! ConnectionsTableViewCell
+        tableView.separatorStyle = .none
+        cell.updateData(from: responseModel, indexPath: indexPath)
+        return cell
+    }
+        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if responseModel != nil {
+            updateTableViewHeight()
+            return 119.0
+        } else if connectionsView.fieldsAreActive() {
+            return 50
+        } else {
+            return 0
+        }
+    }
+    
+    private func tableViweVisibility() {
+        if isFetching {
+            connectionsView.scrollView.isHidden = true
+        } else {
+            connectionsView.stopLottieAnimation()
+            connectionsView.scrollView.isHidden = false
+        }
+    }
+    
+    private func updateTableViewHeight() {
+        connectionsView.tableViewHeight.constant = connectionsView.connectionsTableView.contentSize.height + 200
+        updateContentViewHeight()
+    }
+    
+    private func updateContentViewHeight() {
+        connectionsView.contentViewHeight.constant = connectionsView.connectionsTableView.contentSize.height + 900
     }
 }

@@ -51,28 +51,13 @@
                                             </constraints>
                                             <color key="sectionIndexBackgroundColor" name="Main Theme"/>
                                         </tableView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeR-EA-eNc">
-                                            <rect key="frame" x="178" y="288" width="75" height="35"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="He4-JI-Vgw"/>
-                                                <constraint firstAttribute="width" constant="75" id="aQF-Lg-QjN"/>
-                                            </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                            <connections>
-                                                <action selector="testBttn:" destination="-1" eventType="touchUpInside" id="eMH-rE-Ver"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="pvg-mV-hdU" firstAttribute="top" secondItem="cVo-4f-9zf" secondAttribute="top" constant="-500" id="8Sr-5u-dTJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="XeR-EA-eNc" secondAttribute="trailing" constant="177" id="H18-vb-cmk"/>
-                                        <constraint firstItem="XeR-EA-eNc" firstAttribute="top" secondItem="QSX-TK-dXA" secondAttribute="bottom" constant="64" id="KWK-cE-kQz"/>
                                         <constraint firstAttribute="trailing" secondItem="pvg-mV-hdU" secondAttribute="trailing" constant="8" id="OAC-hT-vbB"/>
                                         <constraint firstItem="QSX-TK-dXA" firstAttribute="leading" secondItem="cVo-4f-9zf" secondAttribute="leading" constant="8" id="QTh-Ob-g6w"/>
                                         <constraint firstAttribute="height" constant="900" id="WVX-90-ISm"/>
-                                        <constraint firstItem="XeR-EA-eNc" firstAttribute="leading" secondItem="cVo-4f-9zf" secondAttribute="leading" constant="178" id="bLp-Fg-l01"/>
                                         <constraint firstItem="QSX-TK-dXA" firstAttribute="top" secondItem="cVo-4f-9zf" secondAttribute="top" constant="96" id="esg-in-3Be"/>
                                         <constraint firstItem="QSX-TK-dXA" firstAttribute="top" secondItem="pvg-mV-hdU" secondAttribute="bottom" constant="-30" id="t5B-bb-srV"/>
                                         <constraint firstItem="pvg-mV-hdU" firstAttribute="leading" secondItem="cVo-4f-9zf" secondAttribute="leading" constant="8" id="uDU-1q-7IO"/>
