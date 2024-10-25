@@ -24,9 +24,11 @@
 		2C2B74852C94815B00247D6D /* RecentLocations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B74832C94815B00247D6D /* RecentLocations.xcdatamodeld */; };
 		2C2B74882C94818100247D6D /* RecentLocations+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B74862C94818100247D6D /* RecentLocations+CoreDataClass.swift */; };
 		2C2B74892C94818100247D6D /* RecentLocations+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B74872C94818100247D6D /* RecentLocations+CoreDataProperties.swift */; };
+		2C2EBC9B2CA6F59500063799 /* ConnectionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C2EBC9A2CA6F59500063799 /* ConnectionsTableViewCell.xib */; };
+		2C2EBC9C2CA6F59500063799 /* ConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EBC992CA6F59500063799 /* ConnectionsTableViewCell.swift */; };
 		2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */; };
 		2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */; };
-		2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39C8762C8630F7000BFAC0 /* TableViewCellManager.swift */; };
+		2C39C8772C8630F7000BFAC0 /* PlanTableViewCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */; };
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
@@ -101,9 +103,11 @@
 		2C2B74842C94815B00247D6D /* RecentLocations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecentLocations.xcdatamodel; sourceTree = "<group>"; };
 		2C2B74862C94818100247D6D /* RecentLocations+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentLocations+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2C2B74872C94818100247D6D /* RecentLocations+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentLocations+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2C2EBC992CA6F59500063799 /* ConnectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsTableViewCell.swift; sourceTree = "<group>"; };
+		2C2EBC9A2CA6F59500063799 /* ConnectionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionsTableViewCell.xib; sourceTree = "<group>"; };
 		2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyInformationView.xib; sourceTree = "<group>"; };
 		2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationView.swift; sourceTree = "<group>"; };
-		2C39C8762C8630F7000BFAC0 /* TableViewCellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellManager.swift; sourceTree = "<group>"; };
+		2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCellManager.swift; sourceTree = "<group>"; };
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
@@ -198,6 +202,15 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		2C2EBC982CA6F56200063799 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2C2EBC992CA6F59500063799 /* ConnectionsTableViewCell.swift */,
+				2C2EBC9A2CA6F59500063799 /* ConnectionsTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2C323CCA2C8B35C100BFC010 /* Journey */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +296,7 @@
 			children = (
 				2C947F102C98CC5F0020CFBB /* ConnectionsView.swift */,
 				2C947F122C98CC650020CFBB /* ConnectionsView.xib */,
+				2C2EBC982CA6F56200063799 /* Cells */,
 			);
 			path = Connectios;
 			sourceTree = "<group>";
@@ -326,7 +340,7 @@
 				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
 				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
 				2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */,
-				2C39C8762C8630F7000BFAC0 /* TableViewCellManager.swift */,
+				2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */,
 				2C49EEBE2C8DF3CC00237C69 /* LocationSearchManager.swift */,
 				2C2B74752C94786300247D6D /* CoreDataManager.swift */,
 				2C9B907B2C976EA7002A6633 /* TouchCollectionViewRefresher.swift */,
@@ -492,6 +506,7 @@
 				2C4E9F112C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib in Resources */,
 				2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */,
 				2C947F132C98CC650020CFBB /* ConnectionsView.xib in Resources */,
+				2C2EBC9B2CA6F59500063799 /* ConnectionsTableViewCell.xib in Resources */,
 				2C2B74822C947DD600247D6D /* SavedSearchResultsTableViewCell.xib in Resources */,
 				2C49EEC22C8E26E600237C69 /* CurrentLocationTableViewCell.xib in Resources */,
 				2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */,
@@ -534,13 +549,14 @@
 				2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
 				2C61C4AE2C8E663100DC25E0 /* TouchTimetableView.swift in Sources */,
-				2C39C8772C8630F7000BFAC0 /* TableViewCellManager.swift in Sources */,
+				2C39C8772C8630F7000BFAC0 /* PlanTableViewCellManager.swift in Sources */,
 				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
 				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
 				2C947F112C98CC5F0020CFBB /* ConnectionsView.swift in Sources */,
 				2C71B0F42C850A4F00B1CB33 /* HelperFunctions.swift in Sources */,
 				2C1757A62C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift in Sources */,
 				2CC119E02C7E720F008BE671 /* SegmentView.swift in Sources */,
+				2C2EBC9C2CA6F59500063799 /* ConnectionsTableViewCell.swift in Sources */,
 				2C2B74852C94815B00247D6D /* RecentLocations.xcdatamodeld in Sources */,
 				2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */,
 				2C9B90792C975ADA002A6633 /* DefaultLocations.swift in Sources */,

@@ -10,4 +10,5 @@ import Foundation
 struct ConnectionsDataModel {
     let fromText: String
     let toText: String
+    let currentText: String
 }

@@ -10,7 +10,7 @@ import Foundation
 // This model is used to update UI on PlanView
 struct APIResponseDataModel {
     let connection: [Connection]
-    let legs: [Leg]?
+    let leg: [Leg]?
     let stop: [Stop]
 }
 

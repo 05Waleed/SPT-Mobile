@@ -20,7 +20,7 @@ class ConnectionHeaderTableViewCell: UITableViewCell {
     
     func updateResponse(from: APIResponseDataModel) {
         DispatchQueue.main.async { [self] in
-            currentLocationLbl.text = from.legs?.first?.terminal
+            currentLocationLbl.text = from.leg?.first?.terminal
         }
         fromLbl.text = "From"
         directionLbl.text = "Direction"
