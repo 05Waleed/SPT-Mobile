@@ -14,9 +14,12 @@ class ConnectionsViewController: UIViewController {
     
     private var searchResults: [MKMapItem] = []
     private let locationSearchManager = LocationSearchManager()
+    private var selectedDateAndTime: SelectedDateAndTime?
     private var responseModel: APIResponseDataModelForSelectedLocation?
     private var isFetching: Bool = true
     var connectionsDataModel: ConnectionsDataModel?
+    private let coreDataManager = CoreDataManager.shared
+    private var resultsObject: RecentLocations? // Object to store Core Data results
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,12 +46,16 @@ class ConnectionsViewController: UIViewController {
         connectionsView.connectionsTableView.dataSource = self
         connectionsView.connectionsTableView.delegate = self
         connectionsView.scrollView.delegate = self
+        locationSearchManager.delegate = self
+        connectionsView.connectionsViewController = self
     }
     
     private func registerXib() {
         let nibNames = [
             "SearchLocationTableViewCell",
-            "ConnectionsTableViewCell"
+            "ConnectionsTableViewCell",
+            "SavedSearchResultsTableViewCell",
+            "CurrentLocationTableViewCell"
         ]
         
         nibNames.forEach {
@@ -84,6 +91,7 @@ class ConnectionsViewController: UIViewController {
         responseModel = APIResponseDataModelForSelectedLocation(connection: allConnections, legs: allLegs, stop: allStops)
         tableViweVisibility()
         connectionsView.connectionsTableView.reloadData()
+        connectionsView.dismissKeyboard()
     }
     
     private func handleServiceError(error: Error) {
@@ -91,17 +99,106 @@ class ConnectionsViewController: UIViewController {
         tableViweVisibility()
         print("Service call error: \(error)")
         connectionsView.connectionsTableView.reloadData()
+        connectionsView.dismissKeyboard()
+    }
+    
+    private func saveSearchResults(location: MKMapItem) {
+        // Get the existing recent locations, decode if needed
+        var updatedLocations = coreDataManager.getStringArray(from: resultsObject!) ?? []
+        
+        // Extract relevant info from MKMapItem (e.g., its name)
+        if let locationName = location.name {
+            if !updatedLocations.contains(locationName) {
+                updatedLocations.append(locationName) // Append the location's name as a String
+            }
+        }
+        
+        // Encode the updated array and save it to Core Data
+        coreDataManager.saveStringArray(updatedLocations, to: resultsObject!)
+    }
+    
+    private func fetchSearchResults() {
+        // Fetch the Core Data object (if it exists)
+        if let fetchedResults = coreDataManager.fetchResults() {
+            resultsObject = fetchedResults
+        } else {
+            // If no existing object is found, create a new one
+            resultsObject = RecentLocations(context: coreDataManager.context)
+        }
+        
+        connectionsView.connectionsTableView.reloadData()
+    }
+    
+    private func removeSearchResults() {
+        searchResults.removeAll()
+        connectionsView.connectionsTableView.reloadData()
+    }
+    
+    private func updateFieldsWithLocation(result: [MKMapItem]?, saved location: [String]?, at indexPath: IndexPath) {
+        // Determine the location to show
+        let locationToShow: String?
+        
+        if let result = result, !result.isEmpty {
+            // If result is non-empty, use its data
+            locationToShow = result[indexPath.row].name
+        } else if let saved = location, !saved.isEmpty {
+            // Ensure that indexPath.row - 1 is within bounds
+            let index = indexPath.row - 1
+            if index >= 0 && index < saved.count {
+                locationToShow = saved[index]
+            } else {
+                locationToShow = nil
+            }
+        } else {
+            // If both result and saved are empty
+            locationToShow = nil
+        }
+        
+        // Update fields based on the current first responder
+        if connectionsView.fromField.isFirstResponder {
+            connectionsView.fromField.text = locationToShow
+            if connectionsView.toField.text?.isEmpty == true {
+                connectionsView.toField.becomeFirstResponder()
+            }
+        } else if connectionsView.toField.isFirstResponder {
+            connectionsView.toField.text = locationToShow
+            if connectionsView.fromField.text?.isEmpty == true {
+                connectionsView.fromField.becomeFirstResponder()
+            }
+        }
+    }
+    
+    func showTravelDateVc() {
+        let vc = storyboard?.instantiateViewController(identifier: "TravelDateViewController") as! TravelDateViewController
+        vc.modalPresentationStyle = .formSheet // or .formSheet, depending on your needs
+        vc.modalTransitionStyle = .coverVertical // optional transition style
+        vc.delegate = self
+        // For iOS 15 and above, you can control the sheet size even further:
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()] // medium for half screen, large for full screen
+            sheet.prefersGrabberVisible = false // adds a handle for dragging
+        }
+
+        present(vc, animated: true, completion: nil)
     }
 }
 
 // MARK: - UITextFieldDelegate
 extension ConnectionsViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        connectionsView.showFieldBttns() // Show field buttons when editing begins
+        if textField == connectionsView.fromField || textField == connectionsView.toField {
+            connectionsView.showFieldBttns() // Show field buttons when editing begins
+            fetchSearchResults()
+            connectionsView.configureViewForSearchLocation()
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        connectionsView.hideFieldBttns() // Hide field buttons when editing ends
+        if textField == connectionsView.fromField || textField == connectionsView.toField {
+            connectionsView.hideFieldBttns() // Hide field buttons when editing ends
+            connectionsView.resetViewAppearance()
+            removeSearchResults()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -110,12 +207,23 @@ extension ConnectionsViewController: UITextFieldDelegate {
         } else if textField == connectionsView.toField {
             if connectionsView.fromField.text?.isEmpty == true {
                 connectionsView.fromField.becomeFirstResponder()
-            } else {
-                // Perform navigation or other actions
-                print("Navigation performed")
             }
         }
         return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = (textField.text ?? "") as NSString
+        let updatedText = currentText.replacingCharacters(in: range, with: string)
+        
+        if !updatedText.isEmpty {
+            searchForLocation(query: updatedText)
+        } else {
+            searchResults.removeAll()
+            connectionsView.connectionsTableView.reloadData()
+        }
+        
+        return true
     }
 }
 
@@ -151,6 +259,28 @@ extension ConnectionsViewController {
             }
         })
     }
+    
+    private func serviceCallForSearchPoints(from: String, to: String, date: String, time: String) {
+        guard let url = NetworkManager.shared.setupURLForSearchPoints(from: from, to: to, formattedDate: date, time: time) else { return }
+        
+        // Call the generic performRequest method, specifying the expected data model.
+        NetworkManager.shared.performRequestForSearchPoints(with: url, isFetching: { [weak self] isLoading in
+            // Update the fetching state (e.g., show or hide a loading indicator).
+            self?.isFetching = isLoading
+        }, completion: { [weak self] (result: Result<ModelForSelectedLocation, Error>) in
+            // Handle the result on the main thread.
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let dataModel):
+                    // Pass the data model to a handler function in your view controller.
+                    self?.handleServiceResponse(dataModel)
+                case .failure(let error):
+                    // Log the error and handle it appropriately.
+                    self?.handleServiceError(error: error)
+                }
+            }
+        })
+    }
 }
 
 // MARK: - LocationSearchManagerDelegate
@@ -169,44 +299,79 @@ extension ConnectionsViewController: LocationSearchManagerDelegate {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension ConnectionsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let translation = connectionsView.scrollView.panGestureRecognizer.translation(in: connectionsView.scrollView.superview)
-        
-        if translation.y > 0 {
-            connectionsView.forScrollUp()
-        } else {
-            connectionsView.forScrollDown()
+        if !connectionsView.fieldsAreActive() {
+            let translation = connectionsView.scrollView.panGestureRecognizer.translation(in: connectionsView.scrollView.superview)
+            
+            if translation.y > 0 {
+                connectionsView.forScrollUp()
+            } else {
+                connectionsView.forScrollDown()
+            }
         }
     }
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if connectionsDataModel != nil {
-            return responseModel?.connection.count ?? 0
-        } else if connectionsView.fieldsAreActive() {
-            return searchResults.count
+        // Check if fields are active
+        if connectionsView.fieldsAreActive() {
+            // Determine row count based on searchResults or Core Data
+            if let resultsObject = resultsObject {
+                return searchResults.isEmpty ? (coreDataManager.getStringArray(from: resultsObject)?.count ?? 0) + 1 : searchResults.count
+            } else {
+                return searchResults.count
+            }
         } else {
-            return 0
+            // If fields are not active, base the row count on responseModel and connectionsDataModel
+            return connectionsDataModel != nil ? (responseModel?.connection.count ?? 0) : 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionsTableViewCell", for: indexPath) as! ConnectionsTableViewCell
-        tableView.separatorStyle = .none
-        cell.updateData(from: responseModel, indexPath: indexPath)
-        return cell
-    }
         
+        switch connectionsView.fieldsAreActive() {
+        case true:
+            return CommonSearchLocationTableViewCell.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
+        case false:
+            return connectionsTableViewCell(tableView, cellForRowAt: indexPath)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if responseModel != nil {
-            updateTableViewHeight()
-            return 119.0
-        } else if connectionsView.fieldsAreActive() {
-            return 50
+        if connectionsView.fieldsAreActive() {
+            updateTableViewHeight(plus: 50.0)
+            return CommonSearchLocationTableViewCell.shared.searchLocationCellHeight(indexPath: indexPath)
         } else {
-            return 0
+            updateTableViewHeight(plus: 600)
+            return 119.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        connectionsView.connectionsTableView.deselectRow(at: indexPath, animated: true)
+        
+        if connectionsView.fieldsAreActive() {
+            if !searchResults.isEmpty {
+                updateFieldsWithLocation(result: searchResults, saved: [], at: indexPath)
+                saveSearchResults(location: searchResults[indexPath.row])
+                // post a notification when row is selected, to update touch collection view data for the recent selected rows.
+                NotificationCenter.default.post(name: .touchCollectionViewDidUpdate, object: nil)
+            } else if let locations = coreDataManager.getStringArray(from: resultsObject ?? RecentLocations()) {
+                updateFieldsWithLocation(result: [], saved: locations, at: indexPath)
+            }
+        }
+        
+        if connectionsView.fieldsAreActive() && connectionsView.fromField.text != "" && connectionsView.toField.text != "" {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let selectedDateString = dateFormatter.string(from: selectedDateAndTime?.date ?? Date())
+            let selectedTimeString = dateFormatter.string(from: selectedDateAndTime?.time ?? Date())
+            
+            serviceCallForSearchPoints(from: connectionsView.fromField.text ?? "", to: connectionsView.toField.text ?? "", date: selectedDateString, time: selectedTimeString)
         }
     }
     
@@ -219,12 +384,60 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
         }
     }
     
-    private func updateTableViewHeight() {
-        connectionsView.tableViewHeight.constant = connectionsView.connectionsTableView.contentSize.height + 200
-        updateContentViewHeight()
+    private func updateTableViewHeight(plus: Double = 0.0) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3) {
+                self.connectionsView.tableViewHeight.constant = self.connectionsView.connectionsTableView.contentSize.height + plus
+                self.view.layoutIfNeeded()
+            }
+            self.updateContentViewHeight()
+        }
     }
     
     private func updateContentViewHeight() {
         connectionsView.contentViewHeight.constant = connectionsView.connectionsTableView.contentSize.height + 900
+    }
+    
+    private func connectionsTableViewCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionsTableViewCell", for: indexPath) as! ConnectionsTableViewCell
+        tableView.separatorStyle = .none
+        cell.updateData(from: responseModel, indexPath: indexPath)
+        return cell
+    }
+}
+
+// MARK: - GetDateAndTime
+extension ConnectionsViewController: GetDateAndTime {
+    func selected(date: Date, time: Date, fullDate: Date, callAPI: Bool) {
+        let apiDateFormatter = DateFormatter()
+        apiDateFormatter.dateFormat = "MM/dd/yyyy" // Format for API call (e.g., "11/04/2024")
+        let passFormattedDate = apiDateFormatter.string(from: date)
+        
+        let displayDateFormatter = DateFormatter()
+        displayDateFormatter.dateFormat = "E dd.MM" // Display format for short date (e.g., "Mon 04.11")
+        let formattedDate = displayDateFormatter.string(from: date)
+        
+        let displayTimeFormatter = DateFormatter()
+        displayTimeFormatter.dateFormat = "HH:mm" // Display format for time (e.g., "17:16")
+        let formattedTime = displayTimeFormatter.string(from: time)
+        
+        let fullDisplayDateFormatter = DateFormatter()
+        fullDisplayDateFormatter.dateFormat = "EEEE dd.MM.yyyy" // Display format for full date (e.g., "Monday 04.11.2024")
+        let formattedFullDate = fullDisplayDateFormatter.string(from: fullDate)
+        
+        // Assigning values to the labels
+        connectionsView.dateLbl.text = formattedDate
+        connectionsView.timeLbl.text = formattedTime
+        connectionsView.fullDateLbl.text = formattedFullDate
+        
+        // Making the API call if required
+        if callAPI {
+            serviceCallForSearchPoints(
+                from: connectionsView.fromField.text ?? "",
+                to: connectionsView.toField.text ?? "",
+                date: passFormattedDate,
+                time: formattedTime
+            )
+        }
     }
 }

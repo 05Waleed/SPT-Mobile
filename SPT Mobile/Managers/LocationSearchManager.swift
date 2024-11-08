@@ -21,10 +21,7 @@ class LocationSearchManager {
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = query
         
-        let switzerlandCenter = CLLocationCoordinate2D(latitude: 46.8182, longitude: 8.2275)
-        let regionSpan = MKCoordinateSpan(latitudeDelta: 3.0, longitudeDelta: 5.0)
-        searchRequest.region = MKCoordinateRegion(center: switzerlandCenter, span: regionSpan)
-        
+        // Start the search without setting a specific region
         let search = MKLocalSearch(request: searchRequest)
         search.start { [weak self] response, error in
             if let error = error {
@@ -38,12 +35,8 @@ class LocationSearchManager {
                 return
             }
             
-            let results = response.mapItems.filter { mapItem in
-                let placemark = mapItem.placemark
-                return placemark.country?.lowercased() == "switzerland"
-            }
-            
-            self?.delegate?.didReceiveSearchResults(results)
+            // Pass all results without filtering for a specific country
+            self?.delegate?.didReceiveSearchResults(response.mapItems)
         }
     }
 }

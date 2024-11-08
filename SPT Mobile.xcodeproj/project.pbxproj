@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0947F52CCEC0B100833D23 /* PlanViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0947F42CCEC0B100833D23 /* PlanViewControllerExtension.swift */; };
+		2C0947FA2CCEC37600833D23 /* CommonSearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0947F92CCEC37600833D23 /* CommonSearchLocationTableViewCell.swift */; };
+		2C11BDF12CD7DA8A00E43E9A /* TravelDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C11BDF02CD7DA8A00E43E9A /* TravelDateView.xib */; };
+		2C11BDF32CD7DADD00E43E9A /* TravelDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11BDF22CD7DADD00E43E9A /* TravelDateView.swift */; };
+		2C11BDF52CD7DEB600E43E9A /* TravelDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11BDF42CD7DEB600E43E9A /* TravelDateViewController.swift */; };
 		2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */; };
 		2C17579C2C8B47D600C51C83 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2C17579B2C8B47D600C51C83 /* Lottie */; };
 		2C1757A52C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1757A42C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib */; };
@@ -28,7 +33,6 @@
 		2C2EBC9C2CA6F59500063799 /* ConnectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2EBC992CA6F59500063799 /* ConnectionsTableViewCell.swift */; };
 		2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */; };
 		2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */; };
-		2C39C8772C8630F7000BFAC0 /* PlanTableViewCellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */; };
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
@@ -87,6 +91,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C0947F42CCEC0B100833D23 /* PlanViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewControllerExtension.swift; sourceTree = "<group>"; };
+		2C0947F92CCEC37600833D23 /* CommonSearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSearchLocationTableViewCell.swift; sourceTree = "<group>"; };
+		2C11BDF02CD7DA8A00E43E9A /* TravelDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelDateView.xib; sourceTree = "<group>"; };
+		2C11BDF22CD7DADD00E43E9A /* TravelDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDateView.swift; sourceTree = "<group>"; };
+		2C11BDF42CD7DEB600E43E9A /* TravelDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDateViewController.swift; sourceTree = "<group>"; };
 		2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationViewController.swift; sourceTree = "<group>"; };
 		2C1757A32C8B495C00C51C83 /* JourneyMiddleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyMiddleTableViewCell.swift; sourceTree = "<group>"; };
 		2C1757A42C8B495C00C51C83 /* JourneyMiddleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyMiddleTableViewCell.xib; sourceTree = "<group>"; };
@@ -107,7 +116,6 @@
 		2C2EBC9A2CA6F59500063799 /* ConnectionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectionsTableViewCell.xib; sourceTree = "<group>"; };
 		2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyInformationView.xib; sourceTree = "<group>"; };
 		2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationView.swift; sourceTree = "<group>"; };
-		2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTableViewCellManager.swift; sourceTree = "<group>"; };
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
@@ -179,6 +187,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C0947F32CCEC09300833D23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C0947F42CCEC0B100833D23 /* PlanViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2C0947F82CCEC35900833D23 /* CommonExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C0947F92CCEC37600833D23 /* CommonSearchLocationTableViewCell.swift */,
+			);
+			path = CommonExtensions;
+			sourceTree = "<group>";
+		};
 		2C1757982C8B469600C51C83 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +320,8 @@
 			children = (
 				2C947F102C98CC5F0020CFBB /* ConnectionsView.swift */,
 				2C947F122C98CC650020CFBB /* ConnectionsView.xib */,
+				2C11BDF22CD7DADD00E43E9A /* TravelDateView.swift */,
+				2C11BDF02CD7DA8A00E43E9A /* TravelDateView.xib */,
 				2C2EBC982CA6F56200063799 /* Cells */,
 			);
 			path = Connectios;
@@ -340,7 +366,6 @@
 				2C4E654E2C7BE1C40088F7AB /* LottieManager.swift */,
 				2C4E654A2C7BDCA70088F7AB /* LaunchManager.swift */,
 				2C71B0F32C850A4F00B1CB33 /* HelperFunctions.swift */,
-				2C39C8762C8630F7000BFAC0 /* PlanTableViewCellManager.swift */,
 				2C49EEBE2C8DF3CC00237C69 /* LocationSearchManager.swift */,
 				2C2B74752C94786300247D6D /* CoreDataManager.swift */,
 				2C9B907B2C976EA7002A6633 /* TouchCollectionViewRefresher.swift */,
@@ -373,10 +398,10 @@
 			children = (
 				2C2B747E2C9478ED00247D6D /* CoreData */,
 				2C4357C62C84CAF50063D8A2 /* LocationModel.swift */,
+				2C61B5BC2CA081A100D3DBB6 /* ConnectionsDataModel.swift */,
 				2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */,
 				2C9B90782C975ADA002A6633 /* DefaultLocations.swift */,
 				2C4357D12C84E6E10063D8A2 /* APIResponseDataModel.swift */,
-				2C61B5BC2CA081A100D3DBB6 /* ConnectionsDataModel.swift */,
 				2C61B5C12CA097C800D3DBB6 /* ModelForSelectedLocation.swift */,
 			);
 			path = Model;
@@ -399,6 +424,8 @@
 		2CBFD7732C7BA43A0046A717 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2C0947F82CCEC35900833D23 /* CommonExtensions */,
+				2C0947F32CCEC09300833D23 /* Extensions */,
 				2C4E654C2C7BDD870088F7AB /* StarterViewController.swift */,
 				2C24112F2C7E3C5100631F95 /* StarterInfoViewController.swift */,
 				2C2411312C7E429F00631F95 /* LocationViewController.swift */,
@@ -409,6 +436,7 @@
 				2C1757962C8B457400C51C83 /* JourneyInformationViewController.swift */,
 				2C4E9F092C9734DA00FC5320 /* TouchTimetableViewController.swift */,
 				2C947F142C98CFD70020CFBB /* ConnectionsViewController.swift */,
+				2C11BDF42CD7DEB600E43E9A /* TravelDateViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -497,6 +525,7 @@
 				2C4E65402C7BC4380088F7AB /* LocationView.xib in Resources */,
 				2C4E653B2C7BC0F40088F7AB /* StarterInfoView.xib in Resources */,
 				2CBFD7632C7BA30F0046A717 /* Assets.xcassets in Resources */,
+				2C11BDF12CD7DA8A00E43E9A /* TravelDateView.xib in Resources */,
 				2C4A39C02C82119B003D3DC5 /* TimetableView.xib in Resources */,
 				2CBFD7662C7BA30F0046A717 /* Base in Resources */,
 				2CBFD7612C7BA30E0046A717 /* Base in Resources */,
@@ -523,6 +552,7 @@
 			files = (
 				2C49EEBF2C8DF3CC00237C69 /* LocationSearchManager.swift in Sources */,
 				2C4E65372C7BC0410088F7AB /* StarterView.swift in Sources */,
+				2C11BDF32CD7DADD00E43E9A /* TravelDateView.swift in Sources */,
 				2C61C4A62C8E61E800DC25E0 /* SegmentViewController.swift in Sources */,
 				2C4A39B62C82059A003D3DC5 /* SavedTripsViewController.swift in Sources */,
 				2C4E654D2C7BDD870088F7AB /* StarterViewController.swift in Sources */,
@@ -543,13 +573,13 @@
 				2C4E9F102C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.swift in Sources */,
 				2C4E654B2C7BDCA70088F7AB /* LaunchManager.swift in Sources */,
 				2C4357D92C84EA190063D8A2 /* UpcomingTableViewCell.swift in Sources */,
+				2C0947FA2CCEC37600833D23 /* CommonSearchLocationTableViewCell.swift in Sources */,
 				2C4357D22C84E6E10063D8A2 /* APIResponseDataModel.swift in Sources */,
 				2C2411342C7E569500631F95 /* LocationManager.swift in Sources */,
 				2C4E653E2C7BC42E0088F7AB /* LocationView.swift in Sources */,
 				2C1757972C8B457400C51C83 /* JourneyInformationViewController.swift in Sources */,
 				2C4A39BE2C821193003D3DC5 /* TimetableView.swift in Sources */,
 				2C61C4AE2C8E663100DC25E0 /* TouchTimetableView.swift in Sources */,
-				2C39C8772C8630F7000BFAC0 /* PlanTableViewCellManager.swift in Sources */,
 				2C4357D52C84E97A0063D8A2 /* SearchLocationTableViewCell.swift in Sources */,
 				2C4357DD2C84EA290063D8A2 /* ErrorTableViewCell.swift in Sources */,
 				2C947F112C98CC5F0020CFBB /* ConnectionsView.swift in Sources */,
@@ -562,10 +592,12 @@
 				2C9B90792C975ADA002A6633 /* DefaultLocations.swift in Sources */,
 				2CBFD75C2C7BA30E0046A717 /* SceneDelegate.swift in Sources */,
 				2CA286362C7E8F13004413E8 /* BaseTabBarViewController.swift in Sources */,
+				2C11BDF52CD7DEB600E43E9A /* TravelDateViewController.swift in Sources */,
 				2C71B0F82C85104000B1CB33 /* LoaderTableViewCell.swift in Sources */,
 				2C4357CF2C84E0B30063D8A2 /* ConnectionHeaderTableViewCell.swift in Sources */,
 				2C61B5C22CA097C800D3DBB6 /* ModelForSelectedLocation.swift in Sources */,
 				2C4A39B42C8204DD003D3DC5 /* PlanViewController.swift in Sources */,
+				2C0947F52CCEC0B100833D23 /* PlanViewControllerExtension.swift in Sources */,
 				2C2B74812C947DD600247D6D /* SavedSearchResultsTableViewCell.swift in Sources */,
 				2C2B74762C94786300247D6D /* CoreDataManager.swift in Sources */,
 				2C2B74882C94818100247D6D /* RecentLocations+CoreDataClass.swift in Sources */,

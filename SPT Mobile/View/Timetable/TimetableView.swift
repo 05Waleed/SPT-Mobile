@@ -177,7 +177,12 @@ class TimetableView: UIView, UIGestureRecognizerDelegate {
         backView.backgroundColor = .clear
         scrollView.backgroundColor = .mainTheme
         hideFieldRemovers()
-        fromField.text = "Current location"
+        planViewController?.removeSearchResults()
+        if planViewController?.locationModel != nil {
+            fromField.text = "Current location"
+        } else {
+            fromField.text =  "Insufficient location"
+        }
         clearToField()
         connectionTableView.reloadData()
     }
