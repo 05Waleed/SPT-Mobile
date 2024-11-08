@@ -20,3 +20,9 @@ struct APIResponseDataModelForSelectedLocation {
     let legs: [Legs]?
     let stop: [Stops]
 }
+
+// This model is used to update selected date and time from date picker in travel-date-view
+struct SelectedDateAndTime {
+    let date: Date
+    let time: Date
+}

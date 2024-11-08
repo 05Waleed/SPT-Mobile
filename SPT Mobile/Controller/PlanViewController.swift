@@ -14,7 +14,7 @@ class PlanViewController: UIViewController {
     private let coreDataManager = CoreDataManager.shared
     private let locationSearchManager = LocationSearchManager()
     private var resultsObject: RecentLocations? // Object to store Core Data results
-    private var locationModel: LocationModel?
+     var locationModel: LocationModel?
     private var responseModel: APIResponseDataModel?
     private var isFetching: Bool = true
     private var searchResults: [MKMapItem] = []
@@ -316,32 +316,14 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if fieldsAreActive() {
-            return PlanTableViewCellManager.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
+            return CommonSearchLocationTableViewCell.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
         } else {
             if isFetching {
-                return PlanTableViewCellManager.shared.cellForRowWhileFetching(in: tableView, at: indexPath)
+                return cellForRowWhileFetching(in: tableView, at: indexPath)
             } else if let planViewData = responseModel {
-                return PlanTableViewCellManager.shared.cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
+                return cellForRowWhileUpdatingData(in: tableView, at: indexPath, planViewData: planViewData)
             } else {
-                return PlanTableViewCellManager.shared.cellForRowWithError(in: tableView, at: indexPath)
-            }
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if fieldsAreActive() {
-            updateTableViewHeight(plus: 50.0)
-            return PlanTableViewCellManager.shared.searchLocationCellHeight(indexPath: indexPath)
-        } else {
-            if isFetching {
-                updateTableViewHeight()
-                return PlanTableViewCellManager.shared.heightForRowWhileFetching(in: tableView, at: indexPath)
-            } else if let legs = responseModel?.leg, indexPath.row < legs.count {
-                updateTableViewHeight()
-                return PlanTableViewCellManager.shared.heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: responseModel?.leg?[indexPath.row])
-            } else {
-                updateTableViewHeight()
-                return PlanTableViewCellManager.shared.errorCellHeight(in: tableView, at: indexPath)
+                return cellForRowWithError(in: tableView, at: indexPath)
             }
         }
     }
@@ -364,6 +346,24 @@ extension PlanViewController: UITableViewDelegate, UITableViewDataSource {
         
          if fieldsAreActive() && timetableView.fromField.text != "" && timetableView.toField.text != "" {
             navigateToConnectionsVc()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if fieldsAreActive() {
+            updateTableViewHeight(plus: 50.0)
+            return CommonSearchLocationTableViewCell.shared.searchLocationCellHeight(indexPath: indexPath)
+        } else {
+            if isFetching {
+                updateTableViewHeight()
+                return heightForRowWhileFetching(in: tableView, at: indexPath)
+            } else if let legs = responseModel?.leg, indexPath.row < legs.count {
+                updateTableViewHeight()
+                return heightForRowWhileUpdatingData(in: tableView, at: indexPath, leg: responseModel?.leg?[indexPath.row])
+            } else {
+                updateTableViewHeight()
+                return errorCellHeight(in: tableView, at: indexPath)
+            }
         }
     }
 }

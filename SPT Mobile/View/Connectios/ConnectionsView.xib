@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnectionsView" customModule="SPT_Mobile" customModuleProvider="target">
             <connections>
+                <outlet property="backView" destination="0Pw-iR-4TW" id="ZVN-YQ-kvF"/>
                 <outlet property="connectionsTableView" destination="Fd0-Pf-PWf" id="34F-p7-VbY"/>
                 <outlet property="contentViewHeight" destination="MbA-c2-etp" id="80H-I1-wXC"/>
                 <outlet property="dateLbl" destination="Whk-RL-vwX" id="s4U-el-pRR"/>
@@ -51,7 +52,7 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54D-8u-Mzl">
                             <rect key="frame" x="96.666666666666686" y="300" width="200" height="150"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="Main Theme"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="200" id="0tn-ao-6m1"/>
                                 <constraint firstAttribute="height" constant="150" id="nWd-LM-nrR"/>
@@ -60,6 +61,13 @@
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uc8-Bd-cQx">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="753"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pw-iR-4TW">
+                                    <rect key="frame" x="8" y="-150" width="377" height="350"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="350" id="dEd-vu-zHD"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQo-yp-YEc">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="900"/>
                                     <subviews>
@@ -90,7 +98,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" name="Main Theme"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Fd0-Pf-PWf" firstAttribute="leading" secondItem="RQo-yp-YEc" secondAttribute="leading" constant="8" id="7cK-yQ-KZV"/>
                                         <constraint firstAttribute="height" constant="900" id="MbA-c2-etp"/>
@@ -101,13 +109,16 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="Main Theme"/>
                             <constraints>
                                 <constraint firstItem="RQo-yp-YEc" firstAttribute="width" secondItem="Uc8-Bd-cQx" secondAttribute="width" id="2wf-bU-8xX"/>
+                                <constraint firstItem="0Pw-iR-4TW" firstAttribute="leading" secondItem="Uc8-Bd-cQx" secondAttribute="leading" constant="8" id="5gB-He-YA0"/>
                                 <constraint firstAttribute="bottom" secondItem="RQo-yp-YEc" secondAttribute="bottom" constant="-366" id="6h9-nP-KWz"/>
                                 <constraint firstItem="RQo-yp-YEc" firstAttribute="top" secondItem="Uc8-Bd-cQx" secondAttribute="top" id="Zkh-4J-F3D"/>
+                                <constraint firstAttribute="trailing" secondItem="0Pw-iR-4TW" secondAttribute="trailing" constant="8" id="agv-CD-5QW"/>
                                 <constraint firstAttribute="trailing" secondItem="RQo-yp-YEc" secondAttribute="trailing" id="e9S-Rg-E7G"/>
                                 <constraint firstItem="RQo-yp-YEc" firstAttribute="leading" secondItem="Uc8-Bd-cQx" secondAttribute="leading" id="lAe-So-hGg"/>
+                                <constraint firstItem="0Pw-iR-4TW" firstAttribute="top" secondItem="Uc8-Bd-cQx" secondAttribute="top" constant="-150" id="rm2-cu-BD0"/>
                             </constraints>
                         </scrollView>
                     </subviews>
@@ -220,7 +231,7 @@
                                 <constraint firstAttribute="height" constant="1" id="05l-Gh-cjP"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:30 Dep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1y-LH-dul">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1y-LH-dul">
                             <rect key="frame" x="211" y="102" width="106" height="27"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="27" id="hrp-6K-oZF"/>
@@ -263,7 +274,7 @@
                             </constraints>
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="light"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mon 16.09" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-RL-vwX">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whk-RL-vwX">
                             <rect key="frame" x="41" y="102" width="109" height="27"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>

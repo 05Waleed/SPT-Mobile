@@ -267,6 +267,24 @@
             </objects>
             <point key="canvasLocation" x="5578" y="-1625"/>
         </scene>
+        <!--Travel Date View Controller-->
+        <scene sceneID="Ixu-4e-723">
+            <objects>
+                <viewController storyboardIdentifier="TravelDateViewController" id="yrc-vN-vlf" customClass="TravelDateViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hzk-ax-5Nx" customClass="TravelDateView" customModule="SPT_Mobile" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Dyc-6M-iwR"/>
+                        <color key="backgroundColor" name="Main Theme"/>
+                    </view>
+                    <connections>
+                        <outlet property="travelDateView" destination="Hzk-ax-5Nx" id="Mrj-BL-v6I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Brd-Yb-mDx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7302" y="-587"/>
+        </scene>
         <!--Plan View Controller-->
         <scene sceneID="eeW-vr-i7c">
             <objects>

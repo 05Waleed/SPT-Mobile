@@ -24,10 +24,4 @@ class SearchLocationTableViewCell: UITableViewCell {
             locationNameLbl.text = results[indexPath.row].name
         }
     }
-    
-    func updateSearchedResultsOnConnections(results: [MKMapItem], indexPath: IndexPath) {
-        if !results.isEmpty {
-            locationNameLbl.text = results[indexPath.row].name
-        }
-    }
 }

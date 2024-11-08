@@ -7,13 +7,19 @@
 
 import UIKit
 
-class ConnectionsView: UIView {
+protocol GetDateAndTime: AnyObject {
+    func selected(date: Date, time: Date, fullDate: Date, callAPI: Bool)
+}
+
+
+class ConnectionsView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
     var currentRotation: CGFloat = 0
     
     // MARK: - Outlets
     
+    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var dateLblTop: NSLayoutConstraint!
     @IBOutlet weak var lineView5: UIView!
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
@@ -44,6 +50,8 @@ class ConnectionsView: UIView {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var connectionsTableView: UITableView!
     
+    weak var connectionsViewController: ConnectionsViewController?
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,7 +69,8 @@ class ConnectionsView: UIView {
         setupMainView()
         hideFieldBttns()
         setTableView()
-        tapGestureToSwapper()
+        tapGesture()
+        showDefaultDateAndTime()
         setupView(view: headerView)
         setupView(view: detailedDateView, shadowOpacity: 0.4, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
         startLottieAnimation()
@@ -106,14 +115,51 @@ class ConnectionsView: UIView {
     }
     
     // MARK: - Gesture Handling
-    func tapGestureToSwapper() {
+    func tapGesture() {
+        // Create tap gesture recognizers
+        let dateLblTapGesture = UITapGestureRecognizer(target: self, action: #selector(showDatePicker))
+        dateLbl.isUserInteractionEnabled = true
+        dateLbl.addGestureRecognizer(dateLblTapGesture)
+        let timeLblTapGesture = UITapGestureRecognizer(target: self, action: #selector(showDatePicker))
+        timeLbl.isUserInteractionEnabled = true
+        timeLbl.addGestureRecognizer(timeLblTapGesture)
+        
+        let scrollViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        scrollViewTapGesture.delegate = self
+        scrollView.addGestureRecognizer(scrollViewTapGesture)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         fieldsSwapperImg.isUserInteractionEnabled = true
         fieldsSwapperImg.addGestureRecognizer(tapGesture)
     }
     
+    @objc func showDatePicker() {
+        connectionsViewController?.showTravelDateVc()
+    }
+    
     @objc func imageTapped() {
         swapFieldsWithAnimation()
+    }
+    
+    @objc func dismissKeyboard() {
+        fromField.resignFirstResponder()
+        toField.resignFirstResponder()
+        resetViewAppearance()
+    }
+    
+    // Delegate method to ensure the gesture recognizer doesn't block table view interactions
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // Check if the touch location is inside the table view
+        let location = touch.location(in: self.connectionsTableView)
+        
+        // Allow gestures only if the touch is outside any table view cell or any scrollable content
+        if connectionsTableView.indexPathForRow(at: location) != nil {
+            // If the touch is on a cell, don't trigger the gesture recognizer
+            return false
+        }
+        
+        // Allow gesture if touch is not within the table view's frame
+        return true
     }
     
     // MARK: - Field Swap Animation
@@ -262,5 +308,43 @@ class ConnectionsView: UIView {
         tableViewTop.constant = 150
         dateLblLeading.constant = 41
     }
+    
+    func showDefaultDateAndTime(){
+        let now = Date()
+        defaultCurrentDateAndTime(date: now, time: now, fullDate: now)
+    }
+    
+    private func defaultCurrentDateAndTime(date: Date, time: Date, fullDate: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E dd.MM" // Formats to "Mon 16.09"
+        let formattedDate = dateFormatter.string(from: date)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm" // Formats to "23:30"
+        let formattedTime = timeFormatter.string(from: time)
+        
+        let fullDateFormatter = DateFormatter()
+        fullDateFormatter.dateFormat = "EEEE dd.MM.yyyy" // Formats to "Monday 15.09.204"
+        let formattedFullDate = fullDateFormatter.string(from: fullDate)
+        
+        dateLbl.text = formattedDate
+        timeLbl.text = formattedTime
+        fullDateLbl.text = formattedFullDate
+    }
+    
+    func configureViewForSearchLocation() {
+        backView.backgroundColor = UIColor(named: "ConnectionTableViewColor")
+        connectionsTableView.backgroundColor = UIColor(named: "ConnectionTableViewColor")
+        scrollView.backgroundColor = UIColor(named: "ScrollViewColor")
+        connectionsTableView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+    }
+    
+     func resetViewAppearance() {
+        if !fieldsAreActive() {
+            connectionsTableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            backView.backgroundColor = .clear
+            scrollView.backgroundColor = .mainTheme
+            connectionsTableView.reloadData()
+        }
+    }
 }
-
