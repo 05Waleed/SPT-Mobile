@@ -11,12 +11,11 @@ protocol GetDateAndTime: AnyObject {
     func selected(date: Date, time: Date, fullDate: Date, callAPI: Bool)
 }
 
-
 class ConnectionsView: UIView, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
     var currentRotation: CGFloat = 0
-    
+    weak var connectionsViewController: ConnectionsViewController?
     // MARK: - Outlets
     
     @IBOutlet weak var backView: UIView!
@@ -49,8 +48,6 @@ class ConnectionsView: UIView, UIGestureRecognizerDelegate {
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var connectionsTableView: UITableView!
-    
-    weak var connectionsViewController: ConnectionsViewController?
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -315,21 +312,10 @@ class ConnectionsView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func defaultCurrentDateAndTime(date: Date, time: Date, fullDate: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E dd.MM" // Formats to "Mon 16.09"
-        let formattedDate = dateFormatter.string(from: date)
-        
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm" // Formats to "23:30"
-        let formattedTime = timeFormatter.string(from: time)
-        
-        let fullDateFormatter = DateFormatter()
-        fullDateFormatter.dateFormat = "EEEE dd.MM.yyyy" // Formats to "Monday 15.09.204"
-        let formattedFullDate = fullDateFormatter.string(from: fullDate)
-        
-        dateLbl.text = formattedDate
-        timeLbl.text = formattedTime
-        fullDateLbl.text = formattedFullDate
+        let selectedDateAndTime = SelectedDateAndTime(date: date, time: time)
+        dateLbl.text = selectedDateAndTime.shortDateString
+        timeLbl.text = selectedDateAndTime.timeString
+        fullDateLbl.text = selectedDateAndTime.fullDateString
     }
     
     func configureViewForSearchLocation() {
