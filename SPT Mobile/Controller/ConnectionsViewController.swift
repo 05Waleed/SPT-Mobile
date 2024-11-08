@@ -14,25 +14,26 @@ class ConnectionsViewController: UIViewController {
     
     private var searchResults: [MKMapItem] = []
     private let locationSearchManager = LocationSearchManager()
-    private var selectedDateAndTime: SelectedDateAndTime?
     private var responseModel: APIResponseDataModelForSelectedLocation?
     private var isFetching: Bool = true
     var connectionsDataModel: ConnectionsDataModel?
     private let coreDataManager = CoreDataManager.shared
     private var resultsObject: RecentLocations? // Object to store Core Data results
+    var selectedDateAndTime: SelectedDateAndTime?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         conformProtocols()
         registerXib()
-        connectionsView.updateFields(connectionsDataModel: connectionsDataModel ?? ConnectionsDataModel(fromText: "", toText: "", currentText: ""))
+        connectionsView.updateFields(connectionsDataModel: connectionsDataModel ?? ConnectionsDataModel(fromText: "", toText: ""))
         registerForKeyboardNotifications()
         tableViweVisibility()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        serviceCallFromSelectedLocation()
+        serviceCallForSearchPoints(from: connectionsView.fromField.text ?? "", to: connectionsView.toField.text ?? "", date: selectedDateAndTime?.apiDateString ?? "", time: selectedDateAndTime?.timeString ?? "")
     }
     
     deinit {
@@ -229,37 +230,6 @@ extension ConnectionsViewController: UITextFieldDelegate {
 
 // MARK: - Network Call
 extension ConnectionsViewController {
-    private func serviceCallFromSelectedLocation() {
-        // Construct the URL for the network call.
-        
-        var fromText = ""
-        if connectionsDataModel?.fromText == "Current location" {
-            fromText = connectionsDataModel?.currentText ?? ""
-        } else {
-            fromText = connectionsDataModel?.fromText ?? ""
-        }
-        
-        guard let url = NetworkManager.shared.setupURL(from: fromText, to: connectionsDataModel?.toText ?? "") else { return }
-        
-        // Call the generic performRequest method, specifying the expected data model.
-        NetworkManager.shared.performRequest(with: url, isFetching: { [weak self] isLoading in
-            // Update the fetching state (e.g., show or hide a loading indicator).
-            self?.isFetching = isLoading
-        }, completion: { [weak self] (result: Result<ModelForSelectedLocation, Error>) in
-            // Handle the result on the main thread.
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let dataModel):
-                    // Pass the data model to a handler function in your view controller.
-                    self?.handleServiceResponse(dataModel)
-                case .failure(let error):
-                    // Log the error and handle it appropriately.
-                    self?.handleServiceError(error: error)
-                }
-            }
-        })
-    }
-    
     private func serviceCallForSearchPoints(from: String, to: String, date: String, time: String) {
         guard let url = NetworkManager.shared.setupURLForSearchPoints(from: from, to: to, formattedDate: date, time: time) else { return }
         
@@ -366,12 +336,8 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
         }
         
         if connectionsView.fieldsAreActive() && connectionsView.fromField.text != "" && connectionsView.toField.text != "" {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let selectedDateString = dateFormatter.string(from: selectedDateAndTime?.date ?? Date())
-            let selectedTimeString = dateFormatter.string(from: selectedDateAndTime?.time ?? Date())
             
-            serviceCallForSearchPoints(from: connectionsView.fromField.text ?? "", to: connectionsView.toField.text ?? "", date: selectedDateString, time: selectedTimeString)
+            serviceCallForSearchPoints(from: connectionsView.fromField.text ?? "", to: connectionsView.toField.text ?? "", date: selectedDateAndTime?.apiDateString ?? "", time: selectedDateAndTime?.timeString ?? "")
         }
     }
     
@@ -409,36 +375,22 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
 // MARK: - GetDateAndTime
 extension ConnectionsViewController: GetDateAndTime {
     func selected(date: Date, time: Date, fullDate: Date, callAPI: Bool) {
-        let apiDateFormatter = DateFormatter()
-        apiDateFormatter.dateFormat = "MM/dd/yyyy" // Format for API call (e.g., "11/04/2024")
-        let passFormattedDate = apiDateFormatter.string(from: date)
+        // Create an instance of SelectedDateAndTime to format the values
+        let selectedDateAndTime = SelectedDateAndTime(date: date, time: time)
         
-        let displayDateFormatter = DateFormatter()
-        displayDateFormatter.dateFormat = "E dd.MM" // Display format for short date (e.g., "Mon 04.11")
-        let formattedDate = displayDateFormatter.string(from: date)
+        // Update UI labels with formatted strings
+        connectionsView.dateLbl.text = selectedDateAndTime.shortDateString
+        connectionsView.timeLbl.text = selectedDateAndTime.timeString
+        connectionsView.fullDateLbl.text = selectedDateAndTime.fullDateString
         
-        let displayTimeFormatter = DateFormatter()
-        displayTimeFormatter.dateFormat = "HH:mm" // Display format for time (e.g., "17:16")
-        let formattedTime = displayTimeFormatter.string(from: time)
-        
-        let fullDisplayDateFormatter = DateFormatter()
-        fullDisplayDateFormatter.dateFormat = "EEEE dd.MM.yyyy" // Display format for full date (e.g., "Monday 04.11.2024")
-        let formattedFullDate = fullDisplayDateFormatter.string(from: fullDate)
-        
-        // Assigning values to the labels
-        connectionsView.dateLbl.text = formattedDate
-        connectionsView.timeLbl.text = formattedTime
-        connectionsView.fullDateLbl.text = formattedFullDate
-        
-        // Making the API call if required
+        // Make API call if needed
         if callAPI {
             serviceCallForSearchPoints(
                 from: connectionsView.fromField.text ?? "",
                 to: connectionsView.toField.text ?? "",
-                date: passFormattedDate,
-                time: formattedTime
+                date: selectedDateAndTime.apiDateString,
+                time: selectedDateAndTime.timeString
             )
         }
     }
 }
-

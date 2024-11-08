@@ -183,7 +183,7 @@ class PlanViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(identifier: "ConnectionsViewController") as! ConnectionsViewController
         
         if let nearestStop = responseModel?.leg?.first?.terminal {
-            let connectionsDataModel = ConnectionsDataModel(fromText: timetableView.fromField.text ?? "", toText: timetableView.toField.text ?? "", currentText: nearestStop)
+            let connectionsDataModel = ConnectionsDataModel(fromText: nearestStop, toText: timetableView.toField.text ?? "")
             vc.connectionsDataModel = connectionsDataModel
         }
         

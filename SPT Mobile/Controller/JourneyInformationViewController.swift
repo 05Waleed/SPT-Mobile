@@ -125,6 +125,4 @@ extension JourneyInformationViewController: UITableViewDataSource, UITableViewDe
         cell.updateFinalData(leg: leg!, stop: (leg?.stops)!)
         return cell
     }
-    
-    
 }
