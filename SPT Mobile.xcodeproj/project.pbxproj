@@ -34,6 +34,9 @@
 		2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */; };
 		2C323CCE2C8B35F200BFC010 /* JourneyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */; };
 		2C4282202CDE72280012A32C /* SelectedDateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C42821F2CDE72280012A32C /* SelectedDateAndTime.swift */; };
+		2C4282282CDE855B0012A32C /* PsneFoGxsE.json in Resources */ = {isa = PBXBuildFile; fileRef = 2C4282272CDE855B0012A32C /* PsneFoGxsE.json */; };
+		2C42822B2CDE85650012A32C /* LottieAnimationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4282292CDE85650012A32C /* LottieAnimationTableViewCell.swift */; };
+		2C42822C2CDE85650012A32C /* LottieAnimationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C42822A2CDE85650012A32C /* LottieAnimationTableViewCell.xib */; };
 		2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C62C84CAF50063D8A2 /* LocationModel.swift */; };
 		2C4357C92C84D07E0063D8A2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */; };
 		2C4357CB2C84D0A90063D8A2 /* ModelForCurrentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */; };
@@ -118,6 +121,9 @@
 		2C323CCB2C8B35E900BFC010 /* JourneyInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JourneyInformationView.xib; sourceTree = "<group>"; };
 		2C323CCD2C8B35F200BFC010 /* JourneyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneyInformationView.swift; sourceTree = "<group>"; };
 		2C42821F2CDE72280012A32C /* SelectedDateAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateAndTime.swift; sourceTree = "<group>"; };
+		2C4282272CDE855B0012A32C /* PsneFoGxsE.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PsneFoGxsE.json; path = ../../../../Downloads/PsneFoGxsE.json; sourceTree = "<group>"; };
+		2C4282292CDE85650012A32C /* LottieAnimationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationTableViewCell.swift; sourceTree = "<group>"; };
+		2C42822A2CDE85650012A32C /* LottieAnimationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LottieAnimationTableViewCell.xib; sourceTree = "<group>"; };
 		2C4357C62C84CAF50063D8A2 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		2C4357C82C84D07E0063D8A2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		2C4357CA2C84D0A90063D8A2 /* ModelForCurrentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelForCurrentLocation.swift; sourceTree = "<group>"; };
@@ -233,6 +239,8 @@
 			children = (
 				2C2EBC992CA6F59500063799 /* ConnectionsTableViewCell.swift */,
 				2C2EBC9A2CA6F59500063799 /* ConnectionsTableViewCell.xib */,
+				2C4282292CDE85650012A32C /* LottieAnimationTableViewCell.swift */,
+				2C42822A2CDE85650012A32C /* LottieAnimationTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -390,6 +398,7 @@
 			children = (
 				2C97C49E2C7D4EE800A5876C /* fF9rPfdtXh.json */,
 				2C71B0FA2C8514D400B1CB33 /* LoaderIndicator.json */,
+				2C4282272CDE855B0012A32C /* PsneFoGxsE.json */,
 				2CBFD7792C7BA48A0046A717 /* ExampleAnimation.swift */,
 			);
 			path = LottieAnimations;
@@ -537,12 +546,14 @@
 				2C97C49F2C7D4EE800A5876C /* fF9rPfdtXh.json in Resources */,
 				2C4E9F112C9736F600FC5320 /* RecentSearchedLocationsCollectionViewCell.xib in Resources */,
 				2C61C4AC2C8E661800DC25E0 /* TouchTimetableView.xib in Resources */,
+				2C42822C2CDE85650012A32C /* LottieAnimationTableViewCell.xib in Resources */,
 				2C947F132C98CC650020CFBB /* ConnectionsView.xib in Resources */,
 				2C2EBC9B2CA6F59500063799 /* ConnectionsTableViewCell.xib in Resources */,
 				2C2B74822C947DD600247D6D /* SavedSearchResultsTableViewCell.xib in Resources */,
 				2C49EEC22C8E26E600237C69 /* CurrentLocationTableViewCell.xib in Resources */,
 				2C1757A92C8B49A700C51C83 /* JourneyLastTableViewCell.xib in Resources */,
 				2C323CCC2C8B35E900BFC010 /* JourneyInformationView.xib in Resources */,
+				2C4282282CDE855B0012A32C /* PsneFoGxsE.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +577,7 @@
 				2C1757AA2C8B49A700C51C83 /* JourneyLastTableViewCell.swift in Sources */,
 				2C4E65392C7BC0EF0088F7AB /* StarterInfoView.swift in Sources */,
 				2C4E654F2C7BE1C40088F7AB /* LottieManager.swift in Sources */,
+				2C42822B2CDE85650012A32C /* LottieAnimationTableViewCell.swift in Sources */,
 				2C2411302C7E3C5100631F95 /* StarterInfoViewController.swift in Sources */,
 				2C4357C72C84CAF50063D8A2 /* LocationModel.swift in Sources */,
 				2C2411322C7E429F00631F95 /* LocationViewController.swift in Sources */,
