@@ -70,7 +70,6 @@ class ConnectionsView: UIView, UIGestureRecognizerDelegate {
         showDefaultDateAndTime()
         setupView(view: headerView)
         setupView(view: detailedDateView, shadowOpacity: 0.4, maskedCorners: [.layerMaxXMaxYCorner, .layerMinXMaxYCorner])
-        startLottieAnimation()
         tableViewTop.constant = 170
     }
     
@@ -232,12 +231,6 @@ class ConnectionsView: UIView, UIGestureRecognizerDelegate {
     func updateFields(connectionsDataModel: ConnectionsDataModel) {
         fromField.text = connectionsDataModel.fromText
         toField.text = connectionsDataModel.toText
-    }
-    
-    func startLottieAnimation() {
-        LottieManager.shared.startAnimation(on: loaderView, animationName: "LoaderIndicator", animationSpeed: 2.0, loopMode: .loop) {
-            print("")
-        }
     }
     
     func stopLottieAnimation() {

@@ -28,7 +28,6 @@ class ConnectionsViewController: UIViewController {
         registerXib()
         connectionsView.updateFields(connectionsDataModel: connectionsDataModel ?? ConnectionsDataModel(fromText: "", toText: ""))
         registerForKeyboardNotifications()
-        tableViweVisibility()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,7 +55,8 @@ class ConnectionsViewController: UIViewController {
             "SearchLocationTableViewCell",
             "ConnectionsTableViewCell",
             "SavedSearchResultsTableViewCell",
-            "CurrentLocationTableViewCell"
+            "CurrentLocationTableViewCell",
+            "LottieAnimationTableViewCell"
         ]
         
         nibNames.forEach {
@@ -90,15 +90,13 @@ class ConnectionsViewController: UIViewController {
         let allLegs = allConnections.flatMap { $0.legs }
         let allStops = allLegs.flatMap { $0.stops }.flatMap { $0 }
         responseModel = APIResponseDataModelForSelectedLocation(connection: allConnections, legs: allLegs, stop: allStops)
-        tableViweVisibility()
         connectionsView.connectionsTableView.reloadData()
         connectionsView.dismissKeyboard()
     }
     
     private func handleServiceError(error: Error) {
-        isFetching = false
-        tableViweVisibility()
         print("Service call error: \(error)")
+        responseModel = nil
         connectionsView.connectionsTableView.reloadData()
         connectionsView.dismissKeyboard()
     }
@@ -297,17 +295,18 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
             }
         } else {
             // If fields are not active, base the row count on responseModel and connectionsDataModel
-            return connectionsDataModel != nil ? (responseModel?.connection.count ?? 0) : 0
+            return responseModel != nil ? (responseModel?.connection.count ?? 0) : 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch connectionsView.fieldsAreActive() {
-        case true:
+        if connectionsView.fieldsAreActive() {
             return CommonSearchLocationTableViewCell.shared.cellForRowWithSearchLocation(in: tableView, at: indexPath, results: searchResults, manager: coreDataManager, from: resultsObject ?? RecentLocations())
-        case false:
+        } else if responseModel != nil {
             return connectionsTableViewCell(tableView, cellForRowAt: indexPath)
+        } else {
+            return animationTableViewCell(tableView, cellForRowAt: indexPath)
         }
     }
     
@@ -315,9 +314,12 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
         if connectionsView.fieldsAreActive() {
             updateTableViewHeight(plus: 50.0)
             return CommonSearchLocationTableViewCell.shared.searchLocationCellHeight(indexPath: indexPath)
-        } else {
+        } else if responseModel != nil {
             updateTableViewHeight(plus: 600)
             return 119.0
+        } else {
+            updateTableViewHeight(plus: 600)
+            return 350
         }
     }
     
@@ -340,16 +342,7 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
             serviceCallForSearchPoints(from: connectionsView.fromField.text ?? "", to: connectionsView.toField.text ?? "", date: selectedDateAndTime?.apiDateString ?? "", time: selectedDateAndTime?.timeString ?? "")
         }
     }
-    
-    private func tableViweVisibility() {
-        if isFetching {
-            connectionsView.scrollView.isHidden = true
-        } else {
-            connectionsView.stopLottieAnimation()
-            connectionsView.scrollView.isHidden = false
-        }
-    }
-    
+
     private func updateTableViewHeight(plus: Double = 0.0) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.3) {
@@ -368,6 +361,13 @@ extension ConnectionsViewController: UITableViewDataSource, UITableViewDelegate 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ConnectionsTableViewCell", for: indexPath) as! ConnectionsTableViewCell
         tableView.separatorStyle = .none
         cell.updateData(from: responseModel, indexPath: indexPath)
+        return cell
+    }
+    
+    private func animationTableViewCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LottieAnimationTableViewCell", for: indexPath) as! LottieAnimationTableViewCell
+        tableView.separatorStyle = .none
+        cell.showAnimation(isFetching: isFetching)
         return cell
     }
 }
@@ -394,3 +394,5 @@ extension ConnectionsViewController: GetDateAndTime {
         }
     }
 }
+
+// show identicalstops cell
