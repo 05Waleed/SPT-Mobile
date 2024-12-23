@@ -21,9 +21,10 @@ class ConnectionsViewController: UIViewController {
     private var resultsObject: RecentLocations? // Object to store Core Data results
     var selectedDateAndTime: SelectedDateAndTime?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Connections"
         conformProtocols()
         registerXib()
         connectionsView.updateFields(connectionsDataModel: connectionsDataModel ?? ConnectionsDataModel(fromText: "", toText: ""))
@@ -395,4 +396,7 @@ extension ConnectionsViewController: GetDateAndTime {
     }
 }
 
-// show identicalstops cell
+// fix from and to fields in plan and connections view.
+// fix network call when there is no nearest stop.
+// handle update fields while selecting rows in both views. so the data can pass accurately
+// fix connectios fields when there is no nearest stop.
