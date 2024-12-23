@@ -145,8 +145,7 @@ class PlanViewController: UIViewController {
             }
         }
     }
-    
-    
+
     func removeSearchResults() {
         searchResults.removeAll()
         timetableView.connectionTableView.reloadData()

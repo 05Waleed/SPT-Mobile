@@ -118,7 +118,7 @@
             </objects>
             <point key="canvasLocation" x="6543" y="-587"/>
         </scene>
-        <!--Segment View Controller-->
+        <!--Plan-->
         <scene sceneID="zxn-ab-KDo">
             <objects>
                 <viewController storyboardIdentifier="SegmentViewController" id="c9v-nC-2Vg" customClass="SegmentViewController" customModule="SPT_Mobile" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +175,7 @@
                             <constraint firstItem="ODP-w2-wzW" firstAttribute="trailing" secondItem="AMG-vG-JYV" secondAttribute="trailing" id="zHm-M0-lks"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hju-xO-vkM"/>
+                    <navigationItem key="navigationItem" title="Plan" id="hju-xO-vkM"/>
                     <connections>
                         <outlet property="containerA" destination="slY-dE-vbO" id="zXO-AS-cV8"/>
                         <outlet property="containerB" destination="mLh-z7-iGG" id="5yW-K0-gTm"/>
